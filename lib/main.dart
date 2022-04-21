@@ -176,3 +176,9 @@ class _LoginAsAdminState extends State<LoginAsAdminButton> {
             )));
   }
 }
+
+var _sampleStudents = [
+  "s000000;bart",
+  "s000111;albert",
+  "s000222;frankcallaerts"
+];
