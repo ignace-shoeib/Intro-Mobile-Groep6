@@ -77,7 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         body: Column(
           children: [
-            const SizedBox(height: 100),
+            const SizedBox(height: 200),
             LoginText(),
             const SizedBox(height: 20),
             MailInput(),
@@ -168,6 +168,11 @@ class _LoginAsAdminState extends State<LoginAsAdminButton> {
   Widget build(BuildContext context) {
     return Container(
         width: 400,
-        child: TextButton(onPressed: () {}, child: Text("Inloggen als admin")));
+        child: TextButton(
+            onPressed: () {},
+            child: Text("Inloggen als admin"),
+            style: ButtonStyle(
+              foregroundColor: MaterialStateProperty.all(Colors.grey),
+            )));
   }
 }
