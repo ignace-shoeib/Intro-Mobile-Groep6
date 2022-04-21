@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -30,7 +36,7 @@ class MyApp extends StatelessWidget {
           // Notice that the counter didn't reset back to zero; the application
           // is not restarted.
           primarySwatch: Colors.blue,
-          scaffoldBackgroundColor: const Color.fromARGB(22, 22, 22, 1)),
+          scaffoldBackgroundColor: const Color.fromARGB(255, 22, 22, 22)),
       home: const MyHomePage(title: 'Gradeaid'),
     );
   }
@@ -72,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Color.fromARGB(0, 59, 49, 49),
+          backgroundColor: Color.fromARGB(0, 0, 0, 0),
           title: Text(widget.title),
         ),
         body: Column(
