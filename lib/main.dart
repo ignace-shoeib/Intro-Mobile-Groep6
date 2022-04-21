@@ -82,8 +82,6 @@ class _MyHomePageState extends State<MyHomePage> {
             const SizedBox(height: 20),
             MailInput(),
             const SizedBox(height: 20),
-            PasswordInput(),
-            const SizedBox(height: 20),
             LoginButton()
           ],
         ));
