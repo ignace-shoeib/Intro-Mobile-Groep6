@@ -82,7 +82,8 @@ class _MyHomePageState extends State<MyHomePage> {
             const SizedBox(height: 20),
             MailInput(),
             const SizedBox(height: 20),
-            LoginButton()
+            LoginButton(),
+            LoginAsAdminButton(),
           ],
         ));
   }
@@ -119,6 +120,7 @@ class MailInput extends StatelessWidget {
   }
 }
 
+// INPUT FIELD FOR PASSWORD
 class PasswordInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -138,10 +140,10 @@ class PasswordInput extends StatelessWidget {
 
 class LoginButton extends StatefulWidget {
   @override
-  State<LoginButton> createState() => _State();
+  State<LoginButton> createState() => _LoginButtonState();
 }
 
-class _State extends State<LoginButton> {
+class _LoginButtonState extends State<LoginButton> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -153,5 +155,19 @@ class _State extends State<LoginButton> {
               foregroundColor: MaterialStateProperty.all(Colors.white),
               backgroundColor: MaterialStateProperty.all(Colors.red)),
         ));
+  }
+}
+
+class LoginAsAdminButton extends StatefulWidget {
+  @override
+  State<LoginAsAdminButton> createState() => _LoginAsAdminState();
+}
+
+class _LoginAsAdminState extends State<LoginAsAdminButton> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        width: 400,
+        child: TextButton(onPressed: () {}, child: Text("Inloggen als admin")));
   }
 }
