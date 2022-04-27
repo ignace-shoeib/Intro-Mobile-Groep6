@@ -182,6 +182,7 @@ class _LoginAsAdminState extends State<LoginAsAdminButton> {
             )));
   }
 }
+<<<<<<< HEAD
 
 var _sampleStudents = [
   "s000000;bart",
@@ -198,3 +199,5 @@ List<DropdownMenuItem<String>> get dropdownItems {
   ];
   return menuItems;
 }
+=======
+>>>>>>> parent of 61291ed (add list of samplestudents)
