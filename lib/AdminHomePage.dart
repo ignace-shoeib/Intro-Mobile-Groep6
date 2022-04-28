@@ -1,3 +1,4 @@
+import 'package:exam_app/AdminPasswordChange.dart';
 import 'package:flutter/material.dart';
 
 class AdminHomePage extends StatelessWidget {
@@ -96,8 +97,8 @@ class ChangePasswordState extends State<ChangePasswordButton> {
         width: 400,
         child: TextButton(
             onPressed: () {
-              //Navigator.of(context)
-              //    .push(MaterialPageRoute(builder: (context) => ()));
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => AdminPasswordChange()));
             },
             child: Text("Wachtwoord wijzigen"),
             style: ButtonStyle(
