@@ -1,3 +1,4 @@
+import 'package:exam_app/StudentStartExamPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'LoginButton.dart';
@@ -8,7 +9,10 @@ class LoginButtonState extends State<LoginButton> {
     return Container(
         width: 400,
         child: TextButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => StudentStartExamPage()));
+          },
           child: Text("Login"),
           style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all(Colors.white),
