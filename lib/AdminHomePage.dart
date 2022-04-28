@@ -1,4 +1,5 @@
-import 'package:exam_app/AdminPasswordChange.dart';
+import 'package:exam_app/AdminPasswordChangePage.dart';
+import 'package:exam_app/FirebaseSyncPage.dart';
 import 'package:flutter/material.dart';
 
 class AdminHomePage extends StatelessWidget {
@@ -12,8 +13,9 @@ class AdminHomePage extends StatelessWidget {
           title: Text("Gradeaid"),
         ),
         body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(height: 200),
             Center(child: FirebaseBackupButton()),
             const SizedBox(height: 20),
             Center(child: ExamensButton()),
@@ -36,7 +38,10 @@ class FirebaseBackupButtonState extends State<FirebaseBackupButton> {
     return Container(
         width: 400,
         child: TextButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => FirebaseSync()));
+          },
           child: Text("Firebase Backup"),
           style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all(Colors.white),

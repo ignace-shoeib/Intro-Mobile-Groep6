@@ -29,8 +29,9 @@ class MyHomePageState extends State<MyHomePage> {
           title: Text(widget.title),
         ),
         body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(height: 200),
             LoginText(),
             const SizedBox(height: 20),
             DropDownButton(),

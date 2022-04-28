@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
-class StudentStartExamPage extends StatelessWidget {
+class FirebaseSync extends StatelessWidget {
+  const FirebaseSync({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,24 +13,27 @@ class StudentStartExamPage extends StatelessWidget {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [Center(child: StudentStartExamButton())],
+          children: [
+            //const SizedBox(height: ),
+            Center(child: FirebaseSyncButton()),
+          ],
         ));
   }
 }
 
-class StudentStartExamButton extends StatefulWidget {
+class FirebaseSyncButton extends StatefulWidget {
   @override
-  State<StudentStartExamButton> createState() => StudentStartExamButtonState();
+  State<FirebaseSyncButton> createState() => FirebaseSyncState();
 }
 
-class StudentStartExamButtonState extends State<StudentStartExamButton> {
+class FirebaseSyncState extends State<FirebaseSyncButton> {
   @override
   Widget build(BuildContext context) {
     return Container(
         width: 400,
         child: TextButton(
           onPressed: () {},
-          child: Text("Start Examen"),
+          child: Text("Synchroniseer"),
           style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all(Colors.white),
               backgroundColor: MaterialStateProperty.all(Colors.red)),

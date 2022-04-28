@@ -13,8 +13,9 @@ class AdminLoginPage extends StatelessWidget {
           title: Text("Gradeaid"),
         ),
         body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(height: 200),
             AdminLoginTitle(),
             const SizedBox(height: 20),
             AdminMailInput(),
