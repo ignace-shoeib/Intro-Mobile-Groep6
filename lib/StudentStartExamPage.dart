@@ -10,10 +10,9 @@ class StudentStartExamPage extends StatelessWidget {
           title: Text("Gradeaid"),
         ),
         body: Column(
-          children: [
-            const SizedBox(height: 300),
-            Center(child: StudentStartExamButton())
-          ],
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [Center(child: StudentStartExamButton())],
         ));
   }
 }
