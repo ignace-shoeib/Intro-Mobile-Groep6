@@ -37,17 +37,7 @@ class MyHomePageState extends State<MyHomePage> {
             const SizedBox(height: 20),
             LoginButton(),
             LoginAsAdminButton(),
-            DropDownField(
-              controller: studentlist,
-              hintText: "Kies uw studentennummer",
-              enabled: true,
-              items: students,
-            )
           ],
         ));
   }
 }
-
-final studentlist = TextEditingController();
-
-List<String> students = ["s111000", "s222000"];
