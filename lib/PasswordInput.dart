@@ -10,7 +10,7 @@ class PasswordInput extends StatelessWidget {
         child: const TextField(
             style: TextStyle(color: Colors.white),
             decoration: InputDecoration(
-              hintText: "Password",
+              hintText: "Wachtwoord",
               floatingLabelBehavior: FloatingLabelBehavior.always,
               hintStyle: TextStyle(color: Colors.grey),
               fillColor: Color.fromARGB(80, 61, 61, 61),

@@ -1,9 +1,10 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
-import 'AdminForm.dart';
+class AdminHomePage extends StatelessWidget {
+  const AdminHomePage({Key? key}) : super(key: key);
 
-class AdminPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,10 +13,7 @@ class AdminPage extends StatelessWidget {
           title: Text("Gradeaid"),
         ),
         body: Column(
-          children: [
-            const SizedBox(height: 200),
-            AdminLoginTitle(),
-          ],
+          children: [],
         ));
   }
 }
