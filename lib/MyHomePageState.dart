@@ -41,3 +41,7 @@ class MyHomePageState extends State<MyHomePage> {
         ));
   }
 }
+
+final studentlist = TextEditingController();
+
+List<String> students = ["s111000, s222000, s333000"];
