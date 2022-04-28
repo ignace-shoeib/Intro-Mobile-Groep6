@@ -5,6 +5,7 @@ import 'LoginText.dart';
 import 'MailInput.dart';
 import 'LoginButton.dart';
 import 'LoginAsAdminButton.dart';
+import 'DropDownButton.dart';
 
 class MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
@@ -32,15 +33,20 @@ class MyHomePageState extends State<MyHomePage> {
             const SizedBox(height: 200),
             LoginText(),
             const SizedBox(height: 20),
-            MailInput(),
+            DropDownButton(),
             const SizedBox(height: 20),
             LoginButton(),
             LoginAsAdminButton(),
+
+            //
           ],
         ));
   }
+
+  DropdownMenuItem<String> buildMenuItem(String item) => DropdownMenuItem(
+      value: item,
+      child: Text(
+        item,
+        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+      ));
 }
-
-final studentlist = TextEditingController();
-
-List<String> students = ["s111000, s222000, s333000"];
