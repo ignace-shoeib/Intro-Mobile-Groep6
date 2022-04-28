@@ -11,8 +11,9 @@ class AdminPasswordChange extends StatelessWidget {
           title: Text("Gradeaid"),
         ),
         body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(height: 200),
             Center(child: AdminPasswordChangeTitle()),
             const SizedBox(height: 20),
             Center(child: PasswordChangeInput()),
