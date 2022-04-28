@@ -1,8 +1,7 @@
 import 'package:exam_app/DropDownButton.dart';
-import 'package:exam_app/PasswordInput.dart';
+import 'package:exam_app/AdminPasswordInput.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'AdminForm.dart';
 
 class AdminLoginPage extends StatelessWidget {
@@ -19,11 +18,7 @@ class AdminLoginPage extends StatelessWidget {
           children: [
             AdminLoginTitle(),
             const SizedBox(height: 20),
-            AdminMailInput(),
-            const SizedBox(height: 5),
-            PasswordInput(),
-            const SizedBox(height: 20),
-            AdminLoginButton(),
+            AdminLogin(),
             LoginAsStudentButton(),
           ],
         ));

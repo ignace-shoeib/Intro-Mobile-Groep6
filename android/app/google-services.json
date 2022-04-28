@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "790666937629",
-    "project_id": "gradeaid",
-    "storage_bucket": "gradeaid.appspot.com"
+    "project_number": "497230989752",
+    "project_id": "intro-mobile-groep6",
+    "storage_bucket": "intro-mobile-groep6.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:790666937629:android:328d95dad559bd7ac9cdf4",
+        "mobilesdk_app_id": "1:497230989752:android:0ca7fdf89e88353dd1a74d",
         "android_client_info": {
           "package_name": "com.example.exam_app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "790666937629-oi9je7tk392jqci768a8j0dr0q8u66b2.apps.googleusercontent.com",
+          "client_id": "497230989752-ale57uv0drdabt69h5qtunp7dcrrc7nc.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBKUFJj3b097UGojohrPUNwm97jPDS-62c"
+          "current_key": "AIzaSyBVoP1IinPiKqxChDYpND1cDqoLYWyJHlI"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "790666937629-oi9je7tk392jqci768a8j0dr0q8u66b2.apps.googleusercontent.com",
+              "client_id": "497230989752-ale57uv0drdabt69h5qtunp7dcrrc7nc.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

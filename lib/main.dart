@@ -7,7 +7,7 @@ import 'LoginAsAdminButton.dart';
 import 'LoginText.dart';
 import 'MailInput.dart';
 import 'MyApp.dart';
-import 'PasswordInput.dart';
+import 'AdminPasswordInput.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

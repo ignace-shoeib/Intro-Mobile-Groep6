@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 // INPUT FIELD FOR PASSWORD
-class PasswordInput extends StatelessWidget {
+class AdminPasswordInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
