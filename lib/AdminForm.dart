@@ -1,3 +1,4 @@
+import 'package:exam_app/AdminHomePage.dart';
 import 'package:exam_app/MyApp.dart';
 import 'package:exam_app/MyHomePage.dart';
 import 'package:exam_app/MyHomePageState.dart';
@@ -46,7 +47,10 @@ class AdminLoginButtonState extends State<AdminLoginButton> {
     return Container(
         width: 400,
         child: TextButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => AdminHomePage()));
+          },
           child: Text("Login"),
           style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all(Colors.white),
