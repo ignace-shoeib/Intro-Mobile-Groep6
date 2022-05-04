@@ -4,7 +4,6 @@ import 'package:exam_app/AdminHomePage.dart';
 import 'package:exam_app/MyApp.dart';
 import 'package:exam_app/MyHomePage.dart';
 import 'package:exam_app/MyHomePageState.dart';
-import 'package:exam_app/authentication_service.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -49,7 +48,7 @@ class _AdminLoginState extends State<AdminLogin> {
             // MAIL INPUT
             //
             SizedBox(height: 20),
-            TextFormField(
+            TextField(
                 controller: adminMailController,
                 style: TextStyle(color: Colors.white),
                 decoration: InputDecoration(
@@ -64,7 +63,7 @@ class _AdminLoginState extends State<AdminLogin> {
             // PASSWORD INPUT
             //
             SizedBox(height: 20),
-            TextFormField(
+            TextField(
                 controller: adminPasswordController,
                 style: TextStyle(color: Colors.white),
                 decoration: InputDecoration(
@@ -82,7 +81,7 @@ class _AdminLoginState extends State<AdminLogin> {
               width: 400,
               child: TextButton(
                 onPressed: () {
-                  context.read<AuthenticationService>().signIn(
+                  context.read<AuthenticateService>().signIn(
                         email: adminMailController.text.trim(),
                         password: adminPasswordController.text.trim(),
                       );
@@ -152,14 +151,47 @@ class LoginAsStudentState extends State<LoginAsStudentButton> {
   }
 }
 
+class AuthenticateService {
+  final FirebaseAuth _firebaseAuth;
+  AuthenticateService(this._firebaseAuth);
+  Stream<User?> get authStateChanges => _firebaseAuth.authStateChanges();
+
+  // SIGN IN
+  Future<String?> signIn(
+      {required String email, required String password}) async {
+    try {
+      await _firebaseAuth.signInWithEmailAndPassword(
+          email: email, password: password);
+      return "Signed in";
+    } on FirebaseAuthException catch (e) {
+      return e.message;
+    }
+  }
+
+  // SIGN UP
+  Future<String?> signUp(
+      {required String email, required String password}) async {
+    try {
+      await _firebaseAuth.createUserWithEmailAndPassword(
+          email: email, password: password);
+    } on FirebaseAuthException catch (e) {
+      return e.message;
+    }
+  }
+}
+
 class AuthenticationWrapper extends StatelessWidget {
+  const AuthenticationWrapper({
+    Key? key,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final firebaseUser = context.watch<User>();
 
     if (firebaseUser != null) {
-      return AdminHomePage();
+      return Text("Signed in");
     }
-    return AdminLogin();
+    return Text("Not signed in");
   }
 }
