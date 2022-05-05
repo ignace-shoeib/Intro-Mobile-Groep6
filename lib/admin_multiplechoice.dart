@@ -30,8 +30,8 @@ class MultipleChoicePageState extends State<MultipleChoicePage> {
                   //
                   TextFormField(
                       controller: questionController,
-                      style: TextStyle(color: Colors.white),
-                      decoration: InputDecoration(
+                      style: const TextStyle(color: Colors.white),
+                      decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         hintText: "Vraag",
                         labelText: "Vraag",
@@ -45,8 +45,8 @@ class MultipleChoicePageState extends State<MultipleChoicePage> {
                   //
                   TextFormField(
                       controller: answerController,
-                      style: TextStyle(color: Colors.white),
-                      decoration: InputDecoration(
+                      style: const TextStyle(color: Colors.white),
+                      decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         hintText: "Answer",
                         labelText: "Answer",
