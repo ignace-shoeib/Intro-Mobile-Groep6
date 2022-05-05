@@ -19,8 +19,8 @@ class QuestionsListPageState extends State<QuestionsListPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const Text("Huidige vragen",
+          children: const [
+            Text("Huidige vragen",
                 style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
