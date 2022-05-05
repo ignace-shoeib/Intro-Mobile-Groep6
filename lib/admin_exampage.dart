@@ -1,3 +1,4 @@
+import 'package:exam_app/admin_questionslist.dart';
 import 'package:flutter/material.dart';
 
 class ButtonCodeCorrection extends StatefulWidget {
@@ -78,6 +79,35 @@ class ButtonOpenVraagState extends State<ButtonOpenVraag> {
   }
 }
 
+class ButtonVragenBekijken extends StatefulWidget {
+  const ButtonVragenBekijken({Key? key}) : super(key: key);
+
+  @override
+  State<ButtonVragenBekijken> createState() => ButtonVragenBekijkenState();
+}
+
+class ButtonVragenBekijkenState extends State<ButtonVragenBekijken> {
+  ButtonStyle redButtonStyle() {
+    return ButtonStyle(
+        foregroundColor: MaterialStateProperty.all(Colors.white),
+        backgroundColor: MaterialStateProperty.all(Colors.green));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+        width: 250,
+        child: TextButton(
+          onPressed: () {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const QuestionsListPage()));
+          },
+          child: const Text("Vragen Bekijken"),
+          style: redButtonStyle(),
+        ));
+  }
+}
+
 class AdminExamPage extends StatefulWidget {
   const AdminExamPage({Key? key}) : super(key: key);
 
@@ -93,28 +123,22 @@ class AdminExamPageState extends State<AdminExamPage> {
         backgroundColor: const Color.fromARGB(0, 0, 0, 0),
         title: const Text("Multiple choice"),
       ),
-      body: Column(
-        children: [
-          //
-          // COLUMN WITH BUTTONS
-          //
-          Column(
-            children: const [
-              Text("Voeg een vraag toe",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold)),
-              ButtonCodeCorrection(),
-              ButtonMultipleChoice(),
-              ButtonOpenVraag(),
-            ],
-          ),
-          //
-          // COLUMN "HUIDIGE VRAGEN"
-          //
-          Container()
-        ],
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: const [
+            Text("Voeg een vraag toe",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold)),
+            ButtonCodeCorrection(),
+            ButtonMultipleChoice(),
+            ButtonOpenVraag(),
+            ButtonVragenBekijken()
+          ],
+        ),
       ),
     );
   }
