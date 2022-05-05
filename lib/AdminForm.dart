@@ -82,7 +82,31 @@ class _AdminLoginState extends State<AdminLogin> {
                       .then((user) {
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => AdminHomePage()));
-                  }).catchError((error) {});
+                  }).catchError((error) {
+                    showDialog<String>(
+                        context: context,
+                        builder: (BuildContext context) => AlertDialog(
+                              backgroundColor: Color.fromARGB(255, 22, 22, 22),
+                              title: const Text('Fout bij aanmelden',
+                                  style: TextStyle(
+                                      color:
+                                          Color.fromARGB(255, 255, 255, 255))),
+                              content: const Text(
+                                  'E-mail of wachtwoord is onjuist',
+                                  style: TextStyle(
+                                      color:
+                                          Color.fromARGB(255, 255, 255, 255))),
+                              actions: <Widget>[
+                                TextButton(
+                                  onPressed: () => Navigator.pop(context, 'OK'),
+                                  child: const Text(
+                                    'OK',
+                                    style: TextStyle(color: Colors.red),
+                                  ),
+                                ),
+                              ],
+                            ));
+                  });
                 },
                 child: Text("Login"),
                 style: ButtonStyle(

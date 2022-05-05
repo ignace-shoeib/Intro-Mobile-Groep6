@@ -49,6 +49,7 @@ class PasswordChangeInput extends StatelessWidget {
         child: SizedBox(
             width: 400,
             child: TextField(
+              obscureText: true,
               controller: passwordChangeController,
               style: const TextStyle(color: Colors.white),
               decoration: const InputDecoration(
@@ -79,11 +80,53 @@ class ConfirmPasswordChangeButtonState
         width: 400,
         child: TextButton(
           onPressed: () {
-            final _auth = FirebaseAuth.instance.currentUser;
-            try {
+            if (PasswordChangeInput.passwordChangeController.text.length >= 6) {
+              final _auth = FirebaseAuth.instance.currentUser;
               _auth?.updatePassword(
                   PasswordChangeInput.passwordChangeController.text);
-            } catch (e) {}
+              showDialog<String>(
+                  context: context,
+                  builder: (BuildContext context) => AlertDialog(
+                        backgroundColor: Color.fromARGB(255, 22, 22, 22),
+                        title: const Text('Wachtwoord gewijzigd',
+                            style: TextStyle(
+                                color: Color.fromARGB(255, 255, 255, 255))),
+                        content: const Text(
+                            'Je wachtwoord is gewijzigd. Je kan nu inloggen met je nieuwe wachtwoord.',
+                            style: TextStyle(
+                                color: Color.fromARGB(255, 255, 255, 255))),
+                        actions: <Widget>[
+                          TextButton(
+                            onPressed: () => Navigator.pop(context, 'OK'),
+                            child: const Text(
+                              'OK',
+                              style: TextStyle(color: Colors.red),
+                            ),
+                          ),
+                        ],
+                      ));
+            } else {
+              showDialog<String>(
+                  context: context,
+                  builder: (BuildContext context) => AlertDialog(
+                        backgroundColor: Color.fromARGB(255, 22, 22, 22),
+                        title: const Text('Fout bij wachtwoord wijzigen',
+                            style: TextStyle(
+                                color: Color.fromARGB(255, 255, 255, 255))),
+                        content: const Text('Wachtwoord is te zwak.',
+                            style: TextStyle(
+                                color: Color.fromARGB(255, 255, 255, 255))),
+                        actions: <Widget>[
+                          TextButton(
+                            onPressed: () => Navigator.pop(context, 'OK'),
+                            child: const Text(
+                              'OK',
+                              style: TextStyle(color: Colors.red),
+                            ),
+                          ),
+                        ],
+                      ));
+            }
           },
           child: const Text("Bevestigen"),
           style: ButtonStyle(
