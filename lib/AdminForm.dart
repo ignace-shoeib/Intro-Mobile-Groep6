@@ -75,17 +75,17 @@ class _AdminLoginState extends State<AdminLogin> {
               width: 400,
               child: TextButton(
                 onPressed: () {
-                  //
-                  //HIER MOET AUTHENTICATIE KOMEN VAN MAIL & WACHTWOORD FIREBASE (?)
-                  /*
-                  context.read<AuthenticationService>().signIn(
-                        email: adminMailController.text.trim(),
-                        password: adminPasswordController.text.trim(),
-                        
-                      );
-                      */
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => AdminHomePage()));
+                  final FirebaseAuth _auth = FirebaseAuth.instance;
+                  _auth
+                      .signInWithEmailAndPassword(
+                          email: adminMailController.text,
+                          password: adminPasswordController.text)
+                      .then((user) {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => AdminHomePage()));
+                  }).catchError((error) {
+                    print(error);
+                  });
                 },
                 child: Text("Login"),
                 style: ButtonStyle(
