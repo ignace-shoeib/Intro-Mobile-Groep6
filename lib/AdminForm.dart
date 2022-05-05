@@ -1,5 +1,4 @@
 // ignore_for_file: prefer_const_constructors
-
 import 'package:exam_app/AdminHomePage.dart';
 import 'package:exam_app/MyApp.dart';
 import 'package:flutter/material.dart';
@@ -59,6 +58,7 @@ class _AdminLoginState extends State<AdminLogin> {
             SizedBox(height: 20),
             TextFormField(
                 controller: adminPasswordController,
+                obscureText: true,
                 style: TextStyle(color: Colors.white),
                 decoration: InputDecoration(
                   hintText: "Wachtwoord",
@@ -83,9 +83,7 @@ class _AdminLoginState extends State<AdminLogin> {
                       .then((user) {
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => AdminHomePage()));
-                  }).catchError((error) {
-                    print(error);
-                  });
+                  }).catchError((error) {});
                 },
                 child: Text("Login"),
                 style: ButtonStyle(
