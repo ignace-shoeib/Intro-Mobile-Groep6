@@ -111,9 +111,7 @@ class _AdminLoginState extends State<AdminLogin> {
                                 ],
                               ));
                     });
-                  } catch (e) {
-                    print(e);
-                  }
+                  } catch (_) {}
                 },
                 child: Text("Login"),
                 style: ButtonStyle(

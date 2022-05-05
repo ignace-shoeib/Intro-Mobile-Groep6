@@ -21,8 +21,8 @@ class MultipleChoicePageState extends State<MultipleChoicePage> {
           children: [
             TextFormField(
                 controller: vraagController,
-                style: TextStyle(color: Colors.white),
-                decoration: InputDecoration(
+                style: const TextStyle(color: Colors.white),
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: "AP E-Mail",
                   floatingLabelBehavior: FloatingLabelBehavior.always,
