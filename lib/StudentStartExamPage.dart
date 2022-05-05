@@ -1,3 +1,4 @@
+import 'package:exam_app/StudentVragenPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -28,7 +29,10 @@ class StudentStartExamButtonState extends State<StudentStartExamButton> {
     return Container(
         width: 400,
         child: TextButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => StudentVragenPage()));
+          },
           child: Text("Start Examen"),
           style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all(Colors.white),
