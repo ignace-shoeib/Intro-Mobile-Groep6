@@ -65,10 +65,10 @@ class QuestionsListPageState extends State<QuestionsListPage> {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const QuestionListTitle(),
-            const SizedBox(height: 20),
-            const Expanded(child: QuestionsList()),
+          children: const [
+            QuestionListTitle(),
+            SizedBox(height: 20),
+            Expanded(child: QuestionsList()),
           ],
         ));
   }
