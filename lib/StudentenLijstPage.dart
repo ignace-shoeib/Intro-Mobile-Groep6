@@ -1,3 +1,4 @@
+import 'package:exam_app/admin_questionslist.dart';
 import 'package:flutter/material.dart';
 
 class StudentenLijstPage extends StatelessWidget {
@@ -15,6 +16,8 @@ class StudentenLijstPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const StudentenLijstTitle(),
+              const SizedBox(height: 20),
+              const Expanded(child: QuestionsList()),
               Expanded(
                   child: Align(
                 alignment: FractionalOffset.bottomCenter,

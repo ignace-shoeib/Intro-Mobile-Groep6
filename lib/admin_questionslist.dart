@@ -1,5 +1,19 @@
 import 'package:flutter/material.dart';
 
+class QuestionListTitle extends StatelessWidget {
+  const QuestionListTitle({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const Align(
+      alignment: Alignment.bottomCenter,
+      child: Text("Huidige vragen",
+          style: TextStyle(
+              color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold)),
+    );
+  }
+}
+
 class QuestionsList extends StatefulWidget {
   const QuestionsList({Key? key}) : super(key: key);
 
@@ -44,11 +58,18 @@ class QuestionsListPageState extends State<QuestionsListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color.fromARGB(0, 0, 0, 0),
-        title: const Text("Gradeaid"),
-      ),
-      body: const QuestionsList(),
-    );
+        appBar: AppBar(
+          backgroundColor: const Color.fromARGB(0, 0, 0, 0),
+          title: const Text("Gradeaid"),
+        ),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: const [
+            QuestionListTitle(),
+            SizedBox(height: 20),
+            Expanded(child: QuestionsList()),
+          ],
+        ));
   }
 }
