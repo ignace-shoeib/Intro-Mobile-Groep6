@@ -1,5 +1,4 @@
 // ignore_for_file: prefer_const_constructors
-import 'dart:ffi';
 
 import 'package:exam_app/AdminHomePage.dart';
 import 'package:exam_app/MyApp.dart';
@@ -112,9 +111,7 @@ class _AdminLoginState extends State<AdminLogin> {
                                 ],
                               ));
                     });
-                  } catch (e) {
-                    print(e);
-                  }
+                  } catch (_) {}
                 },
                 child: Text("Login"),
                 style: ButtonStyle(

@@ -48,8 +48,8 @@ class ButtonMultipleChoiceState extends State<ButtonMultipleChoice> {
         width: 250,
         child: TextButton(
           onPressed: () {
-            Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => MultipleChoicePage()));
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const MultipleChoicePage()));
           },
           child: const Text("Multiple Choice"),
           style: redButtonStyle(),
