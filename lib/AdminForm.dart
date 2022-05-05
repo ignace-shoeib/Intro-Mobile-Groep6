@@ -1,4 +1,5 @@
 // ignore_for_file: prefer_const_constructors
+
 import 'package:exam_app/AdminHomePage.dart';
 import 'package:exam_app/MyApp.dart';
 import 'package:flutter/material.dart';
@@ -73,40 +74,44 @@ class _AdminLoginState extends State<AdminLogin> {
             SizedBox(
               width: 400,
               child: TextButton(
-                onPressed: () {
+                onPressed: () async {
                   final FirebaseAuth _auth = FirebaseAuth.instance;
-                  _auth
-                      .signInWithEmailAndPassword(
-                          email: adminMailController.text,
-                          password: adminPasswordController.text)
-                      .then((user) {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => AdminHomePage()));
-                  }).catchError((error) {
-                    showDialog<String>(
-                        context: context,
-                        builder: (BuildContext context) => AlertDialog(
-                              backgroundColor: Color.fromARGB(255, 22, 22, 22),
-                              title: const Text('Fout bij aanmelden',
-                                  style: TextStyle(
-                                      color:
-                                          Color.fromARGB(255, 255, 255, 255))),
-                              content: const Text(
-                                  'E-mail of wachtwoord is onjuist.',
-                                  style: TextStyle(
-                                      color:
-                                          Color.fromARGB(255, 255, 255, 255))),
-                              actions: <Widget>[
-                                TextButton(
-                                  onPressed: () => Navigator.pop(context, 'OK'),
-                                  child: const Text(
-                                    'OK',
-                                    style: TextStyle(color: Colors.red),
+                  try {
+                    await _auth
+                        .signInWithEmailAndPassword(
+                            email: adminMailController.text,
+                            password: adminPasswordController.text)
+                        .then((user) {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => AdminHomePage()));
+                    }).catchError((error) {
+                      showDialog(
+                          context: context,
+                          builder: (BuildContext context) => AlertDialog(
+                                backgroundColor:
+                                    Color.fromARGB(255, 22, 22, 22),
+                                title: const Text('Fout bij aanmelden',
+                                    style: TextStyle(
+                                        color: Color.fromARGB(
+                                            255, 255, 255, 255))),
+                                content: const Text(
+                                    'E-mail of wachtwoord is onjuist.',
+                                    style: TextStyle(
+                                        color: Color.fromARGB(
+                                            255, 255, 255, 255))),
+                                actions: <Widget>[
+                                  TextButton(
+                                    onPressed: () =>
+                                        Navigator.pop(context, 'OK'),
+                                    child: const Text(
+                                      'OK',
+                                      style: TextStyle(color: Colors.red),
+                                    ),
                                   ),
-                                ),
-                              ],
-                            ));
-                  });
+                                ],
+                              ));
+                    });
+                  } catch (_) {}
                 },
                 child: Text("Login"),
                 style: ButtonStyle(
