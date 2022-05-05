@@ -9,6 +9,7 @@ class MultipleChoicePage extends StatefulWidget {
 
 class MultipleChoicePageState extends State<MultipleChoicePage> {
   final questionController = TextEditingController();
+  final optionsController = TextEditingController();
   final answerController = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -25,8 +26,14 @@ class MultipleChoicePageState extends State<MultipleChoicePage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  const Text("Vraag toevoegen",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold)),
+                  const SizedBox(height: 20),
                   //
-                  // QUESTION INPUT
+                  // OPTIONS (!! THIS REQUIRES MULTIPLE ANSWERS !! eg.: A: "Ja", B: "Nee")
                   //
                   TextFormField(
                       controller: questionController,
@@ -43,13 +50,30 @@ class MultipleChoicePageState extends State<MultipleChoicePage> {
                   //
                   // ANSWER INPUT
                   //
+                  const SizedBox(height: 20),
                   TextFormField(
-                      controller: answerController,
+                      controller: optionsController,
                       style: const TextStyle(color: Colors.white),
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         hintText: "Answer",
                         labelText: "Answer",
+                        floatingLabelBehavior: FloatingLabelBehavior.always,
+                        hintStyle: TextStyle(color: Colors.grey),
+                        fillColor: Color.fromARGB(80, 61, 61, 61),
+                        filled: true,
+                      )),
+                  //
+                  // OPLOSSING INPUT
+                  //
+                  const SizedBox(height: 20),
+                  TextFormField(
+                      controller: answerController,
+                      style: const TextStyle(color: Colors.white),
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        hintText: "Options",
+                        labelText: "Options",
                         floatingLabelBehavior: FloatingLabelBehavior.always,
                         hintStyle: TextStyle(color: Colors.grey),
                         fillColor: Color.fromARGB(80, 61, 61, 61),
