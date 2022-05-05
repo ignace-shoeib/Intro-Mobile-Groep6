@@ -1,5 +1,6 @@
 import 'package:exam_app/AdminPasswordChangePage.dart';
 import 'package:exam_app/FirebaseSyncPage.dart';
+import 'package:exam_app/StudentenLijstPage.dart';
 import 'package:flutter/material.dart';
 import 'admin_exampage.dart';
 
@@ -71,9 +72,10 @@ class ExamensButtonState extends State<ExamensButton> {
                 MaterialPageRoute(builder: (context) => const AdminExamPage()));
           },
           child: const Text("Examens"),
-          style: ButtonStyle(
-              foregroundColor: MaterialStateProperty.all(Colors.white),
-              backgroundColor: MaterialStateProperty.all(Colors.red)),
+          style: ElevatedButton.styleFrom(
+              primary: Colors.red,
+              onPrimary: Colors.white,
+              minimumSize: const Size(400, 35)),
         ));
   }
 }
@@ -91,7 +93,10 @@ class StudentenButtonState extends State<StudentenButton> {
     return SizedBox(
         width: 400,
         child: TextButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const StudentenLijstPage()));
+          },
           child: const Text("Studenten"),
           style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all(Colors.white),
