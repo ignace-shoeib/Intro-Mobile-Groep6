@@ -64,7 +64,7 @@ class ExamensButtonState extends State<ExamensButton> {
         child: TextButton(
           onPressed: () {
             Navigator.of(context)
-                .push(MaterialPageRoute(builder: (context) => AddQuestions()));
+                .push(MaterialPageRoute(builder: (context) => AdminExamPage()));
           },
           child: Text("Examens"),
           style: ButtonStyle(

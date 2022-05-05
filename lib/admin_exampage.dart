@@ -74,12 +74,12 @@ class ButtonOpenVraagState extends State<ButtonOpenVraag> {
   }
 }
 
-class AddQuestions extends StatefulWidget {
+class AdminExamPage extends StatefulWidget {
   @override
-  AddQuestionsState createState() => AddQuestionsState();
+  AdminExamPageState createState() => AdminExamPageState();
 }
 
-class AddQuestionsState extends State<AddQuestions> {
+class AdminExamPageState extends State<AdminExamPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,16 +88,28 @@ class AddQuestionsState extends State<AddQuestions> {
         title: Text("Multiple choice"),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text("Voeg een vraag toe",
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold)),
-          ButtonCodeCorrection(),
-          ButtonMultipleChoice(),
-          ButtonOpenVraag()
+          //
+          // COLUMN WITH BUTTONS
+          //
+          Container(
+            child: Column(
+              children: [
+                const Text("Voeg een vraag toe",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold)),
+                ButtonCodeCorrection(),
+                ButtonMultipleChoice(),
+                ButtonOpenVraag(),
+              ],
+            ),
+          ),
+          //
+          // COLUMN "HUIDIGE VRAGEN"
+          //
+          Container()
         ],
       ),
     );
