@@ -48,7 +48,7 @@ class QuestionsListPageState extends State<QuestionsListPage> {
         backgroundColor: const Color.fromARGB(0, 0, 0, 0),
         title: const Text("Gradeaid"),
       ),
-      body: QuestionsList(),
+      body: const QuestionsList(),
     );
   }
 }
