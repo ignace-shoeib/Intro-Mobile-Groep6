@@ -1,4 +1,5 @@
 import 'package:exam_app/admin_multiplechoice.dart';
+import 'package:exam_app/admin_openquestion.dart';
 import 'package:exam_app/admin_questionslist.dart';
 import 'package:flutter/material.dart';
 
@@ -76,7 +77,10 @@ class ButtonOpenVraagState extends State<ButtonOpenVraag> {
     return SizedBox(
         width: 250,
         child: TextButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const OpenQuestionPage()));
+          },
           child: const Text("Open vraag"),
           style: redButtonStyle(),
         ));
