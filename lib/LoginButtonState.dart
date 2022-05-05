@@ -14,9 +14,13 @@ class LoginButtonState extends State<LoginButton> {
                 builder: (context) => StudentStartExamPage()));
           },
           child: Text("Login"),
-          style: ButtonStyle(
-              foregroundColor: MaterialStateProperty.all(Colors.white),
-              backgroundColor: MaterialStateProperty.all(Colors.red)),
+          style: redButtonStyle(),
         ));
+  }
+
+  ButtonStyle redButtonStyle() {
+    return ButtonStyle(
+        foregroundColor: MaterialStateProperty.all(Colors.white),
+        backgroundColor: MaterialStateProperty.all(Colors.red));
   }
 }

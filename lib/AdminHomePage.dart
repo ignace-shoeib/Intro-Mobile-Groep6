@@ -1,6 +1,7 @@
 import 'package:exam_app/AdminPasswordChangePage.dart';
 import 'package:exam_app/FirebaseSyncPage.dart';
 import 'package:flutter/material.dart';
+import 'admin_exampage.dart';
 
 class AdminHomePage extends StatelessWidget {
   const AdminHomePage({Key? key}) : super(key: key);
@@ -61,7 +62,10 @@ class ExamensButtonState extends State<ExamensButton> {
     return Container(
         width: 400,
         child: TextButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => AddQuestions()));
+          },
           child: Text("Examens"),
           style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all(Colors.white),

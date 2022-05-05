@@ -31,12 +31,6 @@ class _AdminLoginState extends State<AdminLogin> {
   final adminMailController = TextEditingController();
   final adminPasswordController = TextEditingController();
 
-  @mustCallSuper
-  void dispose() {
-    adminMailController.dispose();
-    adminPasswordController.dispose();
-  }
-
   @override
   Widget build(BuildContext context) => SingleChildScrollView(
       padding: EdgeInsets.all(16),
@@ -82,10 +76,15 @@ class _AdminLoginState extends State<AdminLogin> {
               width: 400,
               child: TextButton(
                 onPressed: () {
+                  //
+                  //HIER MOET AUTHENTICATIE KOMEN VAN MAIL & WACHTWOORD FIREBASE (?)
+                  /*
                   context.read<AuthenticationService>().signIn(
                         email: adminMailController.text.trim(),
                         password: adminPasswordController.text.trim(),
+                        
                       );
+                      */
                   Navigator.of(context).push(
                       MaterialPageRoute(builder: (context) => AdminHomePage()));
                 },
