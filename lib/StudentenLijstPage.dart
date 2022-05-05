@@ -1,3 +1,4 @@
+import 'package:exam_app/StudentAdd.dart';
 import 'package:exam_app/admin_questionslist.dart';
 import 'package:flutter/material.dart';
 
@@ -27,7 +28,10 @@ class StudentenLijstPage extends StatelessWidget {
                       onPrimary: Colors.white,
                       minimumSize: const Size(400, 35)),
                   child: const Text('Student toevoegen'),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const AddStudentPage()));
+                  },
                 ),
               ))
             ]));
