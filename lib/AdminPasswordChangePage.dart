@@ -87,7 +87,7 @@ class ConfirmPasswordChangeButtonState
               showDialog<String>(
                   context: context,
                   builder: (BuildContext context) => AlertDialog(
-                        backgroundColor: Color.fromARGB(255, 22, 22, 22),
+                        backgroundColor: const Color.fromARGB(255, 22, 22, 22),
                         title: const Text('Wachtwoord gewijzigd',
                             style: TextStyle(
                                 color: Color.fromARGB(255, 255, 255, 255))),
@@ -109,7 +109,7 @@ class ConfirmPasswordChangeButtonState
               showDialog<String>(
                   context: context,
                   builder: (BuildContext context) => AlertDialog(
-                        backgroundColor: Color.fromARGB(255, 22, 22, 22),
+                        backgroundColor: const Color.fromARGB(255, 22, 22, 22),
                         title: const Text('Fout bij wachtwoord wijzigen',
                             style: TextStyle(
                                 color: Color.fromARGB(255, 255, 255, 255))),
