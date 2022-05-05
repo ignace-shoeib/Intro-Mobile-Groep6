@@ -101,30 +101,6 @@ class _AdminLoginState extends State<AdminLogin> {
         password: adminPasswordController.text.trim());
   }
 }
-/*
-class AdminLoginButton extends StatefulWidget {
-  @override
-  State<AdminLoginButton> createState() => AdminLoginButtonState();
-}
-
-class AdminLoginButtonState extends State<AdminLoginButton> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        width: 400,
-        child: TextButton(
-          onPressed: () {
-            Navigator.of(context)
-                .push(MaterialPageRoute(builder: (context) => AdminHomePage()));
-          },
-          child: Text("Login"),
-          style: ButtonStyle(
-              foregroundColor: MaterialStateProperty.all(Colors.white),
-              backgroundColor: MaterialStateProperty.all(Colors.red)),
-        ));
-  }
-}
-*/
 
 class LoginAsStudentButton extends StatefulWidget {
   const LoginAsStudentButton({Key? key}) : super(key: key);
@@ -147,19 +123,5 @@ class LoginAsStudentState extends State<LoginAsStudentButton> {
             style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all(Colors.grey),
             )));
-  }
-}
-
-class AuthenticationWrapper extends StatelessWidget {
-  const AuthenticationWrapper({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final firebaseUser = context.watch<User>();
-
-    if (firebaseUser != null) {
-      return AdminHomePage();
-    }
-    return AdminLogin();
   }
 }
