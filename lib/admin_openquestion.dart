@@ -35,6 +35,8 @@ class OpenQuestionPageState extends State<OpenQuestionPage> {
                   //
                   TextFormField(
                       controller: questionController,
+                      keyboardType: TextInputType.multiline,
+                      maxLines: 10,
                       style: const TextStyle(color: Colors.white),
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
