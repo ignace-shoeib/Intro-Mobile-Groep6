@@ -16,13 +16,13 @@ class MyHomePageState extends State<MyHomePage> {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const LoginText(),
-            const SizedBox(height: 20),
-            const DropDownButton(),
-            const SizedBox(height: 20),
+          children: const [
+            LoginText(),
+            SizedBox(height: 20),
+            DropDownButton(),
+            SizedBox(height: 20),
             LoginButton(),
-            const LoginAsAdminButton(),
+            LoginAsAdminButton(),
 
             //
           ],

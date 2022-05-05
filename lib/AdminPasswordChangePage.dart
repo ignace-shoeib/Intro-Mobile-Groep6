@@ -14,7 +14,7 @@ class AdminPasswordChange extends StatelessWidget {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
+          children: const [
             Center(child: AdminPasswordChangeTitle()),
             SizedBox(height: 20),
             Center(child: PasswordChangeInput()),
@@ -41,6 +41,8 @@ class AdminPasswordChangeTitle extends StatelessWidget {
 class PasswordChangeInput extends StatelessWidget {
   static final passwordChangeController = TextEditingController();
 
+  const PasswordChangeInput({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -48,8 +50,8 @@ class PasswordChangeInput extends StatelessWidget {
             width: 400,
             child: TextField(
               controller: passwordChangeController,
-              style: TextStyle(color: Colors.white),
-              decoration: InputDecoration(
+              style: const TextStyle(color: Colors.white),
+              decoration: const InputDecoration(
                 border: OutlineInputBorder(),
                 hintText: "Nieuw wachtwoord",
                 floatingLabelBehavior: FloatingLabelBehavior.always,

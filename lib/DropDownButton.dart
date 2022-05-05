@@ -18,7 +18,9 @@ class _DropDownButtonState extends State<DropDownButton> {
           color: const Color.fromARGB(255, 37, 37, 37),
           borderRadius: BorderRadius.circular(2)),
       child: DropdownButton<String>(
+        style: const TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
         value: dropdownValue,
+        dropdownColor: Color.fromARGB(255, 37, 37, 37),
         elevation: 16,
         underline: Container(
           height: 2,
