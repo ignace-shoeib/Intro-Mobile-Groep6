@@ -8,8 +8,8 @@ class MultipleChoicePage extends StatefulWidget {
 }
 
 class MultipleChoicePageState extends State<MultipleChoicePage> {
-  final vraagController = TextEditingController();
-  final antwoordController = TextEditingController();
+  final questionController = TextEditingController();
+  final answerController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,20 +17,48 @@ class MultipleChoicePageState extends State<MultipleChoicePage> {
           backgroundColor: const Color.fromARGB(0, 0, 0, 0),
           title: const Text("Gradeaid"),
         ),
-        body: Column(
-          children: [
-            TextFormField(
-                controller: vraagController,
-                style: const TextStyle(color: Colors.white),
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: "AP E-Mail",
-                  floatingLabelBehavior: FloatingLabelBehavior.always,
-                  hintStyle: TextStyle(color: Colors.grey),
-                  fillColor: Color.fromARGB(80, 61, 61, 61),
-                  filled: true,
-                )),
-          ],
+        body: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SizedBox(
+              width: 600,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  //
+                  // QUESTION INPUT
+                  //
+                  TextFormField(
+                      controller: questionController,
+                      style: TextStyle(color: Colors.white),
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        hintText: "Vraag",
+                        labelText: "Vraag",
+                        floatingLabelBehavior: FloatingLabelBehavior.always,
+                        hintStyle: TextStyle(color: Colors.grey),
+                        fillColor: Color.fromARGB(80, 61, 61, 61),
+                        filled: true,
+                      )),
+                  //
+                  // ANSWER INPUT
+                  //
+                  TextFormField(
+                      controller: answerController,
+                      style: TextStyle(color: Colors.white),
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        hintText: "Answer",
+                        labelText: "Answer",
+                        floatingLabelBehavior: FloatingLabelBehavior.always,
+                        hintStyle: TextStyle(color: Colors.grey),
+                        fillColor: Color.fromARGB(80, 61, 61, 61),
+                        filled: true,
+                      )),
+                ],
+              ),
+            ),
+          ),
         ));
   }
 }
