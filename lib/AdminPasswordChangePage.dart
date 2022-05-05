@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class AdminPasswordChange extends StatelessWidget {
   const AdminPasswordChange({Key? key}) : super(key: key);
@@ -13,7 +14,7 @@ class AdminPasswordChange extends StatelessWidget {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: const [
+          children: [
             Center(child: AdminPasswordChangeTitle()),
             SizedBox(height: 20),
             Center(child: PasswordChangeInput()),
@@ -38,14 +39,15 @@ class AdminPasswordChangeTitle extends StatelessWidget {
 }
 
 class PasswordChangeInput extends StatelessWidget {
-  const PasswordChangeInput({Key? key}) : super(key: key);
+  static final passwordChangeController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
+    return Center(
         child: SizedBox(
             width: 400,
             child: TextField(
+              controller: passwordChangeController,
               style: TextStyle(color: Colors.white),
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
@@ -74,7 +76,13 @@ class ConfirmPasswordChangeButtonState
     return SizedBox(
         width: 400,
         child: TextButton(
-          onPressed: () {},
+          onPressed: () {
+            final _auth = FirebaseAuth.instance.currentUser;
+            try {
+              _auth?.updatePassword(
+                  PasswordChangeInput.passwordChangeController.text);
+            } catch (e) {}
+          },
           child: const Text("Bevestigen"),
           style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all(Colors.white),
