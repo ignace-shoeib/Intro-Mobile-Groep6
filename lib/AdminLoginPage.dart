@@ -1,23 +1,22 @@
-import 'package:exam_app/DropDownButton.dart';
-import 'package:exam_app/AdminPasswordInput.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'AdminForm.dart';
 
 class AdminLoginPage extends StatelessWidget {
+  const AdminLoginPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Color.fromARGB(0, 0, 0, 0),
-          title: Text("Gradeaid"),
+          backgroundColor: const Color.fromARGB(0, 0, 0, 0),
+          title: const Text("Gradeaid"),
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
+          children: const [
             AdminLoginTitle(),
-            const SizedBox(height: 20),
+            SizedBox(height: 20),
             AdminLogin(),
             LoginAsStudentButton(),
           ],

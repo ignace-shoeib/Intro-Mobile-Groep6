@@ -10,17 +10,17 @@ class AdminHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Color.fromARGB(0, 0, 0, 0),
-          title: Text("Gradeaid"),
+          backgroundColor: const Color.fromARGB(0, 0, 0, 0),
+          title: const Text("Gradeaid"),
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
+          children: const [
             Center(child: FirebaseBackupButton()),
-            const SizedBox(height: 20),
+            SizedBox(height: 20),
             Center(child: ExamensButton()),
-            const SizedBox(height: 20),
+            SizedBox(height: 20),
             Center(child: StudentenButton()),
             ChangePasswordButton(),
           ],
@@ -29,6 +29,8 @@ class AdminHomePage extends StatelessWidget {
 }
 
 class FirebaseBackupButton extends StatefulWidget {
+  const FirebaseBackupButton({Key? key}) : super(key: key);
+
   @override
   State<FirebaseBackupButton> createState() => FirebaseBackupButtonState();
 }
@@ -36,14 +38,14 @@ class FirebaseBackupButton extends StatefulWidget {
 class FirebaseBackupButtonState extends State<FirebaseBackupButton> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
         width: 400,
         child: TextButton(
           onPressed: () {
-            Navigator.of(context)
-                .push(MaterialPageRoute(builder: (context) => FirebaseSync()));
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const FirebaseSync()));
           },
-          child: Text("Firebase Backup"),
+          child: const Text("Firebase Backup"),
           style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all(Colors.white),
               backgroundColor: MaterialStateProperty.all(Colors.red)),
@@ -52,6 +54,8 @@ class FirebaseBackupButtonState extends State<FirebaseBackupButton> {
 }
 
 class ExamensButton extends StatefulWidget {
+  const ExamensButton({Key? key}) : super(key: key);
+
   @override
   State<ExamensButton> createState() => ExamensButtonState();
 }
@@ -59,14 +63,14 @@ class ExamensButton extends StatefulWidget {
 class ExamensButtonState extends State<ExamensButton> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
         width: 400,
         child: TextButton(
           onPressed: () {
-            Navigator.of(context)
-                .push(MaterialPageRoute(builder: (context) => AdminExamPage()));
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const AdminExamPage()));
           },
-          child: Text("Examens"),
+          child: const Text("Examens"),
           style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all(Colors.white),
               backgroundColor: MaterialStateProperty.all(Colors.red)),
@@ -75,6 +79,8 @@ class ExamensButtonState extends State<ExamensButton> {
 }
 
 class StudentenButton extends StatefulWidget {
+  const StudentenButton({Key? key}) : super(key: key);
+
   @override
   State<StudentenButton> createState() => StudentenButtonState();
 }
@@ -82,11 +88,11 @@ class StudentenButton extends StatefulWidget {
 class StudentenButtonState extends State<StudentenButton> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
         width: 400,
         child: TextButton(
           onPressed: () {},
-          child: Text("Studenten"),
+          child: const Text("Studenten"),
           style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all(Colors.white),
               backgroundColor: MaterialStateProperty.all(Colors.red)),
@@ -95,6 +101,8 @@ class StudentenButtonState extends State<StudentenButton> {
 }
 
 class ChangePasswordButton extends StatefulWidget {
+  const ChangePasswordButton({Key? key}) : super(key: key);
+
   @override
   State<ChangePasswordButton> createState() => ChangePasswordState();
 }
@@ -102,14 +110,14 @@ class ChangePasswordButton extends StatefulWidget {
 class ChangePasswordState extends State<ChangePasswordButton> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
         width: 400,
         child: TextButton(
             onPressed: () {
               Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => AdminPasswordChange()));
+                  builder: (context) => const AdminPasswordChange()));
             },
-            child: Text("Wachtwoord wijzigen"),
+            child: const Text("Wachtwoord wijzigen"),
             style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all(Colors.grey),
             )));

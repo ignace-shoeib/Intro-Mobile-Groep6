@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class DropDownButton extends StatefulWidget {
@@ -16,7 +15,7 @@ class _DropDownButtonState extends State<DropDownButton> {
     return Container(
       width: 400,
       decoration: BoxDecoration(
-          color: Color.fromARGB(255, 37, 37, 37),
+          color: const Color.fromARGB(255, 37, 37, 37),
           borderRadius: BorderRadius.circular(2)),
       child: DropdownButton<String>(
         value: dropdownValue,

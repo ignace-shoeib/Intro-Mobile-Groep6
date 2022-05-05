@@ -7,17 +7,17 @@ class AdminPasswordChange extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Color.fromARGB(0, 0, 0, 0),
-          title: Text("Gradeaid"),
+          backgroundColor: const Color.fromARGB(0, 0, 0, 0),
+          title: const Text("Gradeaid"),
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
+          children: const [
             Center(child: AdminPasswordChangeTitle()),
-            const SizedBox(height: 20),
+            SizedBox(height: 20),
             Center(child: PasswordChangeInput()),
-            const SizedBox(height: 20),
+            SizedBox(height: 20),
             ConfirmPasswordChangeButton(),
           ],
         ));
@@ -25,10 +25,12 @@ class AdminPasswordChange extends StatelessWidget {
 }
 
 class AdminPasswordChangeTitle extends StatelessWidget {
+  const AdminPasswordChangeTitle({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: const Text("Nieuw Wachtwoord",
+    return const Center(
+      child: Text("Nieuw Wachtwoord",
           style: TextStyle(
               color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold)),
     );
@@ -36,12 +38,14 @@ class AdminPasswordChangeTitle extends StatelessWidget {
 }
 
 class PasswordChangeInput extends StatelessWidget {
+  const PasswordChangeInput({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return Center(
-        child: Container(
+    return const Center(
+        child: SizedBox(
             width: 400,
-            child: const TextField(
+            child: TextField(
               style: TextStyle(color: Colors.white),
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
@@ -56,6 +60,8 @@ class PasswordChangeInput extends StatelessWidget {
 }
 
 class ConfirmPasswordChangeButton extends StatefulWidget {
+  const ConfirmPasswordChangeButton({Key? key}) : super(key: key);
+
   @override
   State<ConfirmPasswordChangeButton> createState() =>
       ConfirmPasswordChangeButtonState();
@@ -65,11 +71,11 @@ class ConfirmPasswordChangeButtonState
     extends State<ConfirmPasswordChangeButton> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
         width: 400,
         child: TextButton(
           onPressed: () {},
-          child: Text("Bevestigen"),
+          child: const Text("Bevestigen"),
           style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all(Colors.white),
               backgroundColor: MaterialStateProperty.all(Colors.red)),

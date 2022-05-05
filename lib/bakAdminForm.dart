@@ -2,15 +2,13 @@
 
 import 'package:exam_app/AdminHomePage.dart';
 import 'package:exam_app/MyApp.dart';
-import 'package:exam_app/MyHomePage.dart';
-import 'package:exam_app/MyHomePageState.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
 
 class AdminLoginTitle extends StatelessWidget {
+  const AdminLoginTitle({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -22,6 +20,8 @@ class AdminLoginTitle extends StatelessWidget {
 }
 
 class AdminLogin extends StatefulWidget {
+  const AdminLogin({Key? key}) : super(key: key);
+
   @override
   _AdminLoginState createState() => _AdminLoginState();
 }
@@ -39,7 +39,7 @@ class _AdminLoginState extends State<AdminLogin> {
   @override
   Widget build(BuildContext context) => SingleChildScrollView(
       padding: EdgeInsets.all(16),
-      child: Container(
+      child: SizedBox(
         width: 400,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -77,7 +77,7 @@ class _AdminLoginState extends State<AdminLogin> {
             //  LOGIN BUTTON
             //
             SizedBox(height: 20),
-            Container(
+            SizedBox(
               width: 400,
               child: TextButton(
                 onPressed: () {
@@ -130,6 +130,8 @@ class AdminLoginButtonState extends State<AdminLoginButton> {
 */
 
 class LoginAsStudentButton extends StatefulWidget {
+  const LoginAsStudentButton({Key? key}) : super(key: key);
+
   @override
   State<LoginAsStudentButton> createState() => LoginAsStudentState();
 }
@@ -137,7 +139,7 @@ class LoginAsStudentButton extends StatefulWidget {
 class LoginAsStudentState extends State<LoginAsStudentButton> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
         width: 400,
         child: TextButton(
             onPressed: () {
@@ -177,6 +179,7 @@ class AuthenticateService {
     } on FirebaseAuthException catch (e) {
       return e.message;
     }
+    return null;
   }
 }
 

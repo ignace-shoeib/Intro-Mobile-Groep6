@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class MailInput extends StatelessWidget {
+  const MailInput({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return Center(
-        child: Container(
+    return const Center(
+        child: SizedBox(
             width: 400,
-            child: const TextField(
+            child: TextField(
               style: TextStyle(color: Colors.white),
               decoration: InputDecoration(
                 border: OutlineInputBorder(),

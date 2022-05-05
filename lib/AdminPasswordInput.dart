@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 // INPUT FIELD FOR PASSWORD
 class AdminPasswordInput extends StatelessWidget {
+  const AdminPasswordInput({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return const SizedBox(
         width: 400,
-        child: const TextField(
+        child: TextField(
             style: TextStyle(color: Colors.white),
             decoration: InputDecoration(
               hintText: "Wachtwoord",

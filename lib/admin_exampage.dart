@@ -1,8 +1,8 @@
-import 'package:exam_app/AdminLoginPage.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ButtonCodeCorrection extends StatefulWidget {
+  const ButtonCodeCorrection({Key? key}) : super(key: key);
+
   @override
   State<ButtonCodeCorrection> createState() => ButtonCodeCorrectionState();
 }
@@ -16,17 +16,19 @@ class ButtonCodeCorrectionState extends State<ButtonCodeCorrection> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
         width: 250,
         child: TextButton(
           onPressed: () {},
-          child: Text("Code Correctie"),
+          child: const Text("Code Correctie"),
           style: redButtonStyle(),
         ));
   }
 }
 
 class ButtonMultipleChoice extends StatefulWidget {
+  const ButtonMultipleChoice({Key? key}) : super(key: key);
+
   @override
   State<ButtonMultipleChoice> createState() => ButtonMultipleChoiceState();
 }
@@ -40,17 +42,19 @@ class ButtonMultipleChoiceState extends State<ButtonMultipleChoice> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
         width: 250,
         child: TextButton(
           onPressed: () {},
-          child: Text("Code Correctie"),
+          child: const Text("Code Correctie"),
           style: redButtonStyle(),
         ));
   }
 }
 
 class ButtonOpenVraag extends StatefulWidget {
+  const ButtonOpenVraag({Key? key}) : super(key: key);
+
   @override
   State<ButtonOpenVraag> createState() => ButtonOpenVraagState();
 }
@@ -64,17 +68,19 @@ class ButtonOpenVraagState extends State<ButtonOpenVraag> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
         width: 250,
         child: TextButton(
           onPressed: () {},
-          child: Text("Open vraag"),
+          child: const Text("Open vraag"),
           style: redButtonStyle(),
         ));
   }
 }
 
 class AdminExamPage extends StatefulWidget {
+  const AdminExamPage({Key? key}) : super(key: key);
+
   @override
   AdminExamPageState createState() => AdminExamPageState();
 }
@@ -84,27 +90,25 @@ class AdminExamPageState extends State<AdminExamPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(0, 0, 0, 0),
-        title: Text("Multiple choice"),
+        backgroundColor: const Color.fromARGB(0, 0, 0, 0),
+        title: const Text("Multiple choice"),
       ),
       body: Column(
         children: [
           //
           // COLUMN WITH BUTTONS
           //
-          Container(
-            child: Column(
-              children: [
-                const Text("Voeg een vraag toe",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold)),
-                ButtonCodeCorrection(),
-                ButtonMultipleChoice(),
-                ButtonOpenVraag(),
-              ],
-            ),
+          Column(
+            children: const [
+              Text("Voeg een vraag toe",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold)),
+              ButtonCodeCorrection(),
+              ButtonMultipleChoice(),
+              ButtonOpenVraag(),
+            ],
           ),
           //
           // COLUMN "HUIDIGE VRAGEN"
