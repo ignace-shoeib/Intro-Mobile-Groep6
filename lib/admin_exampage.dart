@@ -47,7 +47,7 @@ class ButtonMultipleChoiceState extends State<ButtonMultipleChoice> {
         width: 250,
         child: TextButton(
           onPressed: () {},
-          child: const Text("Code Correctie"),
+          child: const Text("Multiple Choice"),
           style: redButtonStyle(),
         ));
   }
@@ -121,7 +121,7 @@ class AdminExamPageState extends State<AdminExamPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(0, 0, 0, 0),
-        title: const Text("Multiple choice"),
+        title: const Text("Gradeaid"),
       ),
       body: Center(
         child: Column(
@@ -133,6 +133,7 @@ class AdminExamPageState extends State<AdminExamPage> {
                     color: Colors.white,
                     fontSize: 30,
                     fontWeight: FontWeight.bold)),
+            SizedBox(height: 20),
             ButtonCodeCorrection(),
             ButtonMultipleChoice(),
             ButtonOpenVraag(),
