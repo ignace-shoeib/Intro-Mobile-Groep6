@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:path/path.dart';
 
 class StudentVragenPage extends StatelessWidget {
   const StudentVragenPage({Key? key}) : super(key: key);
@@ -29,7 +27,8 @@ class StudentVragenPage extends StatelessWidget {
                     showDialog<String>(
                         context: context,
                         builder: (BuildContext context) => AlertDialog(
-                              backgroundColor: Color.fromARGB(255, 22, 22, 22),
+                              backgroundColor:
+                                  const Color.fromARGB(255, 22, 22, 22),
                               title: const Text(
                                   'Wilt u zeker het examen beëindigen?',
                                   style: TextStyle(

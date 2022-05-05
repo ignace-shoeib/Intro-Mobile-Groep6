@@ -20,7 +20,7 @@ class QuestionsListPageState extends State<QuestionsListPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text("Huidige vragen",
+            const Text("Huidige vragen",
                 style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,

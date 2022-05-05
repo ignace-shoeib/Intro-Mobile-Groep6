@@ -92,7 +92,7 @@ class _AdminLoginState extends State<AdminLogin> {
                                       color:
                                           Color.fromARGB(255, 255, 255, 255))),
                               content: const Text(
-                                  'E-mail of wachtwoord is onjuist',
+                                  'E-mail of wachtwoord is onjuist.',
                                   style: TextStyle(
                                       color:
                                           Color.fromARGB(255, 255, 255, 255))),
