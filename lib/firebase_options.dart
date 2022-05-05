@@ -59,7 +59,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '790666937629',
     projectId: 'gradeaid',
     storageBucket: 'gradeaid.appspot.com',
-    iosClientId: '790666937629-6n3g2adf1h4bqbicr6i79kdgi2scjgd8.apps.googleusercontent.com',
+    iosClientId:
+        '790666937629-6n3g2adf1h4bqbicr6i79kdgi2scjgd8.apps.googleusercontent.com',
     iosBundleId: 'be.ap.gradeaid',
   );
 }

@@ -1,17 +1,13 @@
 // ignore_for_file: prefer_const_constructors
-
 import 'package:exam_app/AdminHomePage.dart';
 import 'package:exam_app/MyApp.dart';
-import 'package:exam_app/MyHomePage.dart';
-import 'package:exam_app/MyHomePageState.dart';
-import 'package:exam_app/authentication_service.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
 
 class AdminLoginTitle extends StatelessWidget {
+  const AdminLoginTitle({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -23,6 +19,8 @@ class AdminLoginTitle extends StatelessWidget {
 }
 
 class AdminLogin extends StatefulWidget {
+  const AdminLogin({Key? key}) : super(key: key);
+
   @override
   _AdminLoginState createState() => _AdminLoginState();
 }
@@ -31,16 +29,10 @@ class _AdminLoginState extends State<AdminLogin> {
   final adminMailController = TextEditingController();
   final adminPasswordController = TextEditingController();
 
-  @mustCallSuper
-  void dispose() {
-    adminMailController.dispose();
-    adminPasswordController.dispose();
-  }
-
   @override
   Widget build(BuildContext context) => SingleChildScrollView(
       padding: EdgeInsets.all(16),
-      child: Container(
+      child: SizedBox(
         width: 400,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -66,6 +58,7 @@ class _AdminLoginState extends State<AdminLogin> {
             SizedBox(height: 20),
             TextFormField(
                 controller: adminPasswordController,
+                obscureText: true,
                 style: TextStyle(color: Colors.white),
                 decoration: InputDecoration(
                   hintText: "Wachtwoord",
@@ -78,16 +71,19 @@ class _AdminLoginState extends State<AdminLogin> {
             //  LOGIN BUTTON
             //
             SizedBox(height: 20),
-            Container(
+            SizedBox(
               width: 400,
               child: TextButton(
                 onPressed: () {
-                  context.read<AuthenticationService>().signIn(
-                        email: adminMailController.text.trim(),
-                        password: adminPasswordController.text.trim(),
-                      );
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => AdminHomePage()));
+                  final FirebaseAuth _auth = FirebaseAuth.instance;
+                  _auth
+                      .signInWithEmailAndPassword(
+                          email: adminMailController.text,
+                          password: adminPasswordController.text)
+                      .then((user) {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => AdminHomePage()));
+                  }).catchError((error) {});
                 },
                 child: Text("Login"),
                 style: ButtonStyle(
@@ -105,32 +101,10 @@ class _AdminLoginState extends State<AdminLogin> {
         password: adminPasswordController.text.trim());
   }
 }
-/*
-class AdminLoginButton extends StatefulWidget {
-  @override
-  State<AdminLoginButton> createState() => AdminLoginButtonState();
-}
-
-class AdminLoginButtonState extends State<AdminLoginButton> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        width: 400,
-        child: TextButton(
-          onPressed: () {
-            Navigator.of(context)
-                .push(MaterialPageRoute(builder: (context) => AdminHomePage()));
-          },
-          child: Text("Login"),
-          style: ButtonStyle(
-              foregroundColor: MaterialStateProperty.all(Colors.white),
-              backgroundColor: MaterialStateProperty.all(Colors.red)),
-        ));
-  }
-}
-*/
 
 class LoginAsStudentButton extends StatefulWidget {
+  const LoginAsStudentButton({Key? key}) : super(key: key);
+
   @override
   State<LoginAsStudentButton> createState() => LoginAsStudentState();
 }
@@ -138,7 +112,7 @@ class LoginAsStudentButton extends StatefulWidget {
 class LoginAsStudentState extends State<LoginAsStudentButton> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
         width: 400,
         child: TextButton(
             onPressed: () {
@@ -149,17 +123,5 @@ class LoginAsStudentState extends State<LoginAsStudentButton> {
             style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all(Colors.grey),
             )));
-  }
-}
-
-class AuthenticationWrapper extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final firebaseUser = context.watch<User>();
-
-    if (firebaseUser != null) {
-      return AdminHomePage();
-    }
-    return AdminLogin();
   }
 }

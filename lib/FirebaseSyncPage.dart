@@ -7,13 +7,13 @@ class FirebaseSync extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Color.fromARGB(0, 0, 0, 0),
-          title: Text("Gradeaid"),
+          backgroundColor: const Color.fromARGB(0, 0, 0, 0),
+          title: const Text("Gradeaid"),
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
+          children: const [
             //const SizedBox(height: ),
             Center(child: FirebaseSyncButton()),
           ],
@@ -22,6 +22,8 @@ class FirebaseSync extends StatelessWidget {
 }
 
 class FirebaseSyncButton extends StatefulWidget {
+  const FirebaseSyncButton({Key? key}) : super(key: key);
+
   @override
   State<FirebaseSyncButton> createState() => FirebaseSyncState();
 }
@@ -29,11 +31,11 @@ class FirebaseSyncButton extends StatefulWidget {
 class FirebaseSyncState extends State<FirebaseSyncButton> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
         width: 400,
         child: TextButton(
           onPressed: () {},
-          child: Text("Synchroniseer"),
+          child: const Text("Synchroniseer"),
           style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all(Colors.white),
               backgroundColor: MaterialStateProperty.all(Colors.red)),

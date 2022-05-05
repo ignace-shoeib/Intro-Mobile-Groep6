@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:path/path.dart';
 
 class StudentVragenPage extends StatelessWidget {
+  const StudentVragenPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
