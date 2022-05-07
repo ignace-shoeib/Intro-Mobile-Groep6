@@ -1,3 +1,4 @@
+import 'package:exam_app/load_students.dart';
 import 'package:flutter/material.dart';
 
 class DropDownButton extends StatefulWidget {
@@ -8,7 +9,9 @@ class DropDownButton extends StatefulWidget {
 }
 
 class _DropDownButtonState extends State<DropDownButton> {
-  String dropdownValue = "s111000";
+  String dropdownValue = LoadStudents.students.first.toString();
+  List<String> studentStrings =
+      LoadStudents.students.map((student) => student.toString()).toList();
 
   @override
   Widget build(BuildContext context) {
@@ -30,11 +33,7 @@ class _DropDownButtonState extends State<DropDownButton> {
             dropdownValue = newValue!;
           });
         },
-        items: <String>[
-          "s111000",
-          "s222000",
-          "s333000",
-        ].map<DropdownMenuItem<String>>((String value) {
+        items: studentStrings.map<DropdownMenuItem<String>>((String value) {
           return DropdownMenuItem<String>(
             value: value,
             child: Text(value),

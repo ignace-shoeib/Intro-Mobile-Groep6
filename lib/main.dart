@@ -1,3 +1,4 @@
+import 'package:exam_app/load_students.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -8,5 +9,6 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  LoadStudents.students = await LoadStudents.loadStudents();
   runApp(const MyApp());
 }
