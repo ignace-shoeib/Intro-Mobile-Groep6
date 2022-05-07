@@ -1,8 +1,8 @@
-import 'package:exam_app/load_students.dart';
+import 'package:exam_app/student/load_students.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
-import 'MyApp.dart';
+import 'my_app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

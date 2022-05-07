@@ -1,6 +1,6 @@
-import 'package:exam_app/AdminLoginPage.dart';
+import 'package:exam_app/admin/admin_login_page.dart';
 import 'package:flutter/material.dart';
-import 'LoginAsAdminButton.dart';
+import 'login_as_admin_button.dart';
 
 class LoginAsAdminState extends State<LoginAsAdminButton> {
   @override

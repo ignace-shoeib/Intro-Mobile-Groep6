@@ -1,6 +1,6 @@
-import 'package:exam_app/admin_pages/admin_password_change_page.dart';
+import 'package:exam_app/admin/admin_password_change_page.dart';
 import 'package:exam_app/firebase_sync_page.dart';
-import 'package:exam_app/admin_pages/admin_studentlistpage.dart';
+import 'package:exam_app/admin/admin_studentlistpage.dart';
 import 'package:flutter/material.dart';
 import 'admin_exampage.dart';
 

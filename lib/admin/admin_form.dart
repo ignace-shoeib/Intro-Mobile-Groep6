@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:exam_app/AdminHomePage.dart';
-import 'package:exam_app/MyApp.dart';
+import 'package:exam_app/admin/admin_home_page.dart';
+import 'package:exam_app/my_app.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 

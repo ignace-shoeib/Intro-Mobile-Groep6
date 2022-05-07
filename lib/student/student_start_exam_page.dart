@@ -1,4 +1,4 @@
-import 'package:exam_app/StudentVragenPage.dart';
+import 'package:exam_app/student/student_vragen_page.dart';
 import 'package:flutter/material.dart';
 
 class StudentStartExamPage extends StatelessWidget {

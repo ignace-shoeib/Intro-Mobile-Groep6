@@ -1,6 +1,6 @@
-import 'package:exam_app/StudentStartExamPage.dart';
+import 'package:exam_app/student/student_start_exam_page.dart';
 import 'package:flutter/material.dart';
-import 'LoginButton.dart';
+import 'login_button.dart';
 
 class LoginButtonState extends State<LoginButton> {
   @override

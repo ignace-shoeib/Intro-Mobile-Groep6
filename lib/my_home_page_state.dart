@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'MyHomePage.dart';
-import 'LoginText.dart';
-import 'LoginButton.dart';
-import 'LoginAsAdminButton.dart';
-import 'DropDownButton.dart';
+import 'my_home_page.dart';
+import 'login_text.dart';
+import 'login_button.dart';
+import 'admin/login_as_admin_button.dart';
+import 'drop_down_button.dart';
 
 class MyHomePageState extends State<MyHomePage> {
   @override
