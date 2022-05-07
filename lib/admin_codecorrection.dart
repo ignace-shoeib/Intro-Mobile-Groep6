@@ -31,13 +31,13 @@ class CodeCorrectionPageState extends State<CodeCorrectionPage> {
                 Expanded(
                   child: Column(
                     children: [
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       const Text("Vraag toevoegen",
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 30,
                               fontWeight: FontWeight.bold)),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       TextFormField(
                           controller: questionController,
                           keyboardType: TextInputType.multiline,
@@ -61,13 +61,13 @@ class CodeCorrectionPageState extends State<CodeCorrectionPage> {
                 Expanded(
                   child: Column(
                     children: [
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       const Text("Correcte code",
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 30,
                               fontWeight: FontWeight.bold)),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       TextFormField(
                           controller: correctCodeController,
                           keyboardType: TextInputType.multiline,
@@ -87,12 +87,12 @@ class CodeCorrectionPageState extends State<CodeCorrectionPage> {
                 ),
               ],
             ),
-            SizedBox(height: 40),
+            const SizedBox(height: 40),
             SizedBox(
                 width: 400,
                 child: TextButton(
                   onPressed: () {},
-                  child: Text("Vraag opslaan"),
+                  child: const Text("Vraag opslaan"),
                   style: ButtonStyle(
                       foregroundColor: MaterialStateProperty.all(Colors.white),
                       backgroundColor: MaterialStateProperty.all(Colors.red)),

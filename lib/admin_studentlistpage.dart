@@ -1,5 +1,4 @@
 import 'package:exam_app/admin_studentadd.dart';
-import 'package:exam_app/admin_questionslist.dart';
 import 'package:exam_app/admin_studentgradepage.dart';
 import 'package:flutter/material.dart';
 
@@ -35,7 +34,7 @@ class StudentenLijstPage extends StatelessWidget {
                   },
                 ),
               )),
-              TempStudentGradeButton()
+              const TempStudentGradeButton()
             ]));
   }
 }
@@ -55,10 +54,10 @@ class TempStudentGradeState extends State<TempStudentGradeButton> {
         width: 400,
         child: TextButton(
             onPressed: () {
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => AdminStudentGrade()));
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const AdminStudentGrade()));
             },
-            child: Text("Temp button naar student grade"),
+            child: const Text("Temp button naar student grade"),
             style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all(Colors.grey),
             )));

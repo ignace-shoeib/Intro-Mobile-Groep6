@@ -10,9 +10,9 @@ class Question {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['questiontype'] = this.questiontype;
-    data['question'] = this.question;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['questiontype'] = questiontype;
+    data['question'] = question;
     return data;
   }
 }

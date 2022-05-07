@@ -84,7 +84,7 @@ class MultipleChoicePageState extends State<MultipleChoicePage> {
                       width: 400,
                       child: TextButton(
                         onPressed: () {},
-                        child: Text("Vraag opslaan"),
+                        child: const Text("Vraag opslaan"),
                         style: ButtonStyle(
                             foregroundColor:
                                 MaterialStateProperty.all(Colors.white),

@@ -47,12 +47,12 @@ class OpenQuestionPageState extends State<OpenQuestionPage> {
                         fillColor: Color.fromARGB(80, 61, 61, 61),
                         filled: true,
                       )),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   SizedBox(
                       width: 400,
                       child: TextButton(
                         onPressed: () {},
-                        child: Text("Vraag opslaan"),
+                        child: const Text("Vraag opslaan"),
                         style: ButtonStyle(
                             foregroundColor:
                                 MaterialStateProperty.all(Colors.white),

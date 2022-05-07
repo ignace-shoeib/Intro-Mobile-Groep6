@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 class AdminStudentGrade extends StatelessWidget {
   const AdminStudentGrade({Key? key}) : super(key: key);
@@ -27,16 +26,16 @@ class AdminStudentGrade extends StatelessWidget {
             const SizedBox(height: 20),
             Expanded(
                 child: Row(
-              children: <Widget>[
-                const ElevatedButton(onPressed: null, child: Text('Location')),
-                const SizedBox(
+              children: const <Widget>[
+                ElevatedButton(onPressed: null, child: Text('Location')),
+                SizedBox(
                   width: 10,
                 ),
-                const ElevatedButton(onPressed: null, child: Text('Bewerken')),
-                const SizedBox(
+                ElevatedButton(onPressed: null, child: Text('Bewerken')),
+                SizedBox(
                   width: 10,
                 ),
-                const ElevatedButton(onPressed: null, child: Text('Bewerken')),
+                ElevatedButton(onPressed: null, child: Text('Bewerken')),
               ],
             ))
           ],
