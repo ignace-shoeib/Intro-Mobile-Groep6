@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 
-class MultipleChoicePage extends StatefulWidget {
-  const MultipleChoicePage({Key? key}) : super(key: key);
+class OpenQuestionPage extends StatefulWidget {
+  const OpenQuestionPage({Key? key}) : super(key: key);
 
   @override
-  State<MultipleChoicePage> createState() => MultipleChoicePageState();
+  State<OpenQuestionPage> createState() => OpenQuestionPageState();
 }
 
-class MultipleChoicePageState extends State<MultipleChoicePage> {
+class OpenQuestionPageState extends State<OpenQuestionPage> {
   final questionController = TextEditingController();
-  final optionsController = TextEditingController();
-  final answerController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,17 +24,19 @@ class MultipleChoicePageState extends State<MultipleChoicePage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text("Vraag toevoegen",
+                  const Text("Open vraag toevoegen",
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 30,
                           fontWeight: FontWeight.bold)),
                   const SizedBox(height: 20),
                   //
-                  // OPTIONS (!! THIS REQUIRES MULTIPLE ANSWERS !! eg.: A: "Ja", B: "Nee")
+                  // Open vraag input
                   //
                   TextFormField(
                       controller: questionController,
+                      keyboardType: TextInputType.multiline,
+                      maxLines: 10,
                       style: const TextStyle(color: Colors.white),
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
@@ -47,39 +47,7 @@ class MultipleChoicePageState extends State<MultipleChoicePage> {
                         fillColor: Color.fromARGB(80, 61, 61, 61),
                         filled: true,
                       )),
-                  //
-                  // ANSWER INPUT
-                  //
-                  const SizedBox(height: 20),
-                  TextFormField(
-                      controller: optionsController,
-                      style: const TextStyle(color: Colors.white),
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: "Answer",
-                        labelText: "Answer",
-                        floatingLabelBehavior: FloatingLabelBehavior.always,
-                        hintStyle: TextStyle(color: Colors.grey),
-                        fillColor: Color.fromARGB(80, 61, 61, 61),
-                        filled: true,
-                      )),
-                  //
-                  // OPLOSSING INPUT
-                  //
-                  const SizedBox(height: 20),
-                  TextFormField(
-                      controller: answerController,
-                      style: const TextStyle(color: Colors.white),
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: "Options",
-                        labelText: "Options",
-                        floatingLabelBehavior: FloatingLabelBehavior.always,
-                        hintStyle: TextStyle(color: Colors.grey),
-                        fillColor: Color.fromARGB(80, 61, 61, 61),
-                        filled: true,
-                      )),
-                  const SizedBox(height: 20),
+                  SizedBox(height: 20),
                   SizedBox(
                       width: 400,
                       child: TextButton(
