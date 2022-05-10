@@ -1,3 +1,4 @@
+import 'package:exam_app/message_box.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -84,48 +85,13 @@ class ConfirmPasswordChangeButtonState
               final _auth = FirebaseAuth.instance.currentUser;
               _auth?.updatePassword(
                   PasswordChangeInput.passwordChangeController.text);
-              showDialog<String>(
-                  context: context,
-                  builder: (BuildContext context) => AlertDialog(
-                        backgroundColor: const Color.fromARGB(255, 22, 22, 22),
-                        title: const Text('Wachtwoord gewijzigd',
-                            style: TextStyle(
-                                color: Color.fromARGB(255, 255, 255, 255))),
-                        content: const Text(
-                            'Je wachtwoord is gewijzigd. Je kan nu inloggen met je nieuwe wachtwoord.',
-                            style: TextStyle(
-                                color: Color.fromARGB(255, 255, 255, 255))),
-                        actions: <Widget>[
-                          TextButton(
-                            onPressed: () => Navigator.pop(context, 'OK'),
-                            child: const Text(
-                              'OK',
-                              style: TextStyle(color: Colors.red),
-                            ),
-                          ),
-                        ],
-                      ));
+              MessageBox.showMessageBox(
+                  'Wachtwoord gewijzigd',
+                  'Je wachtwoord is gewijzigd. Je kan nu inloggen met je nieuwe wachtwoord.',
+                  context);
             } else {
-              showDialog<String>(
-                  context: context,
-                  builder: (BuildContext context) => AlertDialog(
-                        backgroundColor: const Color.fromARGB(255, 22, 22, 22),
-                        title: const Text('Fout bij wachtwoord wijzigen',
-                            style: TextStyle(
-                                color: Color.fromARGB(255, 255, 255, 255))),
-                        content: const Text('Wachtwoord is te zwak.',
-                            style: TextStyle(
-                                color: Color.fromARGB(255, 255, 255, 255))),
-                        actions: <Widget>[
-                          TextButton(
-                            onPressed: () => Navigator.pop(context, 'OK'),
-                            child: const Text(
-                              'OK',
-                              style: TextStyle(color: Colors.red),
-                            ),
-                          ),
-                        ],
-                      ));
+              MessageBox.showMessageBox('Fout bij wachtwoord wijzigen',
+                  'Wachtwoord is te zwak.', context);
             }
           },
           child: const Text("Bevestigen"),
