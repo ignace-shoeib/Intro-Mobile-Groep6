@@ -1,7 +1,6 @@
 import 'package:exam_app/admin/admin_studentadd.dart';
 import 'package:exam_app/admin/admin_studentgradepage.dart';
 import 'package:flutter/material.dart';
-
 import '../student/load_students.dart';
 
 class StudentListPage extends StatelessWidget {
@@ -93,33 +92,6 @@ class StudentListTitle extends StatelessWidget {
       child: Text("Studentenlijst",
           style: TextStyle(
               color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold)),
-    );
-  }
-}
-
-class StudentTempList extends StatefulWidget {
-  const StudentTempList({Key? key}) : super(key: key);
-
-  @override
-  State<StudentTempList> createState() => StudentTempListState();
-}
-
-class StudentTempListState extends State<StudentTempList> {
-  List<String> vragen = [];
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: ListView.builder(
-          itemCount: vragen.length,
-          itemBuilder: (context, index) {
-            return Card(
-              child: ListTile(
-                tileColor: Colors.black54,
-                title: Text(vragen[index]),
-              ),
-            );
-          }),
     );
   }
 }

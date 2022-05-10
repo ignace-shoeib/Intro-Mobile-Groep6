@@ -1,5 +1,11 @@
+import 'dart:io';
+import 'package:csv/csv.dart';
+import 'package:exam_app/admin/admin_studentlistpage.dart';
+import 'package:exam_app/message_box.dart';
+import 'package:exam_app/student/load_students.dart';
+import 'package:exam_app/student/student.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:path_provider/path_provider.dart';
 
 class AddStudentPage extends StatelessWidget {
   const AddStudentPage({Key? key}) : super(key: key);
@@ -31,7 +37,7 @@ class AddStudentTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Text("Student toevoegen",
+      child: Text("Student toevoegen (studentnr;studentnaam)",
           style: TextStyle(
               color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold)),
     );
@@ -49,12 +55,11 @@ class AddStudentInput extends StatelessWidget {
         child: SizedBox(
             width: 400,
             child: TextField(
-              obscureText: true,
               controller: addStudentController,
               style: const TextStyle(color: Colors.white),
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
-                hintText: "Nieuwe student",
+                hintText: "Nieuwe student (studentnr;studentnaam)",
                 floatingLabelBehavior: FloatingLabelBehavior.always,
                 hintStyle: TextStyle(color: Colors.grey),
                 fillColor: Color.fromARGB(80, 61, 61, 61),
@@ -78,52 +83,7 @@ class AddStudentButtonState extends State<AddStudentButton> {
         width: 400,
         child: TextButton(
           onPressed: () {
-            if (AddStudentInput.addStudentController.text.length >= 6) {
-              final _auth = FirebaseAuth.instance.currentUser;
-              _auth?.updatePassword(AddStudentInput.addStudentController.text);
-              showDialog<String>(
-                  context: context,
-                  builder: (BuildContext context) => AlertDialog(
-                        backgroundColor: const Color.fromARGB(255, 22, 22, 22),
-                        title: const Text('Wachtwoord gewijzigd',
-                            style: TextStyle(
-                                color: Color.fromARGB(255, 255, 255, 255))),
-                        content: const Text(
-                            'Je wachtwoord is gewijzigd. Je kan nu inloggen met je nieuwe wachtwoord.',
-                            style: TextStyle(
-                                color: Color.fromARGB(255, 255, 255, 255))),
-                        actions: <Widget>[
-                          TextButton(
-                            onPressed: () => Navigator.pop(context, 'OK'),
-                            child: const Text(
-                              'OK',
-                              style: TextStyle(color: Colors.red),
-                            ),
-                          ),
-                        ],
-                      ));
-            } else {
-              showDialog<String>(
-                  context: context,
-                  builder: (BuildContext context) => AlertDialog(
-                        backgroundColor: const Color.fromARGB(255, 22, 22, 22),
-                        title: const Text('Fout bij wachtwoord wijzigen',
-                            style: TextStyle(
-                                color: Color.fromARGB(255, 255, 255, 255))),
-                        content: const Text('Wachtwoord is te zwak.',
-                            style: TextStyle(
-                                color: Color.fromARGB(255, 255, 255, 255))),
-                        actions: <Widget>[
-                          TextButton(
-                            onPressed: () => Navigator.pop(context, 'OK'),
-                            child: const Text(
-                              'OK',
-                              style: TextStyle(color: Colors.red),
-                            ),
-                          ),
-                        ],
-                      ));
-            }
+            addStudent(context);
           },
           child: const Text("Bevestigen"),
           style: ButtonStyle(
@@ -131,4 +91,47 @@ class AddStudentButtonState extends State<AddStudentButton> {
               backgroundColor: MaterialStateProperty.all(Colors.red)),
         ));
   }
+}
+
+void addStudent(BuildContext context) async {
+  try {
+    final newStudent = Student();
+    List<String> splitString =
+        AddStudentInput.addStudentController.text.split(';');
+    newStudent.studentNr = splitString[0];
+    newStudent.studentName = splitString[1];
+    LoadStudents.students.add(newStudent);
+
+    List<List<dynamic>> csvData = [
+      [newStudent.studentNr, newStudent.studentName]
+    ];
+    final csv = CsvCodec();
+    final csvString = csv.encoder.convert(csvData);
+    var file = await _localFile;
+    file.writeAsString(csvString);
+    MessageBox.showMessageBox("Student toegevoegd",
+        "Student ${newStudent.studentName} is toegevoegd", context);
+    Navigator.pop(context);
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const StudentListPage(),
+      ),
+    );
+  } catch (e) {
+    MessageBox.showMessageBox(
+        "Fout",
+        "Fout, studentennummer en studentennaam is slecht geformateerd.",
+        context);
+  }
+}
+
+Future<String> get _localPath async {
+  final directory = await getApplicationDocumentsDirectory();
+  return directory.path;
+}
+
+Future<File> get _localFile async {
+  final path = await _localPath;
+  return File('$path/data.csv');
 }
