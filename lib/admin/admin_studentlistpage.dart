@@ -29,6 +29,7 @@ class StudentListPage extends StatelessWidget {
                     return Card(
                         child: ListTile(
                       onTap: () {},
+                      tileColor: Colors.black54,
                       title: Text(LoadStudents.students[index].studentNr! +
                           ", " +
                           LoadStudents.students[index].studentName!),
