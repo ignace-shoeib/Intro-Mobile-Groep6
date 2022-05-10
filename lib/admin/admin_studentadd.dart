@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:csv/csv.dart';
+import 'package:exam_app/admin/admin_studentlistpage.dart';
 import 'package:exam_app/message_box.dart';
 import 'package:exam_app/student/load_students.dart';
 import 'package:exam_app/student/student.dart';
@@ -110,6 +111,13 @@ void addStudent(BuildContext context) async {
     file.writeAsString(csvString);
     MessageBox.showMessageBox("Student toegevoegd",
         "Student ${newStudent.studentName} is toegevoegd", context);
+    Navigator.pop(context);
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const StudentListPage(),
+      ),
+    );
   } catch (e) {
     MessageBox.showMessageBox(
         "Fout",
