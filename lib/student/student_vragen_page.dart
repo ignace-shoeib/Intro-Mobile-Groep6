@@ -15,6 +15,8 @@ class StudentVragenPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const AdminLoginTitle(),
+              const SizedBox(height: 20),
+              const Expanded(child: StudentQuestionsList()),
               Expanded(
                   child: Align(
                 alignment: FractionalOffset.bottomCenter,
@@ -78,6 +80,35 @@ class AdminLoginTitle extends StatelessWidget {
       child: Text("Vragen",
           style: TextStyle(
               color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold)),
+    );
+  }
+}
+
+class StudentQuestionsList extends StatefulWidget {
+  const StudentQuestionsList({Key? key}) : super(key: key);
+
+  @override
+  State<StudentQuestionsList> createState() => StudentQuestionsListState();
+}
+
+class StudentQuestionsListState extends State<StudentQuestionsList> {
+  List<String> vragen = [
+    "Wat is jouw mama's verjaardag?",
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: ListView.builder(
+          itemCount: vragen.length,
+          itemBuilder: (BuildContext context, int index) {
+            return Card(
+              child: ListTile(
+                tileColor: Colors.black54,
+                title: Text(vragen[index]),
+              ),
+            );
+          }),
     );
   }
 }
