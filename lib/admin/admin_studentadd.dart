@@ -1,8 +1,10 @@
+import 'dart:io';
 import 'package:csv/csv.dart';
+import 'package:exam_app/message_box.dart';
 import 'package:exam_app/student/load_students.dart';
 import 'package:exam_app/student/student.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:path_provider/path_provider.dart';
 
 class AddStudentPage extends StatelessWidget {
   const AddStudentPage({Key? key}) : super(key: key);
@@ -34,7 +36,7 @@ class AddStudentTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Text("Student toevoegen",
+      child: Text("Student toevoegen (studentnr;studentnaam)",
           style: TextStyle(
               color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold)),
     );
@@ -56,7 +58,7 @@ class AddStudentInput extends StatelessWidget {
               style: const TextStyle(color: Colors.white),
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
-                hintText: "Nieuwe student",
+                hintText: "Nieuwe student (studentnr;studentnaam)",
                 floatingLabelBehavior: FloatingLabelBehavior.always,
                 hintStyle: TextStyle(color: Colors.grey),
                 fillColor: Color.fromARGB(80, 61, 61, 61),
@@ -80,7 +82,7 @@ class AddStudentButtonState extends State<AddStudentButton> {
         width: 400,
         child: TextButton(
           onPressed: () {
-            addStudent();
+            addStudent(context);
           },
           child: const Text("Bevestigen"),
           style: ButtonStyle(
@@ -90,22 +92,38 @@ class AddStudentButtonState extends State<AddStudentButton> {
   }
 }
 
-void addStudent() {
-  final newStudent = Student();
-  List<String> splitString =
-      AddStudentInput.addStudentController.text.split(';');
-  newStudent.studentNr = splitString[0];
-  newStudent.studentName = splitString[1];
-  LoadStudents.students.add(newStudent);
+void addStudent(BuildContext context) async {
+  try {
+    final newStudent = Student();
+    List<String> splitString =
+        AddStudentInput.addStudentController.text.split(';');
+    newStudent.studentNr = splitString[0];
+    newStudent.studentName = splitString[1];
+    LoadStudents.students.add(newStudent);
 
-  List<List<Student>> rows = List<List<Student>>()[[]];
-  downloadData() {
-    for (int i = 0; i < data.length; i++) {
+    List<List<dynamic>> csvData = [
+      [newStudent.studentNr, newStudent.studentName]
+    ];
+    final csv = CsvCodec();
+    final csvString = csv.encoder.convert(csvData);
+    var file = await _localFile;
+    file.writeAsString(csvString);
+    MessageBox.showMessageBox("Student toegevoegd",
+        "Student ${newStudent.studentName} is toegevoegd", context);
+  } catch (e) {
+    MessageBox.showMessageBox(
+        "Fout",
+        "Fout, studentennummer en studentennaam is slecht geformateerd.",
+        context);
+  }
+}
 
-      List<dynamic> row = List();
-      row.add(data[i].userName);
-      row.add(data[i].userLastName);
-      row.add(data[i].userEmail);
-      rows.add(row);
-    }
+Future<String> get _localPath async {
+  final directory = await getApplicationDocumentsDirectory();
+  return directory.path;
+}
+
+Future<File> get _localFile async {
+  final path = await _localPath;
+  return File('$path/data.csv');
 }
