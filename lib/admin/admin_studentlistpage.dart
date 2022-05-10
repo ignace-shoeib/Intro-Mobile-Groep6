@@ -28,10 +28,8 @@ class StudentListPage extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return Card(
                         child: ListTile(
-                      onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const AdminStudentGrade()));
-                      },
+                      onTap: () {},
+                      tileColor: Colors.black54,
                       title: Text(LoadStudents.students[index].studentNr! +
                           ", " +
                           LoadStudents.students[index].studentName!),

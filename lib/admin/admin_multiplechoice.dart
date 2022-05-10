@@ -1,3 +1,5 @@
+import 'package:exam_app/message_box.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
 class MultipleChoicePage extends StatefulWidget {
@@ -48,7 +50,7 @@ class MultipleChoicePageState extends State<MultipleChoicePage> {
                         filled: true,
                       )),
                   //
-                  // ANSWER INPUT
+                  // OPTIONS INPUT
                   //
                   const SizedBox(height: 20),
                   TextFormField(
@@ -56,15 +58,17 @@ class MultipleChoicePageState extends State<MultipleChoicePage> {
                       style: const TextStyle(color: Colors.white),
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
-                        hintText: "Answer",
-                        labelText: "Answer",
+                        hintText:
+                            "Opties (opties gescheiden door een puntkomma)",
+                        labelText:
+                            "Opties (opties gescheiden door een puntkomma)",
                         floatingLabelBehavior: FloatingLabelBehavior.always,
                         hintStyle: TextStyle(color: Colors.grey),
                         fillColor: Color.fromARGB(80, 61, 61, 61),
                         filled: true,
                       )),
                   //
-                  // OPLOSSING INPUT
+                  // ANSWER INPUT
                   //
                   const SizedBox(height: 20),
                   TextFormField(
@@ -72,8 +76,8 @@ class MultipleChoicePageState extends State<MultipleChoicePage> {
                       style: const TextStyle(color: Colors.white),
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
-                        hintText: "Options",
-                        labelText: "Options",
+                        hintText: "Correct Antwoord",
+                        labelText: "Correct Antwoord",
                         floatingLabelBehavior: FloatingLabelBehavior.always,
                         hintStyle: TextStyle(color: Colors.grey),
                         fillColor: Color.fromARGB(80, 61, 61, 61),
@@ -83,7 +87,33 @@ class MultipleChoicePageState extends State<MultipleChoicePage> {
                   SizedBox(
                       width: 400,
                       child: TextButton(
-                        onPressed: () {},
+                        onPressed: () async {
+                          List<String> options =
+                              optionsController.text.split(";");
+                          if (options.contains(answerController.text)) {
+                            var optionsMap = <int, String>{};
+                            for (int i = 0; i < options.length; i++) {
+                              optionsMap[i] = options[i];
+                            }
+                            DatabaseReference ref =
+                                FirebaseDatabase.instance.ref("questions");
+                            await ref.push().set({
+                              "type": "multiple choice",
+                              "question": questionController.text,
+                              "options": optionsMap,
+                              "answer": answerController.text
+                            });
+                            MessageBox.showMessageBox(
+                                "Vraag toegevoegd",
+                                "Je hebt je vraag met succes toegevoegd!",
+                                context);
+                          } else {
+                            MessageBox.showMessageBox(
+                                "Fout",
+                                "Je optieslijst bevat niet het juiste antwoord!",
+                                context);
+                          }
+                        },
                         child: const Text("Vraag opslaan"),
                         style: ButtonStyle(
                             foregroundColor:

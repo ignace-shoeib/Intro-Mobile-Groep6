@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "790666937629",
+    "firebase_url": "https://gradeaid-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "gradeaid",
     "storage_bucket": "gradeaid.appspot.com"
   },

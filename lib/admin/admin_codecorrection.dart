@@ -1,3 +1,5 @@
+import 'package:exam_app/message_box.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
 class CodeCorrectionPage extends StatefulWidget {
@@ -8,7 +10,7 @@ class CodeCorrectionPage extends StatefulWidget {
 }
 
 class CodeCorrectionPageState extends State<CodeCorrectionPage> {
-  final correctCodeController = TextEditingController();
+  final answerController = TextEditingController();
   final questionController = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -69,7 +71,7 @@ class CodeCorrectionPageState extends State<CodeCorrectionPage> {
                               fontWeight: FontWeight.bold)),
                       const SizedBox(height: 20),
                       TextFormField(
-                          controller: correctCodeController,
+                          controller: answerController,
                           keyboardType: TextInputType.multiline,
                           maxLines: 10,
                           style: const TextStyle(color: Colors.white),
@@ -91,7 +93,17 @@ class CodeCorrectionPageState extends State<CodeCorrectionPage> {
             SizedBox(
                 width: 400,
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                    DatabaseReference ref =
+                        FirebaseDatabase.instance.ref("questions");
+                    await ref.push().set({
+                      "type": "code correction",
+                      "question": questionController.text,
+                      "answer": answerController.text
+                    });
+                    MessageBox.showMessageBox("Vraag toegevoegd",
+                        "Je hebt je vraag met succes toegevoegd!", context);
+                  },
                   child: const Text("Vraag opslaan"),
                   style: ButtonStyle(
                       foregroundColor: MaterialStateProperty.all(Colors.white),
