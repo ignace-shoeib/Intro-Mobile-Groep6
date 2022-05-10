@@ -1,3 +1,6 @@
+import 'package:csv/csv.dart';
+import 'package:exam_app/student/load_students.dart';
+import 'package:exam_app/student/student.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -49,7 +52,6 @@ class AddStudentInput extends StatelessWidget {
         child: SizedBox(
             width: 400,
             child: TextField(
-              obscureText: true,
               controller: addStudentController,
               style: const TextStyle(color: Colors.white),
               decoration: const InputDecoration(
@@ -78,52 +80,7 @@ class AddStudentButtonState extends State<AddStudentButton> {
         width: 400,
         child: TextButton(
           onPressed: () {
-            if (AddStudentInput.addStudentController.text.length >= 6) {
-              final _auth = FirebaseAuth.instance.currentUser;
-              _auth?.updatePassword(AddStudentInput.addStudentController.text);
-              showDialog<String>(
-                  context: context,
-                  builder: (BuildContext context) => AlertDialog(
-                        backgroundColor: const Color.fromARGB(255, 22, 22, 22),
-                        title: const Text('Wachtwoord gewijzigd',
-                            style: TextStyle(
-                                color: Color.fromARGB(255, 255, 255, 255))),
-                        content: const Text(
-                            'Je wachtwoord is gewijzigd. Je kan nu inloggen met je nieuwe wachtwoord.',
-                            style: TextStyle(
-                                color: Color.fromARGB(255, 255, 255, 255))),
-                        actions: <Widget>[
-                          TextButton(
-                            onPressed: () => Navigator.pop(context, 'OK'),
-                            child: const Text(
-                              'OK',
-                              style: TextStyle(color: Colors.red),
-                            ),
-                          ),
-                        ],
-                      ));
-            } else {
-              showDialog<String>(
-                  context: context,
-                  builder: (BuildContext context) => AlertDialog(
-                        backgroundColor: const Color.fromARGB(255, 22, 22, 22),
-                        title: const Text('Fout bij wachtwoord wijzigen',
-                            style: TextStyle(
-                                color: Color.fromARGB(255, 255, 255, 255))),
-                        content: const Text('Wachtwoord is te zwak.',
-                            style: TextStyle(
-                                color: Color.fromARGB(255, 255, 255, 255))),
-                        actions: <Widget>[
-                          TextButton(
-                            onPressed: () => Navigator.pop(context, 'OK'),
-                            child: const Text(
-                              'OK',
-                              style: TextStyle(color: Colors.red),
-                            ),
-                          ),
-                        ],
-                      ));
-            }
+            addStudent();
           },
           child: const Text("Bevestigen"),
           style: ButtonStyle(
@@ -131,4 +88,24 @@ class AddStudentButtonState extends State<AddStudentButton> {
               backgroundColor: MaterialStateProperty.all(Colors.red)),
         ));
   }
+}
+
+void addStudent() {
+  final newStudent = Student();
+  List<String> splitString =
+      AddStudentInput.addStudentController.text.split(';');
+  newStudent.studentNr = splitString[0];
+  newStudent.studentName = splitString[1];
+  LoadStudents.students.add(newStudent);
+
+  List<List<Student>> rows = List<List<Student>>()[[]];
+  downloadData() {
+    for (int i = 0; i < data.length; i++) {
+
+      List<dynamic> row = List();
+      row.add(data[i].userName);
+      row.add(data[i].userLastName);
+      row.add(data[i].userEmail);
+      rows.add(row);
+    }
 }
