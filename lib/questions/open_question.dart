@@ -12,10 +12,10 @@ class OpenQuestion {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['score'] = this.score;
-    data['question'] = this.question;
-    data['status'] = this.status;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['score'] = score;
+    data['question'] = question;
+    data['status'] = status;
     return data;
   }
 }
