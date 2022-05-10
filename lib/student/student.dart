@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:exam_app/questions/code_question.dart';
 import 'package:exam_app/questions/multiplechoice_question.dart';
 import 'package:exam_app/questions/open_question.dart';
@@ -7,6 +9,7 @@ class Student {
   String? studentName;
   String? examStatus;
   String? location;
+  Float? score;
   List<OpenQuestion>? openQuestions;
   List<MultipleChoiceQuestion>? multipleChoiceQuestions;
   List<CodeQuestion>? codeQuestions;
@@ -16,6 +19,7 @@ class Student {
     this.studentName,
     this.examStatus,
     this.location,
+    this.score,
     this.openQuestions,
     this.multipleChoiceQuestions,
     this.codeQuestions,
@@ -26,6 +30,7 @@ class Student {
     studentName = json['studentName'];
     examStatus = json['examStatus'];
     location = json['location'];
+    score = json['score'];
     if (json['openQuestions'] != null) {
       openQuestions = <OpenQuestion>[];
       json['openQuestions'].forEach((v) {
@@ -52,6 +57,7 @@ class Student {
     data['studentName'] = studentName;
     data['examStatus'] = examStatus;
     data['location'] = location;
+    data['score'] = score;
     if (openQuestions != null) {
       data['openQuestions'] = openQuestions?.map((v) => v.toJson()).toList();
     }
