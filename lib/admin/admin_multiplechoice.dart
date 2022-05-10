@@ -58,7 +58,8 @@ class MultipleChoicePageState extends State<MultipleChoicePage> {
                       style: const TextStyle(color: Colors.white),
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
-                        hintText: "Opties",
+                        hintText:
+                            "Opties (opties gescheiden door een puntkomma)",
                         labelText:
                             "Opties (opties gescheiden door een puntkomma)",
                         floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -89,22 +90,29 @@ class MultipleChoicePageState extends State<MultipleChoicePage> {
                         onPressed: () async {
                           List<String> options =
                               optionsController.text.split(";");
-                          var optionsMap = <int, String>{};
-                          for (int i = 0; i < options.length; i++) {
-                            optionsMap[i] = options[i];
+                          if (options.contains(answerController.text)) {
+                            var optionsMap = <int, String>{};
+                            for (int i = 0; i < options.length; i++) {
+                              optionsMap[i] = options[i];
+                            }
+                            DatabaseReference ref =
+                                FirebaseDatabase.instance.ref("questions");
+                            await ref.push().set({
+                              "type": "multiple choice",
+                              "question": questionController.text,
+                              "options": optionsMap,
+                              "answer": answerController.text
+                            });
+                            MessageBox.showMessageBox(
+                                "Vraag toegevoegd",
+                                "Je hebt je vraag met succes toegevoegd!",
+                                context);
+                          } else {
+                            MessageBox.showMessageBox(
+                                "Fout",
+                                "Je optieslijst bevat niet het juiste antwoord!",
+                                context);
                           }
-                          DatabaseReference ref =
-                              FirebaseDatabase.instance.ref("questions");
-                          await ref.push().set({
-                            "type": "multiple choice",
-                            "question": questionController.text,
-                            "options": optionsMap,
-                            "answer": answerController.text
-                          });
-                          MessageBox.showMessageBox(
-                              "Vraag toegevoegd",
-                              "Je hebt je vraag met succes toegevoegd!",
-                              context);
                         },
                         child: const Text("Vraag opslaan"),
                         style: ButtonStyle(
