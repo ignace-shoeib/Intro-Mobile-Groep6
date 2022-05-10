@@ -14,11 +14,11 @@ class CodeQuestion {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['score'] = this.score;
-    data['question'] = this.question;
-    data['answer'] = this.answer;
-    data['status'] = this.status;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['score'] = score;
+    data['question'] = question;
+    data['answer'] = answer;
+    data['status'] = status;
     return data;
   }
 }

@@ -14,11 +14,11 @@ class MultipleChoiceQuestion {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['score'] = this.score;
-    data['question'] = this.question;
-    data['answers'] = this.answers;
-    data['status'] = this.status;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['score'] = score;
+    data['question'] = question;
+    data['answers'] = answers;
+    data['status'] = status;
     return data;
   }
 }
