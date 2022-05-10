@@ -95,7 +95,7 @@ class StudentenButtonState extends State<StudentenButton> {
         child: TextButton(
           onPressed: () {
             Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => const StudentenLijstPage()));
+                builder: (context) => const StudentListPage()));
           },
           child: const Text("Studenten"),
           style: ButtonStyle(
