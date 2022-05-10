@@ -1,3 +1,5 @@
+import 'package:exam_app/message_box.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
 class OpenQuestionPage extends StatefulWidget {
@@ -51,7 +53,18 @@ class OpenQuestionPageState extends State<OpenQuestionPage> {
                   SizedBox(
                       width: 400,
                       child: TextButton(
-                        onPressed: () {},
+                        onPressed: () async {
+                          DatabaseReference ref =
+                              FirebaseDatabase.instance.ref("questions");
+                          await ref.push().set({
+                            "type": "open",
+                            "question": questionController.text
+                          });
+                          MessageBox.showMessageBox(
+                              "Vraag toegevoegd",
+                              "Je hebt je vraag met succes toegevoegd!",
+                              context);
+                        },
                         child: const Text("Vraag opslaan"),
                         style: ButtonStyle(
                             foregroundColor:
