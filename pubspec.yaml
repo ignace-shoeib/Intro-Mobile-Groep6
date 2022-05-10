@@ -44,7 +44,7 @@ dependencies:
   file_picker: ^4.5.1
   flutter_osm_plugin: ^0.28.2
   url_launcher_web: ^2.0.9
-
+  firebase_database: ^9.0.13
 
 dev_dependencies:
   flutter_test:
