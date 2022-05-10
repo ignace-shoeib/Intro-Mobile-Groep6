@@ -96,30 +96,3 @@ class StudentListTitle extends StatelessWidget {
     );
   }
 }
-
-class StudentTempList extends StatefulWidget {
-  const StudentTempList({Key? key}) : super(key: key);
-
-  @override
-  State<StudentTempList> createState() => StudentTempListState();
-}
-
-class StudentTempListState extends State<StudentTempList> {
-  List<String> vragen = [];
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: ListView.builder(
-          itemCount: vragen.length,
-          itemBuilder: (context, index) {
-            return Card(
-              child: ListTile(
-                tileColor: Colors.black54,
-                title: Text(vragen[index]),
-              ),
-            );
-          }),
-    );
-  }
-}

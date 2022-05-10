@@ -97,15 +97,4 @@ void addStudent() {
   newStudent.studentNr = splitString[0];
   newStudent.studentName = splitString[1];
   LoadStudents.students.add(newStudent);
-
-  List<List<Student>> rows = List<List<Student>>()[[]];
-  downloadData() {
-    for (int i = 0; i < data.length; i++) {
-
-      List<dynamic> row = List();
-      row.add(data[i].userName);
-      row.add(data[i].userLastName);
-      row.add(data[i].userEmail);
-      rows.add(row);
-    }
 }
