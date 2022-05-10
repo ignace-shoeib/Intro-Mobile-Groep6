@@ -65,7 +65,8 @@ class StudentVragenPage extends StatelessWidget {
                             ));
                   },
                 ),
-              ))
+              )),
+              const SizedBox(height: 50),
             ]));
   }
 }
