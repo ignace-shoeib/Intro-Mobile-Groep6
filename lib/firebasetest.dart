@@ -14,8 +14,9 @@ class FireBaseTest extends StatefulWidget {
 class _FireBaseTestState extends State<FireBaseTest> {
   @override
   Widget build(BuildContext context) {
-    DatabaseReference ref =
-        FirebaseDatabase.instance.ref().child("questions/-N1jQb-LzP-SEyGuGR98");
+    DatabaseReference ref = FirebaseDatabase.instance
+        .ref("questions")
+        .child("-N1jQb-LzP-SEyGuGR98/answer");
 
     return Scaffold(
       appBar: AppBar(title: const Text("View Data")),
