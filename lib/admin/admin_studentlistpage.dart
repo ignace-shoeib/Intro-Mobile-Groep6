@@ -2,8 +2,10 @@ import 'package:exam_app/admin/admin_studentadd.dart';
 import 'package:exam_app/admin/admin_studentgradepage.dart';
 import 'package:flutter/material.dart';
 
-class StudentenLijstPage extends StatelessWidget {
-  const StudentenLijstPage({Key? key}) : super(key: key);
+import '../student/load_students.dart';
+
+class StudentListPage extends StatelessWidget {
+  const StudentListPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,10 +18,26 @@ class StudentenLijstPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const StudentenLijstTitle(),
+              const StudentListTitle(),
               const SizedBox(height: 20),
-              const Expanded(child: StudentTempList()),
               Expanded(
+                  child: Scaffold(
+                // Display students
+                body: ListView.builder(
+                  itemCount: LoadStudents.students.length,
+                  itemBuilder: (context, index) {
+                    return Card(
+                        child: ListTile(
+                      onTap: () {},
+                      title: Text(LoadStudents.students[index].studentNr +
+                          ", " +
+                          LoadStudents.students[index].studentName),
+                    ));
+                  },
+                ),
+              )),
+              Expanded(
+                  // Add student button
                   child: Align(
                 alignment: FractionalOffset.bottomCenter,
                 child: ElevatedButton(
@@ -64,8 +82,8 @@ class TempStudentGradeState extends State<TempStudentGradeButton> {
   }
 }
 
-class StudentenLijstTitle extends StatelessWidget {
-  const StudentenLijstTitle({Key? key}) : super(key: key);
+class StudentListTitle extends StatelessWidget {
+  const StudentListTitle({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -86,13 +104,7 @@ class StudentTempList extends StatefulWidget {
 }
 
 class StudentTempListState extends State<StudentTempList> {
-  List<String> vragen = [
-    "s1111",
-    "s2222",
-    "s4444",
-    "s5555",
-    "s6666",
-  ];
+  List<String> vragen = [];
 
   @override
   Widget build(BuildContext context) {
