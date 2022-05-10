@@ -15,8 +15,8 @@ class LoadStudents {
     List<Student> students = [];
     for (var item in splittedCSV) {
       students.add(Student(
-        studentNr: item[0],
-        studentName: item[1],
+        studentNr: item[0].toString().replaceAll('[', ''),
+        studentName: item[1].toString().replaceAll(']', ''),
       ));
       // students.add(Student(item[0].toString().replaceAll('[', ''),
       //     item[1].toString().replaceAll(']', '')));
