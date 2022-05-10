@@ -29,40 +29,38 @@ class Student {
     if (json['openQuestions'] != null) {
       openQuestions = <OpenQuestion>[];
       json['openQuestions'].forEach((v) {
-        openQuestions?.add(new OpenQuestion.fromJson(v));
+        openQuestions?.add(OpenQuestion.fromJson(v));
       });
     }
     if (json['multipleChoiceQuestions'] != null) {
       multipleChoiceQuestions = <MultipleChoiceQuestion>[];
       json['multipleChoiceQuestions'].forEach((v) {
-        multipleChoiceQuestions?.add(new MultipleChoiceQuestion.fromJson(v));
+        multipleChoiceQuestions?.add(MultipleChoiceQuestion.fromJson(v));
       });
     }
     if (json['codeQuestions'] != null) {
       codeQuestions = <CodeQuestion>[];
       json['codeQuestions'].forEach((v) {
-        codeQuestions?.add(new CodeQuestion.fromJson(v));
+        codeQuestions?.add(CodeQuestion.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['studentNr'] = this.studentNr;
-    data['studentName'] = this.studentName;
-    data['examStatus'] = this.examStatus;
-    data['location'] = this.location;
-    if (this.openQuestions != null) {
-      data['openQuestions'] =
-          this.openQuestions?.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['studentNr'] = studentNr;
+    data['studentName'] = studentName;
+    data['examStatus'] = examStatus;
+    data['location'] = location;
+    if (openQuestions != null) {
+      data['openQuestions'] = openQuestions?.map((v) => v.toJson()).toList();
     }
-    if (this.multipleChoiceQuestions != null) {
+    if (multipleChoiceQuestions != null) {
       data['multipleChoiceQuestions'] =
-          this.multipleChoiceQuestions?.map((v) => v.toJson()).toList();
+          multipleChoiceQuestions?.map((v) => v.toJson()).toList();
     }
-    if (this.codeQuestions != null) {
-      data['codeQuestions'] =
-          this.codeQuestions?.map((v) => v.toJson()).toList();
+    if (codeQuestions != null) {
+      data['codeQuestions'] = codeQuestions?.map((v) => v.toJson()).toList();
     }
     return data;
   }
