@@ -25,9 +25,8 @@ class QuestionsListState extends State<QuestionsList> {
   List<String> vragen = [
     "Wat is jouw mama's verjaardag?",
     "Hoeveel is 2 + 2?",
-    "Alan is een patathoofd",
-    "Bruh",
-    "Bruh",
+    "Waarom is banaan krom",
+    "Waarom heeft alan een grote hoofd?",
   ];
 
   @override
