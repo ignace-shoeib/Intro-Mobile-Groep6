@@ -12,22 +12,34 @@ class AddStudentPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          backgroundColor: const Color.fromARGB(0, 0, 0, 0),
-          title: const Text("Gradeaid"),
-        ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: const [
-            Center(child: AddStudentTitle()),
-            SizedBox(height: 20),
-            AddStudentInput(),
-            SizedBox(height: 20),
-            AddStudentButton(),
-          ],
-        ));
+    return WillPopScope(
+        onWillPop: () async {
+          Navigator.pop(context);
+          Navigator.pop(context);
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const StudentListPage(),
+            ),
+          );
+          return false;
+        },
+        child: Scaffold(
+            appBar: AppBar(
+              backgroundColor: const Color.fromARGB(0, 0, 0, 0),
+              title: const Text("Gradeaid"),
+            ),
+            body: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: const [
+                Center(child: AddStudentTitle()),
+                SizedBox(height: 20),
+                AddStudentInput(),
+                SizedBox(height: 20),
+                AddStudentButton(),
+              ],
+            )));
   }
 }
 
@@ -120,13 +132,6 @@ void addStudent(BuildContext context) async {
                 TextButton(
                   onPressed: () {
                     Navigator.pop(context, 'OK');
-                    Navigator.pop(context);
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const StudentListPage(),
-                      ),
-                    );
                   },
                   child: const Text(
                     'OK',
