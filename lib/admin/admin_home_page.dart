@@ -46,7 +46,7 @@ class FirebaseBackupButtonState extends State<FirebaseBackupButton> {
             Navigator.of(context).push(
                 MaterialPageRoute(builder: (context) => const FirebaseSync()));
           },
-          child: const Text("Firebase Backup"),
+          child: const Text("Syncroniseer"),
           style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all(Colors.white),
               backgroundColor: MaterialStateProperty.all(Colors.red)),
