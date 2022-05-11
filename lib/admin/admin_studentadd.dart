@@ -109,15 +109,35 @@ void addStudent(BuildContext context) async {
     final csvString = csv.encoder.convert(csvData);
     var file = await _localFile;
     file.writeAsString(csvString);
-    MessageBox.showMessageBox("Student toegevoegd",
-        "Student ${newStudent.studentName} is toegevoegd", context);
-    Navigator.pop(context);
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const StudentListPage(),
-      ),
-    );
+    showDialog<String>(
+        context: context,
+        builder: (BuildContext context) => AlertDialog(
+              backgroundColor: const Color.fromARGB(255, 22, 22, 22),
+              title: Text("Student toegevoegd",
+                  style: const TextStyle(
+                      color: Color.fromARGB(255, 255, 255, 255))),
+              content: Text("Student ${newStudent.studentName} is toegevoegd",
+                  style: const TextStyle(
+                      color: Color.fromARGB(255, 255, 255, 255))),
+              actions: <Widget>[
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(context, 'OK');
+                    Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const StudentListPage(),
+                      ),
+                    );
+                  },
+                  child: const Text(
+                    'OK',
+                    style: TextStyle(color: Colors.red),
+                  ),
+                ),
+              ],
+            ));
   } catch (e) {
     MessageBox.showMessageBox(
         "Fout",
@@ -133,5 +153,5 @@ Future<String> get _localPath async {
 
 Future<File> get _localFile async {
   final path = await _localPath;
-  return File('$path/data.csv');
+  return File('$path/data_copy.csv');
 }

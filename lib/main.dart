@@ -9,6 +9,6 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  LoadStudents.students = await LoadStudents.loadStudents();
+  LoadStudents.students = await LoadStudents.loadStudentsFirstTime();
   runApp(const MyApp());
 }
