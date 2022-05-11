@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:exam_app/questions/code_question.dart';
 import 'package:exam_app/questions/multiplechoice_question.dart';
 import 'package:exam_app/questions/open_question.dart';
@@ -9,7 +7,7 @@ class Student {
   String? studentName;
   String? examStatus;
   String? location;
-  Float? score;
+  double? score;
   List<OpenQuestion>? openQuestions;
   List<MultipleChoiceQuestion>? multipleChoiceQuestions;
   List<CodeQuestion>? codeQuestions;
