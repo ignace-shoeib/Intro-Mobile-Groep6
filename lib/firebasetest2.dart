@@ -36,10 +36,13 @@ class FireBaseTestTwoState extends State<FireBaseTestTwo> {
                     final ref = FirebaseDatabase.instance.ref();
                     final snapshot = await ref.child("questions").get();
                     var encoded = json.encode(snapshot.value);
-                    List<dynamic> encodedQuestions = json.decode(encoded);
-                    List<String> questions = [];
-                    for (var question in encodedQuestions) {
-                      questions.add(question['question']);
+                    var encodedQuestions = json.decode(encoded);
+                    var test = Map<String, dynamic>.from(encodedQuestions);
+                    for (var key in test.keys) {
+                      var lol = Map<String, dynamic>.from(test[key]);
+                      for (var key2 in lol.keys) {
+                        print(key2 + ": " + lol[key2].toString());
+                      }
                     }
                   },
                   child: Text("Test")),
