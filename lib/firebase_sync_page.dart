@@ -1,9 +1,12 @@
 import 'dart:convert';
+import 'dart:io';
+import 'package:csv/csv.dart';
 import 'package:exam_app/message_box.dart';
 import 'package:exam_app/student/load_students.dart';
 import 'package:exam_app/student/student.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart';
 
 class FirebaseSync extends StatelessWidget {
   const FirebaseSync({Key? key}) : super(key: key);
@@ -87,6 +90,12 @@ class StudentDownloadState extends State<StudentDownloadButton> {
                   studentName: encodedStudents[i]["studentName"]));
             }
             LoadStudents.students = students;
+            List<List<dynamic>> csvData = [LoadStudents.students];
+            final csv = CsvCodec();
+            final csvString =
+                csv.encoder.convert(csvData).replaceAll(',', "\n");
+            var file = await _localFile;
+            file.writeAsString(csvString);
             MessageBox.showMessageBox(
                 "Succes",
                 "De studenten zijn succesvol gedownload van de database.",
@@ -98,4 +107,14 @@ class StudentDownloadState extends State<StudentDownloadButton> {
               backgroundColor: MaterialStateProperty.all(Colors.red)),
         ));
   }
+}
+
+Future<String> get _localPath async {
+  final directory = await getApplicationDocumentsDirectory();
+  return directory.path;
+}
+
+Future<File> get _localFile async {
+  final path = await _localPath;
+  return File('$path/data_copy.csv');
 }

@@ -1,5 +1,5 @@
+import 'package:exam_app/firebasetest2.dart';
 import 'package:flutter/material.dart';
-import 'firebasetest2.dart';
 
 class DebugButton extends StatefulWidget {
   const DebugButton({Key? key}) : super(key: key);
@@ -15,8 +15,8 @@ class DebugButtonState extends State<DebugButton> {
         width: 100,
         child: TextButton(
           onPressed: () {
-            Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const FireBaseTest()));
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const FireBaseTestTwo()));
           },
           child: const Text("Debug"),
           style: redButtonStyle(),

@@ -116,7 +116,7 @@ void addStudent(BuildContext context) async {
 
     List<List<dynamic>> csvData = [LoadStudents.students];
     final csv = CsvCodec();
-    final csvString = csv.encoder.convert(csvData);
+    final csvString = csv.encoder.convert(csvData).replaceAll(',', "\n");
     var file = await _localFile;
     file.writeAsString(csvString);
     showDialog<String>(

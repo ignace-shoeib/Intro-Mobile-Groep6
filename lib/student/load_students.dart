@@ -16,7 +16,7 @@ class LoadStudents {
           const CsvToListConverter().convert(_rawData);
 
       final csv = CsvCodec();
-      final csvString = csv.encoder.convert(_listData, fieldDelimiter: ";");
+      final csvString = csv.encoder.convert(_listData);
       await file.writeAsString(csvString);
 
       List<List<String>> splittedCSV = [];
@@ -33,7 +33,7 @@ class LoadStudents {
       return students;
     } else {
       final _rawData = await file.readAsString();
-      final splittedData = _rawData.split(";");
+      final splittedData = _rawData.split("\n");
       List<List<String>> splittedCSV = [];
       for (var item in splittedData) {
         splittedCSV.add(item.toString().split(";"));

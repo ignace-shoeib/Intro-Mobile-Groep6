@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:http/http.dart' as http;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -46,11 +47,16 @@ class FireBaseTestTwoState extends State<FireBaseTestTwo> {
                   onPressed: () async {
                     try {
                       await Geolocator.requestPermission();
-                      var position = Geolocator.getCurrentPosition(
-                          desiredAccuracy: LocationAccuracy.best,
-                          forceAndroidLocationManager: true);
-                      print(
-                          await position.timeout(const Duration(seconds: 10)));
+                      Geolocator.getLastKnownPosition().then((position) {});
+                      var position = await Geolocator.getCurrentPosition(
+                        desiredAccuracy: LocationAccuracy.best,
+                      );
+                      var address = await http.get(Uri.parse(
+                          'https://nominatim.openstreetmap.org/reverse?format=json&lat=${position.latitude}&lon=${position.longitude}'));
+                      Map<String, dynamic> jsonAddress =
+                          json.decode(address.body);
+                      print(position);
+                      print(jsonAddress['display_name']);
                     } catch (e) {
                       print(e);
                     }
