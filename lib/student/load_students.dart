@@ -8,27 +8,45 @@ import 'student.dart';
 class LoadStudents {
   static List<Student> students = [];
   static Future<List<Student>> loadStudentsFirstTime() async {
-    final _rawData = await rootBundle.loadString("assets/data.csv");
-    List<List<dynamic>> _listData =
-        const CsvToListConverter().convert(_rawData);
+    final file = await _localFile;
+    var exists = await file.exists();
+    if (!exists) {
+      final _rawData = await rootBundle.loadString("assets/data.csv");
+      List<List<dynamic>> _listData =
+          const CsvToListConverter().convert(_rawData);
 
-    final csv = CsvCodec();
-    final csvString = csv.encoder.convert(_listData);
-    var file = await _localFile;
-    await file.writeAsString(csvString);
+      final csv = CsvCodec();
+      final csvString = csv.encoder.convert(_listData, fieldDelimiter: ";");
+      await file.writeAsString(csvString);
 
-    List<List<String>> splittedCSV = [];
-    for (var item in _listData) {
-      splittedCSV.add(item.toString().split(";"));
+      List<List<String>> splittedCSV = [];
+      for (var item in _listData) {
+        splittedCSV.add(item.toString().split(";"));
+      }
+      List<Student> students = [];
+      for (var item in splittedCSV) {
+        students.add(Student(
+          studentNr: item[0].toString().replaceAll('[', ''),
+          studentName: item[1].toString().replaceAll(']', ''),
+        ));
+      }
+      return students;
+    } else {
+      final _rawData = await file.readAsString();
+      final splittedData = _rawData.split(",");
+      List<List<String>> splittedCSV = [];
+      for (var item in splittedData) {
+        splittedCSV.add(item.toString().split(";"));
+      }
+      List<Student> students = [];
+      for (var item in splittedCSV) {
+        students.add(Student(
+          studentNr: item[0].toString().replaceAll('[', ''),
+          studentName: item[1].toString().replaceAll(']', ''),
+        ));
+      }
+      return students;
     }
-    List<Student> students = [];
-    for (var item in splittedCSV) {
-      students.add(Student(
-        studentNr: item[0].toString().replaceAll('[', ''),
-        studentName: item[1].toString().replaceAll(']', ''),
-      ));
-    }
-    return students;
   }
 }
 

@@ -102,9 +102,7 @@ void addStudent(BuildContext context) async {
     newStudent.studentName = splitString[1];
     LoadStudents.students.add(newStudent);
 
-    List<List<dynamic>> csvData = [
-      [newStudent.studentNr, newStudent.studentName]
-    ];
+    List<List<dynamic>> csvData = [LoadStudents.students];
     final csv = CsvCodec();
     final csvString = csv.encoder.convert(csvData);
     var file = await _localFile;
@@ -113,9 +111,8 @@ void addStudent(BuildContext context) async {
         context: context,
         builder: (BuildContext context) => AlertDialog(
               backgroundColor: const Color.fromARGB(255, 22, 22, 22),
-              title: Text("Student toegevoegd",
-                  style: const TextStyle(
-                      color: Color.fromARGB(255, 255, 255, 255))),
+              title: const Text("Student toegevoegd",
+                  style: TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
               content: Text("Student ${newStudent.studentName} is toegevoegd",
                   style: const TextStyle(
                       color: Color.fromARGB(255, 255, 255, 255))),
