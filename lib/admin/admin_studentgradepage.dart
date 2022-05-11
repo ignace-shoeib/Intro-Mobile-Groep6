@@ -1,3 +1,4 @@
+import 'package:exam_app/detect_app_closed.dart';
 import 'package:flutter/material.dart';
 import 'admin_student_answers.dart';
 
@@ -102,8 +103,8 @@ class EditButtonState extends State<EditButton> {
         width: 400,
         child: ElevatedButton(
           onPressed: () {
-            /*Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => const ()));*/
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const DetectAppClosed()));
           },
           child: const Text("Bewerken"),
           style: ElevatedButton.styleFrom(
