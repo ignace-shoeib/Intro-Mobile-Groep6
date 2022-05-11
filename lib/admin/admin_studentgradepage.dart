@@ -128,8 +128,8 @@ class AnswersButtonState extends State<AnswersButton> {
     return SizedBox(
         child: ElevatedButton(
       onPressed: () {
-        /*Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const ()));*/
+        Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => const StudenAnswersPage()));
       },
       child: const Text("Antwoorden"),
       style: ElevatedButton.styleFrom(
