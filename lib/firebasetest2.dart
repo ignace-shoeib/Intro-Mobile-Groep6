@@ -31,18 +31,25 @@ class FireBaseTestTwoState extends State<FireBaseTestTwo> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ElevatedButton(onPressed: () {}, child: Text("Test")),
               ElevatedButton(
-                  onPressed: () {
-                    getData();
+                  onPressed: () async {
+                    final ref = FirebaseDatabase.instance.ref();
+                    final snapshot = await ref.child("questions").get();
+                    var encoded = json.encode(snapshot.value);
+                    List<dynamic> encodedQuestions = json.decode(encoded);
+                    List<String> questions = [];
+                    for (var question in encodedQuestions) {
+                      questions.add(question['question']);
+                    }
                   },
-                  child: Text("Test2")),
+                  child: Text("Test")),
+              ElevatedButton(onPressed: () {}, child: Text("Test2")),
             ],
           ),
         ));
   }
 }
-
+/*
 Future<void> getData() async {
   final databaseReference = FirebaseDatabase.instance.ref();
   final snapshot = await databaseReference.child("questions").get();
@@ -63,6 +70,7 @@ Future<void> getData() async {
   }
   */
 }
+*/
 
 /*
 Widget _List() {
