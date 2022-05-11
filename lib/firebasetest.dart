@@ -13,9 +13,9 @@ class _FireBaseTestState extends State<FireBaseTest> {
   @override
   Widget build(BuildContext context) {
     DatabaseReference ref = FirebaseDatabase.instance
-        .ref("questions")
-        .child("-N1jQb-LzP-SEyGuGR98/answer");
-
+        .ref()
+        .child("questions/-N1jJv2ZBBLhGzOzeDVJ/\"question\"");
+    //final snapshot = await DatabaseReference.child("questions/-N1jJv2ZBBLhGzOzeDVJ").get();
     return Scaffold(
       appBar: AppBar(title: const Text("View Data")),
       body: FirebaseAnimatedList(
@@ -38,4 +38,18 @@ class _FireBaseTestState extends State<FireBaseTest> {
           }),
     );
   }
+}
+
+Future<String> getData() async {
+  final databaseReference = FirebaseDatabase.instance.ref();
+  final snapshot = await databaseReference
+      .child("questions/-N1jJv2ZBBLhGzOzeDVJ/question")
+      .get();
+
+  /*
+  if (snapshot.exists) {
+    developer.log(snapshot.value.toString());
+  }
+  */
+  return snapshot.value.toString();
 }
