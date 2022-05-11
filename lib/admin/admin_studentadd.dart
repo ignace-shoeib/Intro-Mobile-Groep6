@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:csv/csv.dart';
+import 'package:exam_app/admin/admin_studentlistpage.dart';
 import 'package:exam_app/message_box.dart';
 import 'package:exam_app/student/load_students.dart';
 import 'package:exam_app/student/student.dart';
@@ -108,8 +109,35 @@ void addStudent(BuildContext context) async {
     final csvString = csv.encoder.convert(csvData);
     var file = await _localFile;
     file.writeAsString(csvString);
-    MessageBox.showMessageBox("Student toegevoegd",
-        "Student ${newStudent.studentName} is toegevoegd", context);
+    showDialog<String>(
+        context: context,
+        builder: (BuildContext context) => AlertDialog(
+              backgroundColor: const Color.fromARGB(255, 22, 22, 22),
+              title: Text("Student toegevoegd",
+                  style: const TextStyle(
+                      color: Color.fromARGB(255, 255, 255, 255))),
+              content: Text("Student ${newStudent.studentName} is toegevoegd",
+                  style: const TextStyle(
+                      color: Color.fromARGB(255, 255, 255, 255))),
+              actions: <Widget>[
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(context, 'OK');
+                    Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const StudentListPage(),
+                      ),
+                    );
+                  },
+                  child: const Text(
+                    'OK',
+                    style: TextStyle(color: Colors.red),
+                  ),
+                ),
+              ],
+            ));
   } catch (e) {
     MessageBox.showMessageBox(
         "Fout",
@@ -125,5 +153,5 @@ Future<String> get _localPath async {
 
 Future<File> get _localFile async {
   final path = await _localPath;
-  return File('$path/data.csv');
+  return File('$path/data_copy.csv');
 }
