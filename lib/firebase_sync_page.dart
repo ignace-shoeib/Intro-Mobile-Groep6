@@ -15,27 +15,50 @@ class FirebaseSync extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: const [
             //const SizedBox(height: ),
-            Center(child: FirebaseSyncButton()),
+            Center(child: StudentUploadButton()),
+            Center(child: StudentDownloadButton())
           ],
         ));
   }
 }
 
-class FirebaseSyncButton extends StatefulWidget {
-  const FirebaseSyncButton({Key? key}) : super(key: key);
+class StudentUploadButton extends StatefulWidget {
+  const StudentUploadButton({Key? key}) : super(key: key);
 
   @override
-  State<FirebaseSyncButton> createState() => FirebaseSyncState();
+  State<StudentUploadButton> createState() => StudentUploadState();
 }
 
-class FirebaseSyncState extends State<FirebaseSyncButton> {
+class StudentUploadState extends State<StudentUploadButton> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
         width: 400,
         child: TextButton(
           onPressed: () {},
-          child: const Text("Synchroniseer"),
+          child: const Text("Upload studenten"),
+          style: ButtonStyle(
+              foregroundColor: MaterialStateProperty.all(Colors.white),
+              backgroundColor: MaterialStateProperty.all(Colors.red)),
+        ));
+  }
+}
+
+class StudentDownloadButton extends StatefulWidget {
+  const StudentDownloadButton({Key? key}) : super(key: key);
+
+  @override
+  State<StudentDownloadButton> createState() => StudentDownloadState();
+}
+
+class StudentDownloadState extends State<StudentDownloadButton> {
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+        width: 400,
+        child: TextButton(
+          onPressed: () {},
+          child: const Text("Download studenten"),
           style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all(Colors.white),
               backgroundColor: MaterialStateProperty.all(Colors.red)),
