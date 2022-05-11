@@ -15,8 +15,8 @@ class DebugButtonState extends State<DebugButton> {
         width: 100,
         child: TextButton(
           onPressed: () {
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => const FireBaseTestTwo()));
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const FireBaseTest()));
           },
           child: const Text("Debug"),
           style: redButtonStyle(),
