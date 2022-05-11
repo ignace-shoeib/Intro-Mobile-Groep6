@@ -1,6 +1,4 @@
-import 'package:exam_app/firebasetest.dart';
 import 'package:flutter/material.dart';
-import 'firebasetest.dart';
 import 'firebasetest2.dart';
 
 class DebugButton extends StatefulWidget {

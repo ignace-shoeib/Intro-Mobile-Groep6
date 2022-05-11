@@ -13,12 +13,14 @@ class DetectAppClosed extends StatelessWidget {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [Center(child: LifecycleWatcher())],
+          children: const [Center(child: LifecycleWatcher())],
         ));
   }
 }
 
 class LifecycleWatcher extends StatefulWidget {
+  const LifecycleWatcher({Key? key}) : super(key: key);
+
   @override
   _LifecycleWatcherState createState() => _LifecycleWatcherState();
 }
@@ -53,10 +55,10 @@ class _LifecycleWatcherState extends State<LifecycleWatcher>
     if (_lastLifecycleState == AppLifecycleState.resumed) {
       countAppClosed++;
       return Text(countAppClosed.toString(),
-          style: TextStyle(
+          style: const TextStyle(
               color: Colors.white, fontSize: 150, fontWeight: FontWeight.bold));
     }
-    return Text('De applicatie is nog niet dicht gegaan.',
+    return const Text('De applicatie is nog niet dicht gegaan.',
         textDirection: TextDirection.ltr,
         style: TextStyle(
             color: Colors.white, fontSize: 50, fontWeight: FontWeight.bold));
@@ -64,5 +66,5 @@ class _LifecycleWatcherState extends State<LifecycleWatcher>
 }
 
 void main() {
-  runApp(Center(child: LifecycleWatcher()));
+  runApp(const Center(child: LifecycleWatcher()));
 }

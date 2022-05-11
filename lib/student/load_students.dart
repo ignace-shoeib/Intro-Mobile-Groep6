@@ -33,7 +33,7 @@ class LoadStudents {
       return students;
     } else {
       final _rawData = await file.readAsString();
-      final splittedData = _rawData.split(",");
+      final splittedData = _rawData.split(";");
       List<List<String>> splittedCSV = [];
       for (var item in splittedData) {
         splittedCSV.add(item.toString().split(";"));

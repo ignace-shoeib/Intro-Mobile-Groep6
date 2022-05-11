@@ -1,13 +1,8 @@
-import 'dart:collection';
 import 'dart:convert';
-
-import 'package:firebase_database/ui/firebase_animated_list.dart';
-import 'package:flutter/cupertino.dart';
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'dart:developer' as developer;
+import 'package:geolocator/geolocator.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,6 +18,7 @@ class FireBaseTestTwo extends StatefulWidget {
 
 class FireBaseTestTwoState extends State<FireBaseTestTwo> {
   final databaseReference = FirebaseDatabase.instance.ref();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,8 +41,21 @@ class FireBaseTestTwoState extends State<FireBaseTestTwo> {
                       }
                     }
                   },
-                  child: Text("Test")),
-              ElevatedButton(onPressed: () {}, child: Text("Test2")),
+                  child: const Text("Test")),
+              ElevatedButton(
+                  onPressed: () async {
+                    try {
+                      await Geolocator.requestPermission();
+                      var position = Geolocator.getCurrentPosition(
+                          desiredAccuracy: LocationAccuracy.best,
+                          forceAndroidLocationManager: true);
+                      print(
+                          await position.timeout(const Duration(seconds: 10)));
+                    } catch (e) {
+                      print(e);
+                    }
+                  },
+                  child: const Text("Test2")),
             ],
           ),
         ));

@@ -45,6 +45,7 @@ dependencies:
   flutter_osm_plugin: ^0.28.2
   url_launcher_web: ^2.0.9
   firebase_database: ^9.0.13
+  geolocator: ^8.2.1
 
 dev_dependencies:
   flutter_test:
