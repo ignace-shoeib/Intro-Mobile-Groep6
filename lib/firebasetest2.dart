@@ -3,7 +3,7 @@ import 'package:exam_app/message_box.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
+import 'package:flutter_osm_plugin/flutter_osm_plugin.dart';
 import 'package:http/http.dart' as http;
 
 void main() async {
@@ -23,6 +23,13 @@ class FireBaseTestTwoState extends State<FireBaseTestTwo> {
 
   @override
   Widget build(BuildContext context) {
+    MapController controller = MapController(initMapWithUserPosition: true);
+    MarkerIcon markerIcon = MarkerIcon(
+        icon: Icon(
+      Icons.location_history_rounded,
+      color: Colors.red,
+      size: 96,
+    ));
     return Scaffold(
         appBar: AppBar(title: const Text("View Data")),
         body: Center(
@@ -47,11 +54,7 @@ class FireBaseTestTwoState extends State<FireBaseTestTwo> {
               ElevatedButton(
                   onPressed: () async {
                     try {
-                      await Geolocator.requestPermission();
-                      Geolocator.getLastKnownPosition().then((position) {});
-                      var position = await Geolocator.getCurrentPosition(
-                        desiredAccuracy: LocationAccuracy.best,
-                      );
+                      var position = await controller.myLocation();
                       var address = await http.get(Uri.parse(
                           'https://nominatim.openstreetmap.org/reverse?format=json&lat=${position.latitude}&lon=${position.longitude}'));
                       Map<String, dynamic> jsonAddress =
@@ -65,6 +68,19 @@ class FireBaseTestTwoState extends State<FireBaseTestTwo> {
                     }
                   },
                   child: const Text("Test2")),
+              Flexible(
+                  child: OSMFlutter(
+                controller: controller,
+                trackMyPosition: false,
+                initZoom: 16,
+                minZoomLevel: 2,
+                maxZoomLevel: 19,
+                stepZoom: 1.0,
+                onMapIsReady: (ready) async {
+                  controller.addMarker(await controller.myLocation(),
+                      markerIcon: markerIcon);
+                },
+              ))
             ],
           ),
         ));
