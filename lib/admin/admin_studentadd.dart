@@ -77,6 +77,7 @@ class AddStudentInput extends StatelessWidget {
                 fillColor: Color.fromARGB(80, 61, 61, 61),
                 filled: true,
               ),
+              maxLines: 10,
             )));
   }
 }
