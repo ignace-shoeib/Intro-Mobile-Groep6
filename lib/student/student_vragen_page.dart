@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../my_home_page.dart';
+
 class StudentVragenPage extends StatelessWidget {
   const StudentVragenPage({Key? key}) : super(key: key);
 
@@ -55,7 +57,10 @@ class StudentVragenPage extends StatelessWidget {
                                       backgroundColor:
                                           MaterialStateProperty.all(
                                               Colors.red)),
-                                  onPressed: () => Navigator.pop(context, 'Ja'),
+                                  onPressed: () {
+                                    Navigator.of(context)
+                                        .popUntil((route) => route.isFirst);
+                                  },
                                   child: const Text(
                                     'Ja',
                                     style: TextStyle(color: Colors.white),
