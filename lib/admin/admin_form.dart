@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:exam_app/admin/admin_home_page.dart';
 import 'package:exam_app/message_box.dart';
 import 'package:exam_app/my_app.dart';
@@ -11,8 +9,8 @@ class AdminLoginTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: const Text("Inloggen als admin",
+    return const Center(
+      child: Text("Inloggen als admin",
           style: TextStyle(
               color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold)),
     );
@@ -32,7 +30,7 @@ class _AdminLoginState extends State<AdminLogin> {
 
   @override
   Widget build(BuildContext context) => SingleChildScrollView(
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       child: SizedBox(
         width: 400,
         child: Column(
@@ -41,11 +39,11 @@ class _AdminLoginState extends State<AdminLogin> {
             //
             // MAIL INPUT
             //
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             TextFormField(
                 controller: adminMailController,
-                style: TextStyle(color: Colors.white),
-                decoration: InputDecoration(
+                style: const TextStyle(color: Colors.white),
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: "AP E-Mail",
                   floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -56,12 +54,12 @@ class _AdminLoginState extends State<AdminLogin> {
             //
             // PASSWORD INPUT
             //
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             TextFormField(
                 controller: adminPasswordController,
                 obscureText: true,
-                style: TextStyle(color: Colors.white),
-                decoration: InputDecoration(
+                style: const TextStyle(color: Colors.white),
+                decoration: const InputDecoration(
                   hintText: "Wachtwoord",
                   floatingLabelBehavior: FloatingLabelBehavior.always,
                   hintStyle: TextStyle(color: Colors.grey),
@@ -71,7 +69,7 @@ class _AdminLoginState extends State<AdminLogin> {
             //
             //  LOGIN BUTTON
             //
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             SizedBox(
               width: 400,
               child: TextButton(
@@ -84,14 +82,14 @@ class _AdminLoginState extends State<AdminLogin> {
                             password: adminPasswordController.text)
                         .then((user) {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => AdminHomePage()));
+                          builder: (context) => const AdminHomePage()));
                     }).catchError((error) {
                       MessageBox.showMessageBox('Fout bij aanmelden',
                           'E-mail of wachtwoord is onjuist.', context);
                     });
                   } catch (_) {}
                 },
-                child: Text("Login"),
+                child: const Text("Login"),
                 style: ButtonStyle(
                     foregroundColor: MaterialStateProperty.all(Colors.white),
                     backgroundColor: MaterialStateProperty.all(Colors.red)),
@@ -123,9 +121,9 @@ class LoginAsStudentState extends State<LoginAsStudentButton> {
         child: TextButton(
             onPressed: () {
               Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => MyApp()));
+                  .push(MaterialPageRoute(builder: (context) => const MyApp()));
             },
-            child: Text("Inloggen als Student"),
+            child: const Text("Inloggen als Student"),
             style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all(Colors.grey),
             )));
