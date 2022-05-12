@@ -108,40 +108,32 @@ class AddStudentButtonState extends State<AddStudentButton> {
 
 void addStudent(BuildContext context) async {
   try {
-    final newStudent = Student();
     List<String> splitString =
-        AddStudentInput.addStudentController.text.split(';');
-    newStudent.studentNr = splitString[0];
-    newStudent.studentName = splitString[1];
-    LoadStudents.students.add(newStudent);
+        AddStudentInput.addStudentController.text.split('\n');
+    List<Student> studentsToAdd = [];
+    for (String s in splitString) {
+      final newStudent = Student();
+      List<String> splitString2 = s.split(';');
+      newStudent.studentNr = splitString2[0];
+      newStudent.studentName = splitString2[1];
+      studentsToAdd.add(newStudent);
+    }
+    for (Student s in studentsToAdd) {
+      LoadStudents.students.add(s);
+    }
     LoadStudents.students.sort((a, b) => a.studentNr!.compareTo(b.studentNr!));
-
     List<List<dynamic>> csvData = [LoadStudents.students];
     final csv = CsvCodec();
     final csvString = csv.encoder.convert(csvData).replaceAll(',', "\n");
     var file = await _localFile;
     file.writeAsString(csvString);
-    showDialog<String>(
-        context: context,
-        builder: (BuildContext context) => AlertDialog(
-              backgroundColor: const Color.fromARGB(255, 22, 22, 22),
-              title: const Text("Student toegevoegd",
-                  style: TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
-              content: Text("Student ${newStudent.studentName} is toegevoegd",
-                  style: const TextStyle(
-                      color: Color.fromARGB(255, 255, 255, 255))),
-              actions: <Widget>[
-                TextButton(
-                  onPressed: () {
-                    Navigator.pop(context, 'OK');
-                  },
-                  child: const Text(
-                    'OK',
-                    style: TextStyle(color: Colors.red),
-                  ),
-                ),
-              ],
-            ));
+    String studentenNamen = "";
+    for (Student s in studentsToAdd) {
+      studentenNamen += "${s.studentName}, ";
+    }
+    studentenNamen = studentenNamen.substring(0, studentenNamen.length - 2);
+    MessageBox.showMessageBox(
+        "Succes", "Studenten ${studentenNamen} werden toegevoegd", context);
   } catch (e) {
     MessageBox.showMessageBox(
         "Fout",
