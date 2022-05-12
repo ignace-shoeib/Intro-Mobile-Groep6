@@ -15,19 +15,20 @@ class LoadStudents {
           const CsvToListConverter().convert(_rawData);
 
       final csv = CsvCodec();
-      final csvString = csv.encoder.convert(_listData);
-      await file.writeAsString(csvString);
-
+      await file.writeAsString(csv.encoder.convert(_listData));
       List<List<String>> splittedCSV = [];
-      for (var item in _listData) {
+      final splittedData = _rawData.split("\n");
+      for (var item in splittedData) {
         splittedCSV.add(item.toString().split(";"));
       }
       List<Student> students = [];
       for (var item in splittedCSV) {
-        students.add(Student(
-          studentNr: item[0].toString().replaceAll('[', ''),
-          studentName: item[1].toString().replaceAll(']', ''),
-        ));
+        if (item.length >= 2) {
+          students.add(Student(
+            studentNr: item[0].toString().replaceAll('[', ''),
+            studentName: item[1].toString().replaceAll(']', ''),
+          ));
+        }
       }
       return students;
     } else {
