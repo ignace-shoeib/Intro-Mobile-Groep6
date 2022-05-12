@@ -6,7 +6,8 @@ on:
     - main
 
 jobs:
-  build:
+  build_android:
+    name: Build Flutter (Android)
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -29,3 +30,22 @@ jobs:
         artifacts: "build/app/outputs/apk/release/app-release.apk"
         token: ${{ secrets.GITHUB_TOKEN }}
         tag: v1.0.${{ github.run_number }}
+  build_ios:
+    name: Build Flutter (iOS)
+    runs-on: macOS-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-java@v3
+      with:
+        distribution: 'zulu'
+        java-version: '11'
+    - uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '2.10.5'
+    - run: flutter pub get
+    - run: flutter build ios --release --no-codesign
+    - name: Upload iPA
+      uses: actions/upload-artifact@v3
+      with:
+        name: ios-build
+        path: build/ios/iphoneos
