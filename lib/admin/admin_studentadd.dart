@@ -133,7 +133,7 @@ void addStudent(BuildContext context) async {
     }
     studentenNamen = studentenNamen.substring(0, studentenNamen.length - 2);
     MessageBox.showMessageBox(
-        "Succes", "Studenten ${studentenNamen} werden toegevoegd", context);
+        "Succes", "Studenten $studentenNamen werden toegevoegd", context);
   } catch (e) {
     MessageBox.showMessageBox(
         "Fout",
