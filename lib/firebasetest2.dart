@@ -24,7 +24,7 @@ class FireBaseTestTwoState extends State<FireBaseTestTwo> {
   @override
   Widget build(BuildContext context) {
     MapController controller = MapController(initMapWithUserPosition: true);
-    MarkerIcon markerIcon = MarkerIcon(
+    MarkerIcon markerIcon = const MarkerIcon(
         icon: Icon(
       Icons.location_history_rounded,
       color: Colors.red,
