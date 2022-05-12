@@ -1,9 +1,9 @@
-name: Flutter CI
+name: Flutter CD
 
 on:
   push:
     branches:
-    - master
+    - main
 
 jobs:
   build:
