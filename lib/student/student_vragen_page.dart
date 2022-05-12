@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../my_home_page.dart';
-
 class StudentVragenPage extends StatelessWidget {
   const StudentVragenPage({Key? key}) : super(key: key);
 

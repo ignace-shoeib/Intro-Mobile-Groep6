@@ -53,20 +53,20 @@ class _FireBaseTestState extends State<FireBaseTest> {
         appBar: AppBar(title: const Text("View Data")),
         body: Column(
           children: const [
-            Expanded(child: fbQuestionsList()),
+            Expanded(child: FbQuestionsList()),
           ],
         ));
   }
 }
 
-class fbQuestionsList extends StatefulWidget {
-  const fbQuestionsList({Key? key}) : super(key: key);
+class FbQuestionsList extends StatefulWidget {
+  const FbQuestionsList({Key? key}) : super(key: key);
 
   @override
-  State<fbQuestionsList> createState() => fbQuestionsListState();
+  State<FbQuestionsList> createState() => FbQuestionsListState();
 }
 
-class fbQuestionsListState extends State<fbQuestionsList> {
+class FbQuestionsListState extends State<FbQuestionsList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
