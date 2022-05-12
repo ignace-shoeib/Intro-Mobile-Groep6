@@ -10,5 +10,6 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   LoadStudents.students = await LoadStudents.loadStudentsFirstTime();
+  LoadStudents.students.sort((a, b) => a.studentNr!.compareTo(b.studentNr!));
   runApp(const MyApp());
 }

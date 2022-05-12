@@ -113,6 +113,7 @@ void addStudent(BuildContext context) async {
     newStudent.studentNr = splitString[0];
     newStudent.studentName = splitString[1];
     LoadStudents.students.add(newStudent);
+    LoadStudents.students.sort((a, b) => a.studentNr!.compareTo(b.studentNr!));
 
     List<List<dynamic>> csvData = [LoadStudents.students];
     final csv = CsvCodec();

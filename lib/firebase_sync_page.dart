@@ -90,6 +90,8 @@ class StudentDownloadState extends State<StudentDownloadButton> {
                   studentName: encodedStudents[i]["studentName"]));
             }
             LoadStudents.students = students;
+            LoadStudents.students
+                .sort((a, b) => a.studentNr!.compareTo(b.studentNr!));
             List<List<dynamic>> csvData = [LoadStudents.students];
             final csv = CsvCodec();
             final csvString =
