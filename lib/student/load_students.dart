@@ -1,7 +1,4 @@
 import 'dart:io';
-import 'package:exam_app/message_box.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:csv/csv.dart';
 import 'package:path_provider/path_provider.dart';
@@ -46,7 +43,7 @@ class LoadStudents {
         for (var item in splittedCSV) {
           students.add(Student(
             studentNr: item[0].toString().replaceAll('[', ''),
-            studentName: item[1].toString().replaceAll(']', ''),
+            studentName: item[0].toString().replaceAll(']', ''),
           ));
         }
         return students;
