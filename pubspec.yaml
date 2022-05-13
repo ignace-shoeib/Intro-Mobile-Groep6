@@ -39,12 +39,12 @@ dependencies:
   cloud_firestore: ^3.1.14
   csv: ^5.0.1
   path_provider: ^2.0.9
-  permission_handler: ^9.2.0
+  permission_handler: ^8.3.0
   file_picker: ^4.5.1
   url_launcher_web: ^2.0.9
   firebase_database: ^9.0.13
   http: ^0.13.4
-  flutter_osm_plugin: ^0.28.2
+  flutter_osm_plugin: ^0.33.0+2
 
 dev_dependencies:
   flutter_test:
