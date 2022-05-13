@@ -52,17 +52,9 @@ class LoadStudents {
         return students;
       }
     } catch (e) {
-      Widget build(BuildContext context) {
-        return SizedBox(
-            width: 100,
-            child: TextButton(
-                onPressed: () {
-                  MessageBox.showMessageBox("error", e.toString(), context);
-                },
-                child: const Text("Debug")));
-      }
-
-      List<Student> students = [];
+      List<Student> students = [
+        Student(studentNr: "0", studentName: e.toString())
+      ];
       return students;
     }
   }
