@@ -9,51 +9,46 @@ class LoadStudents {
   static Future<List<Student>> loadStudentsFirstTime() async {
     final file = await _localFile;
     var exists = await file.exists();
-    try {
-      if (!exists) {
-        final _rawData = await rootBundle.loadString("assets/data.csv");
-        List<List<dynamic>> _listData =
-            const CsvToListConverter().convert(_rawData);
+    if (!exists) {
+      final _rawData = await rootBundle.loadString("assets/data.csv");
+      List<List<dynamic>> _listData =
+          const CsvToListConverter().convert(_rawData);
 
-        final csv = CsvCodec();
-        await file.writeAsString(csv.encoder.convert(_listData));
-        List<List<String>> splittedCSV = [];
-        final splittedData = _rawData.split("\n");
-        for (var item in splittedData) {
-          splittedCSV.add(item.toString().split(";"));
-        }
-        List<Student> students = [];
-        for (var item in splittedCSV) {
-          if (item.length >= 2) {
-            students.add(Student(
-              studentNr: item[0].toString().replaceAll('[', ''),
-              studentName: item[1].toString().replaceAll(']', ''),
-            ));
-          }
-        }
-        return students;
-      } else {
-        final _rawData = await file.readAsString();
-        final splittedData = _rawData.split("\n");
-        List<List<String>> splittedCSV = [];
-        for (var item in splittedData) {
-          splittedCSV.add(item.toString().split(";"));
-        }
-        List<Student> students = [];
-        for (var item in splittedCSV) {
-          if (item.length >= 2) {
-            students.add(Student(
-              studentNr: item[0].toString().replaceAll('[', ''),
-              studentName: item[1].toString().replaceAll(']', ''),
-            ));
-          }
-        }
-        return students;
+      final csv = CsvCodec();
+      await file.writeAsString(csv.encoder.convert(_listData));
+      List<List<String>> splittedCSV = [];
+      final splittedData = _rawData.split("\n");
+      for (var item in splittedData) {
+        splittedCSV.add(item.toString().split(";"));
       }
-    } catch (e) {
-      List<Student> students = [
-        Student(studentNr: "0", studentName: e.toString())
-      ];
+      List<Student> students = [];
+      for (var item in splittedCSV) {
+        if (item.length >= 2) {
+          students.add(Student(
+            studentNr: item[0].toString().replaceAll('[', ''),
+            studentName: item[1].toString().replaceAll(']', ''),
+          ));
+        }
+      }
+      return students;
+    } else {
+      final _rawData = await file.readAsString();
+      final splittedData = _rawData.split("\n");
+      List<List<String>> splittedCSV = [];
+      for (var item in splittedData) {
+        splittedCSV.add(item.toString().split(";"));
+      }
+      List<Student> students = [];
+      for (var item in splittedCSV) {
+        if (item.length >= 2) {
+          students.add(Student(
+            studentNr:
+                item[0].toString().replaceAll('[', '').replaceAll('"', ''),
+            studentName:
+                item[1].toString().replaceAll(']', '').replaceAll('"', ''),
+          ));
+        }
+      }
       return students;
     }
   }
