@@ -41,10 +41,12 @@ class LoadStudents {
         }
         List<Student> students = [];
         for (var item in splittedCSV) {
-          students.add(Student(
-            studentNr: item[0].toString().replaceAll('[', ''),
-            studentName: item[0].toString().replaceAll(']', ''),
-          ));
+          if (item.length >= 2) {
+            students.add(Student(
+              studentNr: item[0].toString().replaceAll('[', ''),
+              studentName: item[1].toString().replaceAll(']', ''),
+            ));
+          }
         }
         return students;
       }
