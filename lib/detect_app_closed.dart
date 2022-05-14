@@ -52,8 +52,9 @@ class _LifecycleWatcherState extends State<LifecycleWatcher>
 
   @override
   Widget build(BuildContext context) {
-    if (_lastLifecycleState == AppLifecycleState.resumed ||
-        countAppClosed > 0) {
+    if (_lastLifecycleState == AppLifecycleState.inactive ||
+        _lastLifecycleState == AppLifecycleState.paused ||
+        _lastLifecycleState == AppLifecycleState.inactive) {
       countAppClosed++;
       return Text(countAppClosed.toString(),
           style: const TextStyle(
