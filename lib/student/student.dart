@@ -69,7 +69,6 @@ class Student {
     return data;
   }
 
-  //const Student(this.studentNr, this.studentName);
   @override
   String toString() => "$studentNr;$studentName";
 }

@@ -31,17 +31,16 @@ class AdminStudentGrade extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
-                // ignore: prefer_const_literals_to_create_immutables
-                children: [
-                  const LocationButton(),
-                  const SizedBox(
+                children: const [
+                  LocationButton(),
+                  SizedBox(
                     width: 10,
                   ),
-                  const EditButton(),
-                  const SizedBox(
+                  EditButton(),
+                  SizedBox(
                     width: 10,
                   ),
-                  const AnswersButton(),
+                  AnswersButton(),
                 ],
               ),
             )
