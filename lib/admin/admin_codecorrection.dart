@@ -104,10 +104,10 @@ class CodeCorrectionPageState extends State<CodeCorrectionPage> {
                     MessageBox.showMessageBox("Vraag toegevoegd",
                         "Je hebt je vraag met succes toegevoegd!", context);
                   },
-                  child: const Text("Vraag opslaan"),
                   style: ButtonStyle(
                       foregroundColor: MaterialStateProperty.all(Colors.white),
                       backgroundColor: MaterialStateProperty.all(Colors.red)),
+                  child: const Text("Vraag opslaan"),
                 ))
           ],
         ));

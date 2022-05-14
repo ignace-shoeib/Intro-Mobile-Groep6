@@ -36,10 +36,10 @@ class StudentStartExamButtonState extends State<StudentStartExamButton> {
             Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => const StudentVragenPage()));
           },
-          child: const Text("Start Examen"),
           style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all(Colors.white),
               backgroundColor: MaterialStateProperty.all(Colors.red)),
+          child: const Text("Start Examen"),
         ));
   }
 }

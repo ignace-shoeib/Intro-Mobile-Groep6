@@ -12,9 +12,9 @@ class LoginAsAdminState extends State<LoginAsAdminButton> {
               Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => const AdminLoginPage()));
             },
-            child: const Text("Inloggen als admin"),
             style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all(Colors.grey),
-            )));
+            ),
+            child: const Text("Inloggen als admin")));
   }
 }

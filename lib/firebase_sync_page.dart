@@ -56,10 +56,10 @@ class StudentUploadState extends State<StudentUploadButton> {
                 "De studenten zijn succesvol geüpload naar de database.",
                 context);
           },
-          child: const Text("Upload studenten"),
           style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all(Colors.white),
               backgroundColor: MaterialStateProperty.all(Colors.red)),
+          child: const Text("Upload studenten"),
         ));
   }
 }
@@ -102,10 +102,10 @@ class StudentDownloadState extends State<StudentDownloadButton> {
                 "De studenten zijn succesvol gedownload van de database.",
                 context);
           },
-          child: const Text("Download studenten"),
           style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all(Colors.white),
               backgroundColor: MaterialStateProperty.all(Colors.red)),
+          child: const Text("Download studenten"),
         ));
   }
 }

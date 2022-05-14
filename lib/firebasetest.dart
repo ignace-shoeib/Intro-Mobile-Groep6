@@ -31,7 +31,7 @@ Future<dynamic> getData() async {
   for (var key in test.keys) {
     var lol = Map<String, dynamic>.from(test[key]);
     for (var key2 in lol.keys) {
-      print(key2 + ": " + lol[key2].toString());
+      print("$key2: ${lol[key2]}");
     }
     print(lol.runtimeType);
     questions = lol.values.toList();

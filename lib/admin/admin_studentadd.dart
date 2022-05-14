@@ -98,10 +98,10 @@ class AddStudentButtonState extends State<AddStudentButton> {
           onPressed: () {
             addStudent(context);
           },
-          child: const Text("Bevestigen"),
           style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all(Colors.white),
               backgroundColor: MaterialStateProperty.all(Colors.red)),
+          child: const Text("Bevestigen"),
         ));
   }
 }

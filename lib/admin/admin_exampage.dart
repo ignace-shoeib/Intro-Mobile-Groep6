@@ -27,8 +27,8 @@ class ButtonCodeCorrectionState extends State<ButtonCodeCorrection> {
             Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => const CodeCorrectionPage()));
           },
-          child: const Text("Code Correctie"),
           style: redButtonStyle(),
+          child: const Text("Code Correctie"),
         ));
   }
 }
@@ -56,8 +56,8 @@ class ButtonMultipleChoiceState extends State<ButtonMultipleChoice> {
             Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => const MultipleChoicePage()));
           },
-          child: const Text("Multiple Choice"),
           style: redButtonStyle(),
+          child: const Text("Multiple Choice"),
         ));
   }
 }
@@ -85,8 +85,8 @@ class ButtonOpenVraagState extends State<ButtonOpenVraag> {
             Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => const OpenQuestionPage()));
           },
-          child: const Text("Open vraag"),
           style: redButtonStyle(),
+          child: const Text("Open vraag"),
         ));
   }
 }
@@ -114,8 +114,8 @@ class ButtonVragenBekijkenState extends State<ButtonVragenBekijken> {
             Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => const QuestionsListPage()));
           },
-          child: const Text("Vragen Bekijken"),
           style: redButtonStyle(),
+          child: const Text("Vragen Bekijken"),
         ));
   }
 }

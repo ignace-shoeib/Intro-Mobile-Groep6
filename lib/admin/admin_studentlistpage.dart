@@ -29,9 +29,8 @@ class StudentListPage extends StatelessWidget {
                         child: ListTile(
                       onTap: () {},
                       tileColor: Colors.black54,
-                      title: Text(LoadStudents.students[index].studentNr! +
-                          ", " +
-                          LoadStudents.students[index].studentName!),
+                      title: Text(
+                          "${LoadStudents.students[index].studentNr!}, ${LoadStudents.students[index].studentName!}"),
                     ));
                   },
                 ),
@@ -75,10 +74,10 @@ class TempStudentGradeState extends State<TempStudentGradeButton> {
               Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => const AdminStudentGrade()));
             },
-            child: const Text("Temp button naar student grade"),
             style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all(Colors.grey),
-            )));
+            ),
+            child: const Text("Temp button naar student grade")));
   }
 }
 

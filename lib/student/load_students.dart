@@ -10,14 +10,14 @@ class LoadStudents {
     final file = await _localFile;
     var exists = await file.exists();
     if (!exists) {
-      final _rawData = await rootBundle.loadString("assets/data.csv");
-      List<List<dynamic>> _listData =
-          const CsvToListConverter().convert(_rawData);
+      final rawData = await rootBundle.loadString("assets/data.csv");
+      List<List<dynamic>> listData =
+          const CsvToListConverter().convert(rawData);
 
       final csv = CsvCodec();
-      await file.writeAsString(csv.encoder.convert(_listData));
+      await file.writeAsString(csv.encoder.convert(listData));
       List<List<String>> splittedCSV = [];
-      final splittedData = _rawData.split("\n");
+      final splittedData = rawData.split("\n");
       for (var item in splittedData) {
         splittedCSV.add(item.toString().split(";"));
       }
@@ -32,8 +32,8 @@ class LoadStudents {
       }
       return students;
     } else {
-      final _rawData = await file.readAsString();
-      final splittedData = _rawData.split("\n");
+      final rawData = await file.readAsString();
+      final splittedData = rawData.split("\n");
       List<List<String>> splittedCSV = [];
       for (var item in splittedData) {
         splittedCSV.add(item.toString().split(";"));

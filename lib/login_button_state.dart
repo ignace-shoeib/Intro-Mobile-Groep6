@@ -12,8 +12,8 @@ class LoginButtonState extends State<LoginButton> {
             Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => const StudentStartExamPage()));
           },
-          child: const Text("Login"),
           style: redButtonStyle(),
+          child: const Text("Login"),
         ));
   }
 

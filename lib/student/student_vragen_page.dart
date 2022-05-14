@@ -141,9 +141,9 @@ class TempMultipleQuestionAnswerButtonState
               Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => const MultipleChoiceAnswerPage()));
             },
-            child: const Text("Temp button naar multipe vraag"),
             style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all(Colors.grey),
-            )));
+            ),
+            child: const Text("Temp button naar multipe vraag")));
   }
 }

@@ -46,10 +46,10 @@ class FirebaseBackupButtonState extends State<FirebaseBackupButton> {
             Navigator.of(context).push(
                 MaterialPageRoute(builder: (context) => const FirebaseSync()));
           },
-          child: const Text("Syncroniseer"),
           style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all(Colors.white),
               backgroundColor: MaterialStateProperty.all(Colors.red)),
+          child: const Text("Syncroniseer"),
         ));
   }
 }
@@ -71,11 +71,11 @@ class ExamensButtonState extends State<ExamensButton> {
             Navigator.of(context).push(
                 MaterialPageRoute(builder: (context) => const AdminExamPage()));
           },
-          child: const Text("Examens"),
           style: ElevatedButton.styleFrom(
               primary: Colors.red,
               onPrimary: Colors.white,
               minimumSize: const Size(400, 35)),
+          child: const Text("Examens"),
         ));
   }
 }
@@ -97,10 +97,10 @@ class StudentenButtonState extends State<StudentenButton> {
             Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => const StudentListPage()));
           },
-          child: const Text("Studenten"),
           style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all(Colors.white),
               backgroundColor: MaterialStateProperty.all(Colors.red)),
+          child: const Text("Studenten"),
         ));
   }
 }
@@ -122,9 +122,9 @@ class ChangePasswordState extends State<ChangePasswordButton> {
               Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => const AdminPasswordChange()));
             },
-            child: const Text("Wachtwoord wijzigen"),
             style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all(Colors.grey),
-            )));
+            ),
+            child: const Text("Wachtwoord wijzigen")));
   }
 }

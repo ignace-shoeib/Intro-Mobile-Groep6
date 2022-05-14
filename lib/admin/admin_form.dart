@@ -74,9 +74,9 @@ class _AdminLoginState extends State<AdminLogin> {
               width: 400,
               child: TextButton(
                 onPressed: () async {
-                  final FirebaseAuth _auth = FirebaseAuth.instance;
+                  final FirebaseAuth auth = FirebaseAuth.instance;
                   try {
-                    await _auth
+                    await auth
                         .signInWithEmailAndPassword(
                             email: adminMailController.text,
                             password: adminPasswordController.text)
@@ -89,10 +89,10 @@ class _AdminLoginState extends State<AdminLogin> {
                     });
                   } catch (_) {}
                 },
-                child: const Text("Login"),
                 style: ButtonStyle(
                     foregroundColor: MaterialStateProperty.all(Colors.white),
                     backgroundColor: MaterialStateProperty.all(Colors.red)),
+                child: const Text("Login"),
               ),
             )
           ],
@@ -123,9 +123,9 @@ class LoginAsStudentState extends State<LoginAsStudentButton> {
               Navigator.of(context)
                   .push(MaterialPageRoute(builder: (context) => const MyApp()));
             },
-            child: const Text("Inloggen als Student"),
             style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all(Colors.grey),
-            )));
+            ),
+            child: const Text("Inloggen als Student")));
   }
 }

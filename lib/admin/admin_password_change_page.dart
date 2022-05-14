@@ -82,8 +82,8 @@ class ConfirmPasswordChangeButtonState
         child: TextButton(
           onPressed: () {
             if (PasswordChangeInput.passwordChangeController.text.length >= 6) {
-              final _auth = FirebaseAuth.instance.currentUser;
-              _auth?.updatePassword(
+              final auth = FirebaseAuth.instance.currentUser;
+              auth?.updatePassword(
                   PasswordChangeInput.passwordChangeController.text);
               MessageBox.showMessageBox(
                   'Wachtwoord gewijzigd',
@@ -94,10 +94,10 @@ class ConfirmPasswordChangeButtonState
                   'Wachtwoord is te zwak.', context);
             }
           },
-          child: const Text("Bevestigen"),
           style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all(Colors.white),
               backgroundColor: MaterialStateProperty.all(Colors.red)),
+          child: const Text("Bevestigen"),
         ));
   }
 }

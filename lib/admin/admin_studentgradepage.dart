@@ -80,10 +80,10 @@ class LocationButtonState extends State<LocationButton> {
             Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => const StudenAnswersPage()));
           },
-          child: const Text("Location"),
           style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all(Colors.white),
               backgroundColor: MaterialStateProperty.all(Colors.red)),
+          child: const Text("Location"),
         ));
   }
 }
@@ -105,11 +105,11 @@ class EditButtonState extends State<EditButton> {
             Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => const DetectAppClosed()));
           },
-          child: const Text("Bewerken"),
           style: ElevatedButton.styleFrom(
               primary: Colors.grey,
               onPrimary: Colors.white,
               minimumSize: const Size(400, 35)),
+          child: const Text("Bewerken"),
         ));
   }
 }
@@ -130,11 +130,11 @@ class AnswersButtonState extends State<AnswersButton> {
         Navigator.of(context).push(
             MaterialPageRoute(builder: (context) => const StudenAnswersPage()));
       },
-      child: const Text("Antwoorden"),
       style: ElevatedButton.styleFrom(
           primary: Colors.green,
           onPrimary: Colors.white,
           minimumSize: const Size(400, 35)),
+      child: const Text("Antwoorden"),
     ));
   }
 }

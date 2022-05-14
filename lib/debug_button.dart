@@ -18,8 +18,8 @@ class DebugButtonState extends State<DebugButton> {
             Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => const FireBaseTestTwo()));
           },
-          child: const Text("Debug"),
           style: redButtonStyle(),
+          child: const Text("Debug"),
         ));
   }
 

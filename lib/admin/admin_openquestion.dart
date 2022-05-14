@@ -65,12 +65,12 @@ class OpenQuestionPageState extends State<OpenQuestionPage> {
                               "Je hebt je vraag met succes toegevoegd!",
                               context);
                         },
-                        child: const Text("Vraag opslaan"),
                         style: ButtonStyle(
                             foregroundColor:
                                 MaterialStateProperty.all(Colors.white),
                             backgroundColor:
                                 MaterialStateProperty.all(Colors.red)),
+                        child: const Text("Vraag opslaan"),
                       ))
                 ],
               ),
