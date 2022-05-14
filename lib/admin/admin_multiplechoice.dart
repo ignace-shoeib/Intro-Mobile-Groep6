@@ -1,6 +1,7 @@
 import 'package:exam_app/message_box.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import '../questions/load_questions.dart';
 
 class MultipleChoicePage extends StatefulWidget {
   const MultipleChoicePage({Key? key}) : super(key: key);
@@ -103,6 +104,7 @@ class MultipleChoicePageState extends State<MultipleChoicePage> {
                               "options": optionsMap,
                               "answer": answerController.text
                             });
+                            await LoadQuestions.loadQuestions();
                             MessageBox.showMessageBox(
                                 "Vraag toegevoegd",
                                 "Je hebt je vraag met succes toegevoegd!",

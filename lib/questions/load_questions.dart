@@ -6,6 +6,8 @@ class LoadQuestions {
   static List<String> questions = [];
   static List<String> types = [];
   static Future<void> loadQuestions() async {
+    questions = [];
+    types = [];
     final ref = FirebaseDatabase.instance.ref();
     final snapshot = await ref.child("questions").get();
     var encoded = json.encode(snapshot.value);

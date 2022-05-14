@@ -1,6 +1,5 @@
 import 'package:exam_app/questions/load_questions.dart';
 import 'package:flutter/material.dart';
-
 import '../questions/code_question_answer.dart';
 import '../questions/multiple_choice_answer.dart';
 import '../questions/open_question_answer.dart';
@@ -19,21 +18,23 @@ class StudentQuestionPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: const [
-              AdminLoginTitle(),
+              Title(),
               SizedBox(height: 20),
               Expanded(child: StudentQuestionsList()),
+              SizedBox(height: 10),
               Expanded(
+                  flex: 0,
                   child: Align(
-                alignment: FractionalOffset.bottomCenter,
-                child: StopExamButton(),
-              )),
-              SizedBox(height: 50),
+                    alignment: FractionalOffset.bottomCenter,
+                    child: StopExamButton(),
+                  )),
+              SizedBox(height: 10),
             ]));
   }
 }
 
-class AdminLoginTitle extends StatelessWidget {
-  const AdminLoginTitle({Key? key}) : super(key: key);
+class Title extends StatelessWidget {
+  const Title({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

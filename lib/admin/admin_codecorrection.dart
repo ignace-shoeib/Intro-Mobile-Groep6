@@ -1,4 +1,5 @@
 import 'package:exam_app/message_box.dart';
+import 'package:exam_app/questions/load_questions.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
@@ -101,6 +102,7 @@ class CodeCorrectionPageState extends State<CodeCorrectionPage> {
                       "question": questionController.text,
                       "answer": answerController.text
                     });
+                    await LoadQuestions.loadQuestions();
                     MessageBox.showMessageBox("Vraag toegevoegd",
                         "Je hebt je vraag met succes toegevoegd!", context);
                   },
