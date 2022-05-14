@@ -36,11 +36,6 @@ class StudentVragenPage extends StatelessWidget {
                                   style: TextStyle(
                                       color:
                                           Color.fromARGB(255, 255, 255, 255))),
-                              /*content: const Text(
-                                  'Gebruikersnaam of wachtwoord is onjuist',
-                                  style: TextStyle(
-                                      color:
-                                          Color.fromARGB(255, 255, 255, 255))),*/
                               actions: <Widget>[
                                 TextButton(
                                   onPressed: () =>

@@ -25,8 +25,6 @@ class MyHomePageState extends State<MyHomePage> {
             LoginButton(),
             LoginAsAdminButton(),
             DebugButton(),
-
-            //
           ],
         ));
   }
