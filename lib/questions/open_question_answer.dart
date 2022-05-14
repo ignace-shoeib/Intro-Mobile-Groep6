@@ -49,10 +49,10 @@ class OpenQuestion extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Align(
+    return Align(
       alignment: Alignment.center,
-      child: Text("Placeholder hier komt de open vraag",
-          style: TextStyle(color: Colors.white, fontSize: 25)),
+      child: Text(CurrentQuestion.currentQuestion,
+          style: const TextStyle(color: Colors.white, fontSize: 25)),
     );
   }
 }
