@@ -26,11 +26,7 @@ class OpenQuestionPageState extends State<OpenQuestionPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text("Open vraag toevoegen",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold)),
+                  const OpenQuestionTitle(),
                   const SizedBox(height: 20),
                   //
                   // Open vraag input
@@ -77,5 +73,16 @@ class OpenQuestionPageState extends State<OpenQuestionPage> {
             ),
           ),
         ));
+  }
+}
+
+class OpenQuestionTitle extends StatelessWidget {
+  const OpenQuestionTitle({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const Text("Open vraag toevoegen",
+        style: TextStyle(
+            color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold));
   }
 }
