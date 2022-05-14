@@ -18,6 +18,7 @@ class OpenQuestionAnswerPage extends StatelessWidget {
               OpenQuestionAnswerTitle(),
               SizedBox(height: 20),
               Expanded(child: OpenQuestion()),
+              Expanded(child: OpenQuestionAnswer()),
               Expanded(
                   child: Align(
                 alignment: FractionalOffset.bottomCenter,
@@ -35,7 +36,7 @@ class OpenQuestionAnswerTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Align(
       alignment: Alignment.bottomCenter,
-      child: Text("open vraag",
+      child: Text("Open vraag",
           style: TextStyle(
               color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold)),
     );
@@ -48,9 +49,32 @@ class OpenQuestion extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Align(
-      alignment: Alignment.topCenter,
+      alignment: Alignment.center,
       child: Text("Placeholder hier komt de open vraag",
           style: TextStyle(color: Colors.white, fontSize: 25)),
     );
+  }
+}
+
+class OpenQuestionAnswer extends StatelessWidget {
+  const OpenQuestionAnswer({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const Center(
+        child: SizedBox(
+            width: 600,
+            child: TextField(
+              style: TextStyle(color: Colors.white),
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: "Antwoord",
+                floatingLabelBehavior: FloatingLabelBehavior.always,
+                hintStyle: TextStyle(color: Colors.grey),
+                fillColor: Color.fromARGB(80, 61, 61, 61),
+                filled: true,
+              ),
+              maxLines: 20,
+            )));
   }
 }
