@@ -1,9 +1,8 @@
+import 'package:exam_app/questions/save_question_button.dart';
 import 'package:flutter/material.dart';
 
-import 'save_question_button.dart';
-
-class MultipleChoiceAnswerPage extends StatelessWidget {
-  const MultipleChoiceAnswerPage({Key? key}) : super(key: key);
+class OpenQuestionAnswerPage extends StatelessWidget {
+  const OpenQuestionAnswerPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +15,9 @@ class MultipleChoiceAnswerPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: const [
-              MultiplechoiceTitle(),
+              OpenQuestionAnswerTitle(),
               SizedBox(height: 20),
-              Expanded(child: MultiplechoiceQuestion()),
+              Expanded(child: OpenQuestion()),
               Expanded(
                   child: Align(
                 alignment: FractionalOffset.bottomCenter,
@@ -29,28 +28,28 @@ class MultipleChoiceAnswerPage extends StatelessWidget {
   }
 }
 
-class MultiplechoiceTitle extends StatelessWidget {
-  const MultiplechoiceTitle({Key? key}) : super(key: key);
+class OpenQuestionAnswerTitle extends StatelessWidget {
+  const OpenQuestionAnswerTitle({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return const Align(
       alignment: Alignment.bottomCenter,
-      child: Text("Multiplechoice vraag",
+      child: Text("open vraag",
           style: TextStyle(
               color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold)),
     );
   }
 }
 
-class MultiplechoiceQuestion extends StatelessWidget {
-  const MultiplechoiceQuestion({Key? key}) : super(key: key);
+class OpenQuestion extends StatelessWidget {
+  const OpenQuestion({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return const Align(
       alignment: Alignment.topCenter,
-      child: Text("Placeholder hier komt de vraag",
+      child: Text("Placeholder hier komt de open vraag",
           style: TextStyle(color: Colors.white, fontSize: 25)),
     );
   }
