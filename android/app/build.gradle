@@ -43,7 +43,7 @@ android {
 
     defaultConfig {
         applicationId "be.ap.gradeaid"
-        minSdkVersion 21
+        minSdkVersion 23
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
