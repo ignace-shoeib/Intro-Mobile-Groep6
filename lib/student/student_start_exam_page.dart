@@ -1,4 +1,4 @@
-import 'package:exam_app/student/student_vragen_page.dart';
+import 'package:exam_app/student/student_question_page.dart';
 import 'package:flutter/material.dart';
 
 class StudentStartExamPage extends StatelessWidget {
@@ -34,7 +34,7 @@ class StudentStartExamButtonState extends State<StudentStartExamButton> {
         child: TextButton(
           onPressed: () {
             Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => const StudentVragenPage()));
+                builder: (context) => const StudentQuestionPage()));
           },
           style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all(Colors.white),
