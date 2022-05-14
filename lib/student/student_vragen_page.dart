@@ -22,14 +22,14 @@ class StudentVragenPage extends StatelessWidget {
               AdminLoginTitle(),
               SizedBox(height: 20),
               Expanded(child: StudentQuestionsList()),
+              Expanded(child: TempMultipleQuestionAnswerButton()),
+              Expanded(child: TempOpenQuestionAnswerButton()),
+              Expanded(child: TempCodeQuestionAnswerButton()),
               Expanded(
                   child: Align(
                 alignment: FractionalOffset.bottomCenter,
                 child: StopExamButton(),
               )),
-              Expanded(child: TempMultipleQuestionAnswerButton()),
-              Expanded(child: TempOpenQuestionAnswerButton()),
-              Expanded(child: TempCodeQuestionAnswerButton()),
               SizedBox(height: 50),
             ]));
   }
@@ -172,10 +172,10 @@ class TempOpenQuestionAnswerButtonState
               Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => const OpenQuestionAnswerPage()));
             },
-            child: const Text("Temp button naar open vraag"),
             style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all(Colors.grey),
-            )));
+            ),
+            child: const Text("Temp button naar open vraag")));
   }
 }
 
@@ -199,9 +199,9 @@ class TempCodeQuestionAnswerButtonState
               Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => const CodeQuestionAnswerPage()));
             },
-            child: const Text("Temp button naar code vraag"),
             style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all(Colors.grey),
-            )));
+            ),
+            child: const Text("Temp button naar code vraag")));
   }
 }
