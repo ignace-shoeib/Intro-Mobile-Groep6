@@ -19,6 +19,7 @@ class CodeQuestionAnswerPage extends StatelessWidget {
               CodeQuestionAnswerTitle(),
               SizedBox(height: 20),
               Expanded(child: CodeQuestion()),
+              Expanded(child: CodeQuestionAnswer()),
               Expanded(
                   child: Align(
                 alignment: FractionalOffset.bottomCenter,
@@ -35,7 +36,7 @@ class CodeQuestionAnswerTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Align(
-      alignment: Alignment.bottomCenter,
+      alignment: Alignment.topCenter,
       child: Text("Code correction vraag",
           style: TextStyle(
               color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold)),
@@ -49,9 +50,32 @@ class CodeQuestion extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: Alignment.topCenter,
+      alignment: Alignment.center,
       child: Text(CurrentQuestion.currentQuestion,
           style: const TextStyle(color: Colors.white, fontSize: 25)),
     );
+  }
+}
+
+class CodeQuestionAnswer extends StatelessWidget {
+  const CodeQuestionAnswer({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const Center(
+        child: SizedBox(
+            width: 600,
+            child: TextField(
+              style: TextStyle(color: Colors.white),
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: "Antwoord",
+                floatingLabelBehavior: FloatingLabelBehavior.always,
+                hintStyle: TextStyle(color: Colors.grey),
+                fillColor: Color.fromARGB(80, 61, 61, 61),
+                filled: true,
+              ),
+              maxLines: 20,
+            )));
   }
 }
