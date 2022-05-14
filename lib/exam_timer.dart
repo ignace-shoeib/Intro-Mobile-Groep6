@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 
 class ClockWidget extends StatefulWidget {
+  const ClockWidget({Key? key}) : super(key: key);
+
   @override
   ClockWidgetState createState() => ClockWidgetState();
 }
@@ -13,18 +15,20 @@ class ClockWidgetState extends State<ClockWidget> {
   @override
   void initState() {
     super.initState();
-    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       setState(() {
-        this._secondCount += 1;
+        _secondCount += 1;
       });
     });
   }
 
+  @override
   Widget build(BuildContext context) {
-    print("${_secondCount}");
+    print("$_secondCount");
     return Text(
-      "${_secondCount}",
-      style: TextStyle(fontSize: 75, color: Color.fromRGBO(30, 144, 255, 1)),
+      "$_secondCount",
+      style:
+          const TextStyle(fontSize: 75, color: Color.fromRGBO(30, 144, 255, 1)),
     );
   }
 
