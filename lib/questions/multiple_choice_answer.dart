@@ -52,7 +52,7 @@ class MultipleChoiceQuestion extends StatelessWidget {
     return Align(
       alignment: Alignment.topCenter,
       child: Text(CurrentQuestion.currentQuestion,
-          style: TextStyle(color: Colors.white, fontSize: 25)),
+          style: const TextStyle(color: Colors.white, fontSize: 25)),
     );
   }
 }
