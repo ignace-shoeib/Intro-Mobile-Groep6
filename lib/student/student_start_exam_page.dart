@@ -1,4 +1,3 @@
-import 'package:exam_app/exam_timer.dart';
 import 'package:exam_app/student/student_vragen_page.dart';
 import 'package:flutter/material.dart';
 

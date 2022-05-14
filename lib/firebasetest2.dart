@@ -36,21 +36,7 @@ class FireBaseTestTwoState extends State<FireBaseTestTwo> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ElevatedButton(
-                  onPressed: () async {
-                    final ref = FirebaseDatabase.instance.ref();
-                    final snapshot = await ref.child("questions").get();
-                    var encoded = json.encode(snapshot.value);
-                    var encodedQuestions = json.decode(encoded);
-                    var test = Map<String, dynamic>.from(encodedQuestions);
-                    for (var key in test.keys) {
-                      var lol = Map<String, dynamic>.from(test[key]);
-                      for (var key2 in lol.keys) {
-                        print(key2 + ": " + lol[key2].toString());
-                      }
-                    }
-                  },
-                  child: const Text("Test")),
+              ElevatedButton(onPressed: () {}, child: const Text("Test")),
               ElevatedButton(
                   onPressed: () async {
                     try {
