@@ -1,6 +1,8 @@
 import 'package:exam_app/questions/load_questions.dart';
 import 'package:flutter/material.dart';
 
+import '../questions/multiplechoice_answer.dart';
+
 class StudentVragenPage extends StatelessWidget {
   const StudentVragenPage({Key? key}) : super(key: key);
 
@@ -23,6 +25,7 @@ class StudentVragenPage extends StatelessWidget {
                 alignment: FractionalOffset.bottomCenter,
                 child: StopExamButton(),
               )),
+              Expanded(child: TempMultipleQuestionAnswerButton()),
               SizedBox(height: 50),
             ]));
   }
@@ -115,5 +118,32 @@ class StudentQuestionsListState extends State<StudentQuestionsList> {
             );
           }),
     );
+  }
+}
+
+// Temp for testing
+class TempMultipleQuestionAnswerButton extends StatefulWidget {
+  const TempMultipleQuestionAnswerButton({Key? key}) : super(key: key);
+
+  @override
+  State<TempMultipleQuestionAnswerButton> createState() =>
+      TempMultipleQuestionAnswerButtonState();
+}
+
+class TempMultipleQuestionAnswerButtonState
+    extends State<TempMultipleQuestionAnswerButton> {
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+        width: 400,
+        child: TextButton(
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const MultipleChoiceAnswerPage()));
+            },
+            child: const Text("Temp button naar multipe vraag"),
+            style: ButtonStyle(
+              foregroundColor: MaterialStateProperty.all(Colors.grey),
+            )));
   }
 }
