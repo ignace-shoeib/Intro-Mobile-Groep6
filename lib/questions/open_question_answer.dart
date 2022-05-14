@@ -35,7 +35,7 @@ class OpenQuestionAnswerTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Align(
       alignment: Alignment.bottomCenter,
-      child: Text("open vraag",
+      child: Text("Open vraag",
           style: TextStyle(
               color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold)),
     );

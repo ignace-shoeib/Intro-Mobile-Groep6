@@ -35,7 +35,7 @@ class CodeQuestionAnswerTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Align(
       alignment: Alignment.bottomCenter,
-      child: Text("open vraag",
+      child: Text("Code correction vraag",
           style: TextStyle(
               color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold)),
     );

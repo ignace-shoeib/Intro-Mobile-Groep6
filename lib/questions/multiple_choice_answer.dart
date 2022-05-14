@@ -16,7 +16,7 @@ class MultipleChoiceAnswerPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: const [
-              MultiplechoiceTitle(),
+              MultipleChoiceTitle(),
               SizedBox(height: 20),
               Expanded(child: MultiplechoiceQuestion()),
               Expanded(
@@ -29,14 +29,14 @@ class MultipleChoiceAnswerPage extends StatelessWidget {
   }
 }
 
-class MultiplechoiceTitle extends StatelessWidget {
-  const MultiplechoiceTitle({Key? key}) : super(key: key);
+class MultipleChoiceTitle extends StatelessWidget {
+  const MultipleChoiceTitle({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return const Align(
       alignment: Alignment.bottomCenter,
-      child: Text("Multiplechoice vraag",
+      child: Text("Multiple choice vraag",
           style: TextStyle(
               color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold)),
     );

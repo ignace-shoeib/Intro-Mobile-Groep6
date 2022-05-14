@@ -12,6 +12,6 @@ void main() async {
   );
   LoadStudents.students = await LoadStudents.loadStudentsFirstTime();
   LoadStudents.students.sort((a, b) => a.studentNr!.compareTo(b.studentNr!));
-  LoadQuestions.questions = await LoadQuestions.loadQuestions();
+  await LoadQuestions.loadQuestions();
   runApp(const MyApp());
 }
