@@ -1,3 +1,4 @@
+import 'package:exam_app/questions/load_questions.dart';
 import 'package:flutter/material.dart';
 
 class StudentVragenPage extends StatelessWidget {
@@ -100,20 +101,16 @@ class StudentQuestionsList extends StatefulWidget {
 }
 
 class StudentQuestionsListState extends State<StudentQuestionsList> {
-  List<String> vragen = [
-    "Wat is jouw mama's verjaardag?",
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView.builder(
-          itemCount: vragen.length,
+          itemCount: LoadQuestions.questions.length,
           itemBuilder: (BuildContext context, int index) {
             return Card(
               child: ListTile(
                 tileColor: Colors.black54,
-                title: Text(vragen[index]),
+                title: Text(LoadQuestions.questions[index]),
               ),
             );
           }),
