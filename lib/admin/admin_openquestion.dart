@@ -1,6 +1,7 @@
 import 'package:exam_app/message_box.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import '../questions/load_questions.dart';
 
 class OpenQuestionPage extends StatefulWidget {
   const OpenQuestionPage({Key? key}) : super(key: key);
@@ -56,6 +57,7 @@ class OpenQuestionPageState extends State<OpenQuestionPage> {
                             "type": "open",
                             "question": questionController.text
                           });
+                          await LoadQuestions.loadQuestions();
                           MessageBox.showMessageBox(
                               "Vraag toegevoegd",
                               "Je hebt je vraag met succes toegevoegd!",

@@ -1,8 +1,8 @@
+import 'package:exam_app/questions/current_question.dart';
 import 'package:exam_app/questions/load_questions.dart';
 import 'package:flutter/material.dart';
-
 import '../questions/code_question_answer.dart';
-import '../questions/multiplechoice_answer.dart';
+import '../questions/multiple_choice_answer.dart';
 import '../questions/open_question_answer.dart';
 
 class StudentQuestionPage extends StatelessWidget {
@@ -19,24 +19,23 @@ class StudentQuestionPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: const [
-              AdminLoginTitle(),
+              Title(),
               SizedBox(height: 20),
               Expanded(child: StudentQuestionsList()),
-              Expanded(child: TempMultipleQuestionAnswerButton()),
-              Expanded(child: TempOpenQuestionAnswerButton()),
-              Expanded(child: TempCodeQuestionAnswerButton()),
+              SizedBox(height: 10),
               Expanded(
+                  flex: 0,
                   child: Align(
-                alignment: FractionalOffset.bottomCenter,
-                child: StopExamButton(),
-              )),
-              SizedBox(height: 50),
+                    alignment: FractionalOffset.bottomCenter,
+                    child: StopExamButton(),
+                  )),
+              SizedBox(height: 10),
             ]));
   }
 }
 
-class AdminLoginTitle extends StatelessWidget {
-  const AdminLoginTitle({Key? key}) : super(key: key);
+class Title extends StatelessWidget {
+  const Title({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -118,90 +117,23 @@ class StudentQuestionsListState extends State<StudentQuestionsList> {
               child: ListTile(
                 tileColor: Colors.black54,
                 title: Text(LoadQuestions.questions[index]),
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    CurrentQuestion.currentQuestion =
+                        LoadQuestions.questions[index];
+                    if (LoadQuestions.types[index] == "multiple choice") {
+                      return const MultipleChoiceAnswerPage();
+                    } else if (LoadQuestions.types[index] ==
+                        "code correction") {
+                      return const CodeQuestionAnswerPage();
+                    } else {
+                      return const OpenQuestionAnswerPage();
+                    }
+                  }));
+                },
               ),
             );
           }),
     );
-  }
-}
-
-// Temp for testing multiple question
-class TempMultipleQuestionAnswerButton extends StatefulWidget {
-  const TempMultipleQuestionAnswerButton({Key? key}) : super(key: key);
-
-  @override
-  State<TempMultipleQuestionAnswerButton> createState() =>
-      TempMultipleQuestionAnswerButtonState();
-}
-
-class TempMultipleQuestionAnswerButtonState
-    extends State<TempMultipleQuestionAnswerButton> {
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-        width: 400,
-        child: TextButton(
-            onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const MultipleChoiceAnswerPage()));
-            },
-            style: ButtonStyle(
-              foregroundColor: MaterialStateProperty.all(Colors.grey),
-            ),
-            child: const Text("Temp button naar multipe vraag")));
-  }
-}
-
-// Temp for testing open question
-class TempOpenQuestionAnswerButton extends StatefulWidget {
-  const TempOpenQuestionAnswerButton({Key? key}) : super(key: key);
-
-  @override
-  State<TempOpenQuestionAnswerButton> createState() =>
-      TempOpenQuestionAnswerButtonState();
-}
-
-class TempOpenQuestionAnswerButtonState
-    extends State<TempOpenQuestionAnswerButton> {
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-        width: 400,
-        child: TextButton(
-            onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const OpenQuestionAnswerPage()));
-            },
-            style: ButtonStyle(
-              foregroundColor: MaterialStateProperty.all(Colors.grey),
-            ),
-            child: const Text("Temp button naar open vraag")));
-  }
-}
-
-// Temp for testing code question
-class TempCodeQuestionAnswerButton extends StatefulWidget {
-  const TempCodeQuestionAnswerButton({Key? key}) : super(key: key);
-
-  @override
-  State<TempCodeQuestionAnswerButton> createState() =>
-      TempCodeQuestionAnswerButtonState();
-}
-
-class TempCodeQuestionAnswerButtonState
-    extends State<TempCodeQuestionAnswerButton> {
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-        width: 400,
-        child: TextButton(
-            onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const CodeQuestionAnswerPage()));
-            },
-            style: ButtonStyle(
-              foregroundColor: MaterialStateProperty.all(Colors.grey),
-            ),
-            child: const Text("Temp button naar code vraag")));
   }
 }

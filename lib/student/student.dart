@@ -1,5 +1,5 @@
 import 'package:exam_app/questions/code_question.dart';
-import 'package:exam_app/questions/multiplechoice_question.dart';
+import 'package:exam_app/questions/multiple_choice_question.dart';
 import 'package:exam_app/questions/open_question.dart';
 
 class Student {
