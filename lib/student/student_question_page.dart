@@ -5,8 +5,8 @@ import '../questions/code_question_answer.dart';
 import '../questions/multiplechoice_answer.dart';
 import '../questions/open_question_answer.dart';
 
-class StudentVragenPage extends StatelessWidget {
-  const StudentVragenPage({Key? key}) : super(key: key);
+class StudentQuestionPage extends StatelessWidget {
+  const StudentQuestionPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

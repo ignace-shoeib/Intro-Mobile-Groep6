@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../student/student_vragen_page.dart';
+import '../student/student_question_page.dart';
 
 class SaveQuestionButton extends StatefulWidget {
   const SaveQuestionButton({Key? key}) : super(key: key);
@@ -18,8 +18,8 @@ class SaveQuestionButtonState extends State<SaveQuestionButton> {
           backgroundColor: MaterialStateProperty.all(Colors.red)),
       child: const Text('Vraag opslaan'),
       onPressed: () {
-        Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => const StudentVragenPage()));
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => const StudentQuestionPage()));
       },
     );
   }
