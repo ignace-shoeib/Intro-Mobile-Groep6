@@ -33,14 +33,10 @@ class AdminStudentGrade extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: const [
                   LocationButton(),
-                  SizedBox(
-                    width: 10,
-                  ),
+                  SizedBox(width: 10),
                   EditButton(),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  AnswersButton(),
+                  SizedBox(width: 10),
+                  AnswersButton()
                 ],
               ),
             )
