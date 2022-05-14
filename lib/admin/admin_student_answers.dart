@@ -10,9 +10,9 @@ class StudenAnswersPage extends StatelessWidget {
           backgroundColor: const Color.fromARGB(0, 0, 0, 0),
           title: const Text("Gradeaid"),
         ),
-        body: Column(children: [
-          const StudentAnswersTitle(),
-          const SizedBox(height: 20),
+        body: Column(children: const [
+          StudentAnswersTitle(),
+          SizedBox(height: 20),
         ]));
   }
 }
