@@ -1,3 +1,4 @@
+import 'package:exam_app/questions/current_question.dart';
 import 'package:flutter/material.dart';
 
 import 'save_question_button.dart';
@@ -48,9 +49,9 @@ class MultipleChoiceQuestion extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Align(
+    return Align(
       alignment: Alignment.topCenter,
-      child: Text("Placeholder hier komt de vraag",
+      child: Text(CurrentQuestion.currentQuestion,
           style: TextStyle(color: Colors.white, fontSize: 25)),
     );
   }

@@ -1,3 +1,4 @@
+import 'package:exam_app/questions/current_question.dart';
 import 'package:exam_app/questions/save_question_button.dart';
 import 'package:flutter/material.dart';
 
@@ -47,9 +48,9 @@ class CodeQuestion extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Align(
+    return Align(
       alignment: Alignment.topCenter,
-      child: Text("Placeholder hier komt de code vraag",
+      child: Text(CurrentQuestion.currentQuestion,
           style: TextStyle(color: Colors.white, fontSize: 25)),
     );
   }

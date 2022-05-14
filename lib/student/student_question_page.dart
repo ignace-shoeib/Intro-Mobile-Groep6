@@ -1,3 +1,4 @@
+import 'package:exam_app/questions/current_question.dart';
 import 'package:exam_app/questions/load_questions.dart';
 import 'package:flutter/material.dart';
 import '../questions/code_question_answer.dart';
@@ -118,6 +119,8 @@ class StudentQuestionsListState extends State<StudentQuestionsList> {
                 title: Text(LoadQuestions.questions[index]),
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    CurrentQuestion.currentQuestion =
+                        LoadQuestions.questions[index];
                     if (LoadQuestions.types[index] == "multiple choice") {
                       return const MultipleChoiceAnswerPage();
                     } else if (LoadQuestions.types[index] ==
