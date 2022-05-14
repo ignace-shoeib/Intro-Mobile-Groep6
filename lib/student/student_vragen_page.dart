@@ -22,14 +22,14 @@ class StudentVragenPage extends StatelessWidget {
               AdminLoginTitle(),
               SizedBox(height: 20),
               Expanded(child: StudentQuestionsList()),
+              Expanded(child: TempMultipleQuestionAnswerButton()),
+              Expanded(child: TempOpenQuestionAnswerButton()),
+              Expanded(child: TempCodeQuestionAnswerButton()),
               Expanded(
                   child: Align(
                 alignment: FractionalOffset.bottomCenter,
                 child: StopExamButton(),
               )),
-              Expanded(child: TempMultipleQuestionAnswerButton()),
-              Expanded(child: TempOpenQuestionAnswerButton()),
-              Expanded(child: TempCodeQuestionAnswerButton()),
               SizedBox(height: 50),
             ]));
   }
