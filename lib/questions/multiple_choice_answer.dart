@@ -80,6 +80,11 @@ class _MultiplechoiceAnswerState extends State<MultiplechoiceAnswer> {
               title: const Text('2',
                   style: TextStyle(color: Colors.white, fontSize: 25)),
               leading: Radio<EnumCorrectWrong>(
+                fillColor: MaterialStateColor.resolveWith((states) =>
+                    states.contains(MaterialState.selected)
+                        ? Colors.red
+                        : Colors.white),
+                activeColor: Colors.red,
                 value: EnumCorrectWrong.correct,
                 groupValue: _character,
                 onChanged: (EnumCorrectWrong? value) {
@@ -94,6 +99,11 @@ class _MultiplechoiceAnswerState extends State<MultiplechoiceAnswer> {
               title: const Text('13',
                   style: TextStyle(color: Colors.white, fontSize: 25)),
               leading: Radio<EnumCorrectWrong>(
+                fillColor: MaterialStateColor.resolveWith((states) =>
+                    states.contains(MaterialState.selected)
+                        ? Colors.red
+                        : Colors.white),
+                activeColor: Colors.red,
                 value: EnumCorrectWrong.wrong,
                 groupValue: _character,
                 onChanged: (EnumCorrectWrong? value) {
