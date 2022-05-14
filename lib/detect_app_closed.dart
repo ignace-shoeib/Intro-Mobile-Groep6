@@ -22,7 +22,7 @@ class LifecycleWatcher extends StatefulWidget {
   const LifecycleWatcher({Key? key}) : super(key: key);
 
   @override
-  _LifecycleWatcherState createState() => _LifecycleWatcherState();
+  createState() => _LifecycleWatcherState();
 }
 
 int countAppClosed = 0;

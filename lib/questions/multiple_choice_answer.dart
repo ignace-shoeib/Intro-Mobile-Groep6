@@ -18,7 +18,7 @@ class MultipleChoiceAnswerPage extends StatelessWidget {
             children: const [
               MultipleChoiceTitle(),
               SizedBox(height: 20),
-              Expanded(child: MultiplechoiceQuestion()),
+              Expanded(child: MultipleChoiceQuestion()),
               Expanded(
                   child: Align(
                 alignment: FractionalOffset.bottomCenter,
@@ -43,8 +43,8 @@ class MultipleChoiceTitle extends StatelessWidget {
   }
 }
 
-class MultiplechoiceQuestion extends StatelessWidget {
-  const MultiplechoiceQuestion({Key? key}) : super(key: key);
+class MultipleChoiceQuestion extends StatelessWidget {
+  const MultipleChoiceQuestion({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
