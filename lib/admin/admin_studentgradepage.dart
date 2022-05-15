@@ -1,6 +1,7 @@
 import 'package:exam_app/detect_app_closed.dart';
 import 'package:flutter/material.dart';
 import 'admin_student_answers.dart';
+import 'admin_student_location.dart';
 
 class AdminStudentGrade extends StatelessWidget {
   const AdminStudentGrade({Key? key}) : super(key: key);
@@ -74,7 +75,7 @@ class LocationButtonState extends State<LocationButton> {
         child: ElevatedButton(
           onPressed: () {
             Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => const StudenAnswersPage()));
+                builder: (context) => const StudentLocationPage()));
           },
           style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all(Colors.white),
@@ -123,8 +124,8 @@ class AnswersButtonState extends State<AnswersButton> {
     return SizedBox(
         child: ElevatedButton(
       onPressed: () {
-        Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => const StudenAnswersPage()));
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => const StudentAnswersPage()));
       },
       style: ElevatedButton.styleFrom(
           primary: Colors.green,
