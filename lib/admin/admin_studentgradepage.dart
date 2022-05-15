@@ -62,7 +62,7 @@ class StudentGradeScoreText extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Align(
       alignment: Alignment.bottomCenter,
-      child: Text('[Palceholder student score]',
+      child: Text('[2]',
           style: TextStyle(
               color: Colors.red, fontSize: 150, fontWeight: FontWeight.bold)),
     );
