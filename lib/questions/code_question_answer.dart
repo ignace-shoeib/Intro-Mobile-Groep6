@@ -19,8 +19,8 @@ class CodeQuestionAnswerPage extends StatelessWidget {
               CodeQuestionAnswerTitle(),
               SizedBox(height: 20),
               Expanded(
-                child: CodeQuestion(),
                 flex: 0,
+                child: CodeQuestion(),
               ),
               Expanded(child: CodeQuestionAnswer()),
               SizedBox(height: 10),

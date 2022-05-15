@@ -19,8 +19,8 @@ class OpenQuestionAnswerPage extends StatelessWidget {
               OpenQuestionAnswerTitle(),
               SizedBox(height: 20),
               Expanded(
-                child: OpenQuestion(),
                 flex: 0,
+                child: OpenQuestion(),
               ),
               Expanded(child: OpenQuestionAnswer()),
               SizedBox(height: 10),

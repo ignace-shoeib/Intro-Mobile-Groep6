@@ -43,7 +43,7 @@ class FireBaseTest extends StatefulWidget {
   const FireBaseTest({Key? key}) : super(key: key);
 
   @override
-  _FireBaseTestState createState() => _FireBaseTestState();
+  createState() => _FireBaseTestState();
 }
 
 class _FireBaseTestState extends State<FireBaseTest> {

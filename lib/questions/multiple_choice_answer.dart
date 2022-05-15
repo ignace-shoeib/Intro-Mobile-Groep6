@@ -20,8 +20,8 @@ class MultipleChoiceAnswerPage extends StatelessWidget {
               MultipleChoiceTitle(),
               SizedBox(height: 20),
               Expanded(
-                child: MultipleChoiceQuestion(),
                 flex: 0,
+                child: MultipleChoiceQuestion(),
               ),
               Expanded(child: MultiplechoiceAnswer()),
               SizedBox(height: 10),
@@ -79,7 +79,7 @@ class _MultiplechoiceAnswerState extends State<MultiplechoiceAnswer> {
     for (int i = 0; i < CurrentQuestion.currentOptions!.length; i++) {
       options.add(ListTile(
           title: Text(CurrentQuestion.currentOptions![i],
-              style: TextStyle(color: Colors.white, fontSize: 25)),
+              style: const TextStyle(color: Colors.white, fontSize: 25)),
           leading: Radio<String>(
             fillColor: MaterialStateColor.resolveWith((states) =>
                 states.contains(MaterialState.selected)
