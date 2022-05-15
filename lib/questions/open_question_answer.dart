@@ -16,7 +16,7 @@ class OpenQuestionAnswerPage extends StatelessWidget {
         body: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
+            children: const [
               OpenQuestionAnswerTitle(),
               SizedBox(height: 20),
               Expanded(
@@ -73,8 +73,8 @@ class OpenQuestionAnswer extends StatelessWidget {
             width: 600,
             child: TextField(
               onChanged: (value) => StudentAnswer.answer = value,
-              style: TextStyle(color: Colors.white),
-              decoration: InputDecoration(
+              style: const TextStyle(color: Colors.white),
+              decoration: const InputDecoration(
                 border: OutlineInputBorder(),
                 hintText: "Antwoord",
                 floatingLabelBehavior: FloatingLabelBehavior.always,

@@ -16,7 +16,7 @@ class CodeQuestionAnswerPage extends StatelessWidget {
         body: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
+            children: const [
               CodeQuestionAnswerTitle(),
               SizedBox(height: 20),
               Expanded(
@@ -64,7 +64,7 @@ class CodeQuestion extends StatelessWidget {
 }
 
 class CodeQuestionAnswer extends StatelessWidget {
-  CodeQuestionAnswer({Key? key}) : super(key: key);
+  const CodeQuestionAnswer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -73,8 +73,8 @@ class CodeQuestionAnswer extends StatelessWidget {
             width: 600,
             child: TextField(
               onChanged: (value) => StudentAnswer.answer = value,
-              style: TextStyle(color: Colors.white),
-              decoration: InputDecoration(
+              style: const TextStyle(color: Colors.white),
+              decoration: const InputDecoration(
                 border: OutlineInputBorder(),
                 hintText: "Antwoord",
                 floatingLabelBehavior: FloatingLabelBehavior.always,

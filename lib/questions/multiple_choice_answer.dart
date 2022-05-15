@@ -1,4 +1,3 @@
-import 'package:exam_app/admin/admin_student_answers.dart';
 import 'package:exam_app/questions/current_question.dart';
 import 'package:exam_app/questions/student_answer.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +16,7 @@ class MultipleChoiceAnswerPage extends StatelessWidget {
         body: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
+            children: const [
               MultipleChoiceTitle(),
               SizedBox(height: 20),
               Expanded(
