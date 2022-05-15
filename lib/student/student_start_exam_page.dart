@@ -33,8 +33,8 @@ class StudentStartExamButtonState extends State<StudentStartExamButton> {
         width: 400,
         child: TextButton(
           onPressed: () {
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => const StudentQuestionPage()));
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => StudentQuestionPage()));
           },
           style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all(Colors.white),
