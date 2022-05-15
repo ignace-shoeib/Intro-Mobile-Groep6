@@ -30,7 +30,8 @@ class _DropDownButtonState extends State<DropDownButton> {
         ),
         onChanged: (String? newValue) {
           setState(() {
-            dropdownValue = newValue!;
+            LoadStudents.currentStudent = newValue!;
+            dropdownValue = newValue;
           });
         },
         items: studentStrings.map<DropdownMenuItem<String>>((String value) {

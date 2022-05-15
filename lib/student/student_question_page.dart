@@ -123,12 +123,15 @@ class StudentQuestionsListState extends State<StudentQuestionsList> {
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
                     StudentAnswer.answer = "";
+                    CurrentQuestion.index = index;
                     CurrentQuestion.currentQuestion =
                         LoadQuestions.listQuestions[index]["question"];
                     CurrentQuestion.currentOptions =
                         LoadQuestions.listQuestions[index]["options"];
                     CurrentQuestion.currentCorrectAnswer =
                         LoadQuestions.listQuestions[index]["answer"];
+                    CurrentQuestion.currentType =
+                        LoadQuestions.listQuestions[index]["type"];
                     if (LoadQuestions.listQuestions[index]["type"] ==
                         "multiple choice") {
                       return const MultipleChoiceAnswerPage();
