@@ -1,4 +1,6 @@
+import 'dart:convert';
 import 'package:exam_app/student/load_students.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
 class StudentAnswersPage extends StatelessWidget {
@@ -33,24 +35,46 @@ class StudentAnswersTitle extends StatelessWidget {
   }
 }
 
-final List<String> entries = <String>['A', 'B', 'C'];
+class GetData {
+  static Future<String> getData() async {
+    final ref = FirebaseDatabase.instance.ref();
+    final snapshot =
+        await ref.child("answers/${LoadStudents.currentStudent.trim()}").get();
+    var encoded = json.encode(snapshot.value);
+    return encoded;
+  }
+}
+
+late List<String> entries;
 
 class AdminListviewStudentsAnswers extends StatelessWidget {
   const AdminListviewStudentsAnswers({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: ListView.builder(
-        itemCount: entries.length,
-        itemBuilder: (context, index) {
-          return Card(
-              child: ListTile(
-                  onTap: () {},
-                  tileColor: Colors.black54,
-                  title: Text(entries[index])));
-        },
-      ),
-    );
+    return FutureBuilder<String>(
+        future: GetData.getData(),
+        builder: (context, AsyncSnapshot<String> snapshot) {
+          entries = [];
+          String data = snapshot.data!;
+          var jsonData = jsonDecode(data);
+          for (var key in jsonData.keys) {
+            if (key != "metadata") {
+              entries.add(jsonData[key]["question"]);
+            }
+          }
+          return Scaffold(
+            body: ListView.builder(
+              itemCount: entries.length,
+              itemBuilder: (context, index) {
+                return Card(
+                    child: ListTile(
+                        onTap: () {},
+                        tileColor: Colors.black54,
+                        title: Text(entries[index])));
+              },
+            ),
+          );
+        });
   }
 }
