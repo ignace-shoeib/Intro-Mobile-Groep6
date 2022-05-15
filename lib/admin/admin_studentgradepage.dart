@@ -1,4 +1,5 @@
 import 'package:exam_app/detect_app_closed.dart';
+import 'package:exam_app/student/load_students.dart';
 import 'package:flutter/material.dart';
 import 'admin_student_answers.dart';
 import 'admin_student_location.dart';
@@ -6,12 +7,7 @@ import 'admin_student_location.dart';
 class AdminStudentGrade extends StatelessWidget {
   const AdminStudentGrade({
     Key? key,
-    required this.studentNr,
-    required this.studentName,
   }) : super(key: key);
-
-  final String studentNr;
-  final String studentName;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +21,7 @@ class AdminStudentGrade extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const SizedBox(height: 20),
-            StudentGradeTitle(studentNr: studentNr, studentName: studentName),
+            StudentGradeTitle(),
             const SizedBox(height: 200),
             const Text('Punten', style: TextStyle(color: Colors.white)),
             const SizedBox(height: 5),
@@ -64,20 +60,13 @@ class AdminStudentGrade extends StatelessWidget {
 }
 
 class StudentGradeTitle extends StatelessWidget {
-  const StudentGradeTitle({
-    Key? key,
-    required this.studentNr,
-    required this.studentName,
-  }) : super(key: key);
-
-  final String studentNr;
-  final String studentName;
+  const StudentGradeTitle({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.topCenter,
-      child: Text("Details $studentNr, $studentName",
+      child: Text("Details ${LoadStudents.currentStudent}",
           style: const TextStyle(
               color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold)),
     );
