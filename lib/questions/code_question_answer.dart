@@ -18,14 +18,19 @@ class CodeQuestionAnswerPage extends StatelessWidget {
             children: const [
               CodeQuestionAnswerTitle(),
               SizedBox(height: 20),
-              Expanded(child: CodeQuestion()),
-              Expanded(child: CodeQuestionAnswer()),
               Expanded(
+                child: CodeQuestion(),
+                flex: 0,
+              ),
+              Expanded(child: CodeQuestionAnswer()),
+              SizedBox(height: 10),
+              Expanded(
+                  flex: 0,
                   child: Align(
-                alignment: FractionalOffset.bottomCenter,
-                child: SaveQuestionButton(),
-              )),
-              SizedBox(height: 50),
+                    alignment: FractionalOffset.bottomCenter,
+                    child: SaveQuestionButton(),
+                  )),
+              SizedBox(height: 10),
             ]));
   }
 }
@@ -75,7 +80,7 @@ class CodeQuestionAnswer extends StatelessWidget {
                 fillColor: Color.fromARGB(80, 61, 61, 61),
                 filled: true,
               ),
-              maxLines: 20,
+              maxLines: 40,
             )));
   }
 }

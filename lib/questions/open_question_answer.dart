@@ -18,14 +18,19 @@ class OpenQuestionAnswerPage extends StatelessWidget {
             children: const [
               OpenQuestionAnswerTitle(),
               SizedBox(height: 20),
-              Expanded(child: OpenQuestion()),
-              Expanded(child: OpenQuestionAnswer()),
               Expanded(
+                child: OpenQuestion(),
+                flex: 0,
+              ),
+              Expanded(child: OpenQuestionAnswer()),
+              SizedBox(height: 10),
+              Expanded(
+                  flex: 0,
                   child: Align(
-                alignment: FractionalOffset.bottomCenter,
-                child: SaveQuestionButton(),
-              )),
-              SizedBox(height: 50),
+                    alignment: FractionalOffset.bottomCenter,
+                    child: SaveQuestionButton(),
+                  )),
+              SizedBox(height: 10),
             ]));
   }
 }
@@ -75,7 +80,7 @@ class OpenQuestionAnswer extends StatelessWidget {
                 fillColor: Color.fromARGB(80, 61, 61, 61),
                 filled: true,
               ),
-              maxLines: 20,
+              maxLines: 40,
             )));
   }
 }
