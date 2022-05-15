@@ -1,3 +1,4 @@
+import 'package:exam_app/student/load_students.dart';
 import 'package:flutter/material.dart';
 
 class StudentAnswersPage extends StatelessWidget {
@@ -23,10 +24,10 @@ class StudentAnswersTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Align(
+    return Align(
       alignment: Alignment.topCenter,
-      child: Text("Antwoorden van de student",
-          style: TextStyle(
+      child: Text("Antwoorden van ${LoadStudents.currentStudent}",
+          style: const TextStyle(
               color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold)),
     );
   }
