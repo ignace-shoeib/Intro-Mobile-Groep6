@@ -1,40 +1,45 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
+import 'package:stop_watch_timer/stop_watch_timer.dart';
 
-class ClockWidget extends StatefulWidget {
-  const ClockWidget({Key? key}) : super(key: key);
+class ExamTimer extends StatefulWidget {
+  const ExamTimer({Key? key}) : super(key: key);
 
   @override
-  ClockWidgetState createState() => ClockWidgetState();
+  State<ExamTimer> createState() => _ExamTimerState();
 }
 
-class ClockWidgetState extends State<ClockWidget> {
-  Timer? _timer;
-  int _secondCount = 0;
-
+class _ExamTimerState extends State<ExamTimer> {
+  final StopWatchTimer _stopWatchTimer = StopWatchTimer(
+    onChange: (value) {},
+    onChangeRawSecond: (value) => print('onChangeRawSecond: $value'),
+  );
   @override
   void initState() {
     super.initState();
-    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      setState(() {
-        _secondCount += 1;
-      });
-    });
+    _stopWatchTimer.onExecute.add(StopWatchExecute.start);
+  }
+
+  @override
+  void dispose() async {
+    super.dispose();
+    await _stopWatchTimer.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    print("$_secondCount");
-    return Text(
-      "$_secondCount",
-      style:
-          const TextStyle(fontSize: 75, color: Color.fromRGBO(30, 144, 255, 1)),
+    return Center(
+      child: StreamBuilder<int>(
+          stream: _stopWatchTimer.rawTime,
+          initialData: 0,
+          builder: (context, snap) {
+            final value = snap.data;
+            final displayTime = StopWatchTimer.getDisplayTime(value!);
+            return Text(displayTime,
+                style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold));
+          }),
     );
-  }
-
-  @override
-  void dispose() {
-    _timer?.cancel();
-    super.dispose();
   }
 }

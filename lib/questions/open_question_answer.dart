@@ -1,5 +1,6 @@
 import 'package:exam_app/questions/current_question.dart';
 import 'package:exam_app/questions/save_question_button.dart';
+import 'package:exam_app/questions/student_answer.dart';
 import 'package:flutter/material.dart';
 
 class OpenQuestionAnswerPage extends StatelessWidget {
@@ -67,12 +68,13 @@ class OpenQuestionAnswer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
+    return Center(
         child: SizedBox(
             width: 600,
             child: TextField(
-              style: TextStyle(color: Colors.white),
-              decoration: InputDecoration(
+              onChanged: (value) => StudentAnswer.answer = value,
+              style: const TextStyle(color: Colors.white),
+              decoration: const InputDecoration(
                 border: OutlineInputBorder(),
                 hintText: "Antwoord",
                 floatingLabelBehavior: FloatingLabelBehavior.always,
