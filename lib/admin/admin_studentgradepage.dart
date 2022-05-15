@@ -1,6 +1,8 @@
 import 'package:exam_app/detect_app_closed.dart';
 import 'package:exam_app/student/load_students.dart';
 import 'package:flutter/material.dart';
+import '../student/load_students.dart';
+import 'admin_edit_student_score.dart';
 import 'admin_student_answers.dart';
 import 'admin_student_location.dart';
 
@@ -33,20 +35,19 @@ class AdminStudentGrade extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SizedBox(
-                      width: 400,
+                      width: 200,
                       child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) =>
-                                  const StudentLocationPage()));
-                        },
-                        style: ButtonStyle(
-                            foregroundColor:
-                                MaterialStateProperty.all(Colors.white),
-                            backgroundColor:
-                                MaterialStateProperty.all(Colors.red)),
-                        child: const Text("Location"),
-                      )),
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) =>
+                                    const StudentLocationPage()));
+                          },
+                          style: ButtonStyle(
+                              foregroundColor:
+                                  MaterialStateProperty.all(Colors.white),
+                              backgroundColor:
+                                  MaterialStateProperty.all(Colors.red)),
+                          child: const Text("Location"))),
                   const SizedBox(width: 10),
                   const EditButton(),
                   const SizedBox(width: 10),
@@ -73,13 +74,27 @@ class StudentGradeTitle extends StatelessWidget {
   }
 }
 
+class StudentTimesLeft extends StatelessWidget {
+  const StudentTimesLeft({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.topCenter,
+      child: Text("Details ${LoadStudents.currentStudent}",
+          style: const TextStyle(
+              color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold)),
+    );
+  }
+}
+
 class StudentGradeScoreText extends StatelessWidget {
   const StudentGradeScoreText({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return const Align(
-      alignment: Alignment.bottomCenter,
+      alignment: Alignment.center,
       child: Text('[2]',
           style: TextStyle(
               color: Colors.red, fontSize: 150, fontWeight: FontWeight.bold)),
@@ -125,12 +140,12 @@ class EditButtonState extends State<EditButton> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        width: 400,
+        width: 200,
         child: ElevatedButton(
           // Momenteel herleid deze button u naar een extra page dat niet echt nodig is of wel kies maar voor detect app closed hehe
           onPressed: () {
             Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => const DetectAppClosed()));
+                builder: (context) => const AdminEditStudentScore()));
           },
           style: ElevatedButton.styleFrom(
               primary: Colors.grey,
@@ -152,16 +167,17 @@ class AnswersButtonState extends State<AnswersButton> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
+        width: 200,
         child: ElevatedButton(
-      onPressed: () {
-        Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => const StudentAnswersPage()));
-      },
-      style: ElevatedButton.styleFrom(
-          primary: Colors.green,
-          onPrimary: Colors.white,
-          minimumSize: const Size(400, 35)),
-      child: const Text("Antwoorden"),
-    ));
+          onPressed: () {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const StudentAnswersPage()));
+          },
+          style: ElevatedButton.styleFrom(
+              primary: Colors.green,
+              onPrimary: Colors.white,
+              minimumSize: const Size(400, 35)),
+          child: const Text("Antwoorden"),
+        ));
   }
 }
