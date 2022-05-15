@@ -107,6 +107,7 @@ class EditButtonState extends State<EditButton> {
     return SizedBox(
         width: 400,
         child: ElevatedButton(
+          // Momenteel herleid deze button u naar een extra page dat niet echt nodig is of wel kies maar voor detect app closed hehe
           onPressed: () {
             Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => const DetectAppClosed()));
