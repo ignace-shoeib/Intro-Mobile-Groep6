@@ -94,6 +94,8 @@ class AdminListviewStudents extends StatelessWidget {
                     builder: (context) => AdminStudentGrade(
                           studentNr:
                               LoadStudents.students[index].studentNr.toString(),
+                          studentName: LoadStudents.students[index].studentName
+                              .toString(),
                         )),
               );
             },

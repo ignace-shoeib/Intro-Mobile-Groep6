@@ -8,9 +8,11 @@ class AdminStudentGrade extends StatelessWidget {
   AdminStudentGrade({
     Key? key,
     required this.studentNr,
+    required this.studentName,
   }) : super(key: key);
 
   String studentNr;
+  String studentName;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,7 @@ class AdminStudentGrade extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const SizedBox(height: 20),
-            StudentGradeTitle(studentNr: studentNr),
+            StudentGradeTitle(studentNr: studentNr, studentName: studentName),
             const SizedBox(height: 200),
             const Text('Punten', style: TextStyle(color: Colors.white)),
             const SizedBox(height: 5),
@@ -65,15 +67,17 @@ class StudentGradeTitle extends StatelessWidget {
   const StudentGradeTitle({
     Key? key,
     required this.studentNr,
+    required this.studentName,
   }) : super(key: key);
 
   final String studentNr;
+  final String studentName;
 
   @override
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.topCenter,
-      child: Text("Details ${this.studentNr}",
+      child: Text("Details ${this.studentNr}, ${this.studentName}",
           style: TextStyle(
               color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold)),
     );
