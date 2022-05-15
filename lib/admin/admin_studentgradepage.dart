@@ -17,16 +17,11 @@ class AdminStudentGrade extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(height: 5),
             const AddStudentGradeTitle(),
             const SizedBox(height: 200),
             const Text('Punten', style: TextStyle(color: Colors.white)),
             const SizedBox(height: 5),
-            const Text('2',
-                style: TextStyle(
-                    color: Colors.red,
-                    fontSize: 150,
-                    fontWeight: FontWeight.bold)),
+            const StudentGradeScoreText(),
             const SizedBox(height: 20),
             Expanded(
               child: Row(
@@ -52,10 +47,24 @@ class AddStudentGradeTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Align(
-      alignment: Alignment.bottomCenter,
+      alignment: Alignment.topCenter,
       child: Text("Details [Place-holder]",
           style: TextStyle(
               color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold)),
+    );
+  }
+}
+
+class StudentGradeScoreText extends StatelessWidget {
+  const StudentGradeScoreText({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const Align(
+      alignment: Alignment.bottomCenter,
+      child: Text('[Palceholder student score]',
+          style: TextStyle(
+              color: Colors.red, fontSize: 150, fontWeight: FontWeight.bold)),
     );
   }
 }
