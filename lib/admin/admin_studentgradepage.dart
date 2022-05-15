@@ -1,6 +1,7 @@
 import 'package:exam_app/detect_app_closed.dart';
 import 'package:flutter/material.dart';
 import 'admin_student_answers.dart';
+import 'admin_student_location.dart';
 
 class AdminStudentGrade extends StatelessWidget {
   const AdminStudentGrade({Key? key}) : super(key: key);
@@ -16,16 +17,11 @@ class AdminStudentGrade extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(height: 5),
             const AddStudentGradeTitle(),
             const SizedBox(height: 200),
             const Text('Punten', style: TextStyle(color: Colors.white)),
             const SizedBox(height: 5),
-            const Text('2',
-                style: TextStyle(
-                    color: Colors.red,
-                    fontSize: 150,
-                    fontWeight: FontWeight.bold)),
+            const StudentGradeScoreText(),
             const SizedBox(height: 20),
             Expanded(
               child: Row(
@@ -51,10 +47,24 @@ class AddStudentGradeTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Align(
-      alignment: Alignment.bottomCenter,
+      alignment: Alignment.topCenter,
       child: Text("Details [Place-holder]",
           style: TextStyle(
               color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold)),
+    );
+  }
+}
+
+class StudentGradeScoreText extends StatelessWidget {
+  const StudentGradeScoreText({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const Align(
+      alignment: Alignment.bottomCenter,
+      child: Text('[2]',
+          style: TextStyle(
+              color: Colors.red, fontSize: 150, fontWeight: FontWeight.bold)),
     );
   }
 }
@@ -74,7 +84,7 @@ class LocationButtonState extends State<LocationButton> {
         child: ElevatedButton(
           onPressed: () {
             Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => const StudenAnswersPage()));
+                builder: (context) => const StudentLocationPage()));
           },
           style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all(Colors.white),
@@ -123,8 +133,8 @@ class AnswersButtonState extends State<AnswersButton> {
     return SizedBox(
         child: ElevatedButton(
       onPressed: () {
-        Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => const StudenAnswersPage()));
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => const StudentAnswersPage()));
       },
       style: ElevatedButton.styleFrom(
           primary: Colors.green,

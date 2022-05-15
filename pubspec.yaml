@@ -41,6 +41,7 @@ dependencies:
   firebase_database: ^9.0.13
   http: ^0.13.4
   flutter_osm_plugin: ^0.34.0
+  stop_watch_timer: ^1.4.0
 
 dev_dependencies:
   flutter_test:
