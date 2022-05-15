@@ -1,5 +1,6 @@
 import 'package:exam_app/questions/current_question.dart';
 import 'package:exam_app/questions/save_question_button.dart';
+import 'package:exam_app/questions/student_answer.dart';
 import 'package:flutter/material.dart';
 
 class OpenQuestionAnswerPage extends StatelessWidget {
@@ -15,7 +16,7 @@ class OpenQuestionAnswerPage extends StatelessWidget {
         body: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: const [
+            children: [
               OpenQuestionAnswerTitle(),
               SizedBox(height: 20),
               Expanded(
@@ -67,10 +68,11 @@ class OpenQuestionAnswer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
+    return Center(
         child: SizedBox(
             width: 600,
             child: TextField(
+              onChanged: (value) => StudentAnswer.answer = value,
               style: TextStyle(color: Colors.white),
               decoration: InputDecoration(
                 border: OutlineInputBorder(),

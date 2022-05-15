@@ -1,6 +1,7 @@
+import 'package:exam_app/admin/admin_student_answers.dart';
 import 'package:exam_app/questions/current_question.dart';
+import 'package:exam_app/questions/student_answer.dart';
 import 'package:flutter/material.dart';
-
 import 'save_question_button.dart';
 
 class MultipleChoiceAnswerPage extends StatelessWidget {
@@ -16,7 +17,7 @@ class MultipleChoiceAnswerPage extends StatelessWidget {
         body: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: const [
+            children: [
               MultipleChoiceTitle(),
               SizedBox(height: 20),
               Expanded(
@@ -71,8 +72,6 @@ class MultiplechoiceAnswer extends StatefulWidget {
 }
 
 class _MultiplechoiceAnswerState extends State<MultiplechoiceAnswer> {
-  String? answer;
-
   @override
   Widget build(BuildContext context) {
     List<ListTile> options = [];
@@ -87,10 +86,10 @@ class _MultiplechoiceAnswerState extends State<MultiplechoiceAnswer> {
                     : Colors.white),
             activeColor: Colors.red,
             value: CurrentQuestion.currentOptions![i],
-            groupValue: answer,
+            groupValue: StudentAnswer.answer,
             onChanged: (String? value) {
               setState(() {
-                answer = value;
+                StudentAnswer.answer = value!;
               });
             },
           )));

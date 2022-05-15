@@ -1,5 +1,6 @@
 import 'package:exam_app/questions/current_question.dart';
 import 'package:exam_app/questions/load_questions.dart';
+import 'package:exam_app/questions/student_answer.dart';
 import 'package:flutter/material.dart';
 import '../questions/code_question_answer.dart';
 import '../questions/multiple_choice_answer.dart';
@@ -119,6 +120,7 @@ class StudentQuestionsListState extends State<StudentQuestionsList> {
                 title: Text(LoadQuestions.listQuestions[index]["question"]),
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    StudentAnswer.answer = "";
                     CurrentQuestion.currentQuestion =
                         LoadQuestions.listQuestions[index]["question"];
                     CurrentQuestion.currentOptions =
