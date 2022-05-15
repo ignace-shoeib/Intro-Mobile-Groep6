@@ -33,6 +33,7 @@ class StudentStartExamButtonState extends State<StudentStartExamButton> {
         width: 400,
         child: TextButton(
           onPressed: () {
+            StudentQuestionsListState.examLeftCounter = 0;
             Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => const StudentQuestionPage()));
           },

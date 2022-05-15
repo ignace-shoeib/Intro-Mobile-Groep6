@@ -120,7 +120,8 @@ class StopExamButtonState extends State<StopExamButton> {
                             "lat": location.latitude,
                             "lng": location.longitude
                           },
-                          "address": jsonAddress['display_name']
+                          "address": jsonAddress['display_name'],
+                          "timesLeft": StudentQuestionsListState.examLeftCounter
                         });
                         Navigator.of(context)
                             .popUntil((route) => route.isFirst);
@@ -152,17 +153,14 @@ class StudentQuestionsListState extends State<StudentQuestionsList>
   void didChangeAppLifecycleState(AppLifecycleState state) {
     switch (state) {
       case AppLifecycleState.resumed:
-        print("resumed");
         break;
       case AppLifecycleState.inactive:
-        print("inactive");
         examLeftCounter++;
         print(">>> YOU LEFT THE EXAM : $examLeftCounter TIMES");
         break;
       case AppLifecycleState.paused:
         break;
       case AppLifecycleState.detached:
-        print("detached");
         break;
     }
   }
