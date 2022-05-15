@@ -111,19 +111,24 @@ class StudentQuestionsListState extends State<StudentQuestionsList> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView.builder(
-          itemCount: LoadQuestions.questions.length,
+          itemCount: LoadQuestions.listQuestions.length,
           itemBuilder: (BuildContext context, int index) {
             return Card(
               child: ListTile(
                 tileColor: Colors.black54,
-                title: Text(LoadQuestions.questions[index]),
+                title: Text(LoadQuestions.listQuestions[index]["question"]),
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
                     CurrentQuestion.currentQuestion =
-                        LoadQuestions.questions[index];
-                    if (LoadQuestions.types[index] == "multiple choice") {
+                        LoadQuestions.listQuestions[index]["question"];
+                    CurrentQuestion.currentOptions =
+                        LoadQuestions.listQuestions[index]["options"];
+                    CurrentQuestion.currentCorrectAnswer =
+                        LoadQuestions.listQuestions[index]["answer"];
+                    if (LoadQuestions.listQuestions[index]["type"] ==
+                        "multiple choice") {
                       return const MultipleChoiceAnswerPage();
-                    } else if (LoadQuestions.types[index] ==
+                    } else if (LoadQuestions.listQuestions[index]["type"] ==
                         "code correction") {
                       return const CodeQuestionAnswerPage();
                     } else {

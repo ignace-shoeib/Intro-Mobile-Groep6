@@ -27,12 +27,12 @@ class QuestionsListState extends State<QuestionsList> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView.builder(
-          itemCount: LoadQuestions.questions.length,
+          itemCount: LoadQuestions.listQuestions.length,
           itemBuilder: (context, index) {
             return Card(
               child: ListTile(
                 tileColor: Colors.black54,
-                title: Text(LoadQuestions.questions[index]),
+                title: Text(LoadQuestions.listQuestions[index]["question"]),
               ),
             );
           }),

@@ -19,14 +19,19 @@ class MultipleChoiceAnswerPage extends StatelessWidget {
             children: const [
               MultipleChoiceTitle(),
               SizedBox(height: 20),
-              Expanded(child: MultipleChoiceQuestion()),
-              Expanded(child: MultiplechoiceAnswer()),
               Expanded(
+                child: MultipleChoiceQuestion(),
+                flex: 0,
+              ),
+              Expanded(child: MultiplechoiceAnswer()),
+              SizedBox(height: 10),
+              Expanded(
+                  flex: 0,
                   child: Align(
-                alignment: FractionalOffset.bottomCenter,
-                child: SaveQuestionButton(),
-              )),
-              SizedBox(height: 50),
+                    alignment: FractionalOffset.bottomCenter,
+                    child: SaveQuestionButton(),
+                  )),
+              SizedBox(height: 10),
             ]));
   }
 }
@@ -58,8 +63,6 @@ class MultipleChoiceQuestion extends StatelessWidget {
   }
 }
 
-enum EnumCorrectWrong { correct, wrong }
-
 class MultiplechoiceAnswer extends StatefulWidget {
   const MultiplechoiceAnswer({Key? key}) : super(key: key);
 
@@ -68,51 +71,38 @@ class MultiplechoiceAnswer extends StatefulWidget {
 }
 
 class _MultiplechoiceAnswerState extends State<MultiplechoiceAnswer> {
-  EnumCorrectWrong? _character/*= EnumCorrectWrong.correct*/;
+  String? answer;
 
   @override
   Widget build(BuildContext context) {
+    List<ListTile> options = [];
+    for (int i = 0; i < CurrentQuestion.currentOptions!.length; i++) {
+      options.add(ListTile(
+          title: Text(CurrentQuestion.currentOptions![i],
+              style: TextStyle(color: Colors.white, fontSize: 25)),
+          leading: Radio<String>(
+            fillColor: MaterialStateColor.resolveWith((states) =>
+                states.contains(MaterialState.selected)
+                    ? Colors.red
+                    : Colors.white),
+            activeColor: Colors.red,
+            value: CurrentQuestion.currentOptions![i],
+            groupValue: answer,
+            onChanged: (String? value) {
+              setState(() {
+                answer = value;
+              });
+            },
+          )));
+    }
     return Align(
         alignment: Alignment.center,
         child: Column(
           children: <Widget>[
-            ListTile(
-              title: const Text('2',
-                  style: TextStyle(color: Colors.white, fontSize: 25)),
-              leading: Radio<EnumCorrectWrong>(
-                fillColor: MaterialStateColor.resolveWith((states) =>
-                    states.contains(MaterialState.selected)
-                        ? Colors.red
-                        : Colors.white),
-                activeColor: Colors.red,
-                value: EnumCorrectWrong.correct,
-                groupValue: _character,
-                onChanged: (EnumCorrectWrong? value) {
-                  setState(() {
-                    _character = value;
-                  });
-                },
-              ),
-            ),
-            ListTile(
-              //tileColor: Colors.black54,
-              title: const Text('13',
-                  style: TextStyle(color: Colors.white, fontSize: 25)),
-              leading: Radio<EnumCorrectWrong>(
-                fillColor: MaterialStateColor.resolveWith((states) =>
-                    states.contains(MaterialState.selected)
-                        ? Colors.red
-                        : Colors.white),
-                activeColor: Colors.red,
-                value: EnumCorrectWrong.wrong,
-                groupValue: _character,
-                onChanged: (EnumCorrectWrong? value) {
-                  setState(() {
-                    _character = value;
-                  });
-                },
-              ),
-            ),
+            Expanded(
+                child: ListView(
+              children: options,
+            )),
           ],
         ));
   }
