@@ -1,16 +1,19 @@
+import 'dart:convert';
 import 'package:exam_app/exam_timer.dart';
 import 'package:exam_app/questions/current_question.dart';
 import 'package:exam_app/questions/load_questions.dart';
 import 'package:exam_app/questions/student_answer.dart';
+import 'package:exam_app/student/load_students.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:stop_watch_timer/stop_watch_timer.dart';
+import 'package:flutter_osm_plugin/flutter_osm_plugin.dart';
 import '../questions/code_question_answer.dart';
+import 'package:http/http.dart' as http;
 import '../questions/multiple_choice_answer.dart';
 import '../questions/open_question_answer.dart';
 
 class StudentQuestionPage extends StatelessWidget {
   const StudentQuestionPage({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,19 +24,31 @@ class StudentQuestionPage extends StatelessWidget {
         body: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: const [
-              Title(),
-              ExamTimer(),
-              SizedBox(height: 20),
-              Expanded(child: StudentQuestionsList()),
-              SizedBox(height: 10),
-              Expanded(
+            children: [
+              const Title(),
+              const ExamTimer(),
+              const SizedBox(height: 20),
+              const Expanded(child: StudentQuestionsList()),
+              const SizedBox(height: 10),
+              const Expanded(
                   flex: 0,
                   child: Align(
                     alignment: FractionalOffset.bottomCenter,
                     child: StopExamButton(),
                   )),
-              SizedBox(height: 10),
+              Transform.translate(
+                  offset: Offset(0, 10),
+                  child: SizedBox(
+                      height: 10,
+                      width: 10,
+                      child: OSMFlutter(
+                        controller: StopExamButtonState.controller,
+                        trackMyPosition: false,
+                        initZoom: 16,
+                        minZoomLevel: 2,
+                        maxZoomLevel: 19,
+                        stepZoom: 1.0,
+                      )))
             ]));
   }
 }
@@ -60,11 +75,8 @@ class StopExamButton extends StatefulWidget {
 }
 
 class StopExamButtonState extends State<StopExamButton> {
-  static final StopWatchTimer _stopWatchTimer = StopWatchTimer(
-    onChange: (value) {},
-    onChangeRawSecond: (value) => print('onChangeRawSecond: $value'),
-  );
-
+  static MapController controller =
+      MapController(initMapWithUserPosition: true);
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
@@ -92,9 +104,24 @@ class StopExamButtonState extends State<StopExamButton> {
                       style: ButtonStyle(
                           backgroundColor:
                               MaterialStateProperty.all(Colors.red)),
-                      onPressed: () {
-                        print("EXAM ENDED AT ${_stopWatchTimer.rawTime.value}");
-                        //_stopWatchTimer.onExecute.add(StopWatchExecute.stop);
+                      onPressed: () async {
+                        final String student =
+                            LoadStudents.currentStudent.trim();
+                        DatabaseReference ref = FirebaseDatabase.instance
+                            .ref("answers/$student/metadata");
+                        var location = await controller.myLocation();
+                        var address = await http.get(Uri.parse(
+                            'https://nominatim.openstreetmap.org/reverse?format=json&lat=${location.latitude}&lon=${location.longitude}'));
+                        Map<String, dynamic> jsonAddress =
+                            json.decode(address.body);
+                        await ref.set({
+                          "seconds": Time.time,
+                          "location": {
+                            "lat": location.latitude,
+                            "lng": location.longitude
+                          },
+                          "address": jsonAddress['display_name']
+                        });
                         Navigator.of(context)
                             .popUntil((route) => route.isFirst);
                       },
