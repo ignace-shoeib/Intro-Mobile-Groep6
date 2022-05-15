@@ -21,6 +21,7 @@ class StudentListPage extends StatelessWidget {
               SizedBox(height: 20),
               Expanded(child: AdminListviewStudents()),
               Expanded(
+                  flex: 0,
                   // Add student button
                   child: Align(
                       alignment: FractionalOffset.bottomCenter,
