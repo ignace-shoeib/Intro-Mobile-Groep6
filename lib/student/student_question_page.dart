@@ -37,7 +37,7 @@ class StudentQuestionPage extends StatelessWidget {
                     child: StopExamButton(),
                   )),
               Transform.translate(
-                  offset: Offset(0, 10),
+                  offset: const Offset(0, 10),
                   child: SizedBox(
                       height: 10,
                       width: 10,
@@ -146,8 +146,7 @@ class StudentQuestionsList extends StatefulWidget {
 
 class StudentQuestionsListState extends State<StudentQuestionsList>
     with WidgetsBindingObserver {
-  AppLifecycleState? _notification;
-  static int ExamLeftCounter = 0;
+  static int examLeftCounter = 0;
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
@@ -157,8 +156,8 @@ class StudentQuestionsListState extends State<StudentQuestionsList>
         break;
       case AppLifecycleState.inactive:
         print("inactive");
-        ExamLeftCounter++;
-        print(">>> YOU LEFT THE EXAM : $ExamLeftCounter TIMES");
+        examLeftCounter++;
+        print(">>> YOU LEFT THE EXAM : $examLeftCounter TIMES");
         break;
       case AppLifecycleState.paused:
         break;

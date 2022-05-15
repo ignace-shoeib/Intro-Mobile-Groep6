@@ -1,18 +1,17 @@
 import 'package:exam_app/detect_app_closed.dart';
-import 'package:exam_app/student/student.dart';
 import 'package:flutter/material.dart';
 import 'admin_student_answers.dart';
 import 'admin_student_location.dart';
 
 class AdminStudentGrade extends StatelessWidget {
-  AdminStudentGrade({
+  const AdminStudentGrade({
     Key? key,
     required this.studentNr,
     required this.studentName,
   }) : super(key: key);
 
-  String studentNr;
-  String studentName;
+  final String studentNr;
+  final String studentName;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +41,8 @@ class AdminStudentGrade extends StatelessWidget {
                       child: ElevatedButton(
                         onPressed: () {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => StudentLocationPage()));
+                              builder: (context) =>
+                                  const StudentLocationPage()));
                         },
                         style: ButtonStyle(
                             foregroundColor:
@@ -77,8 +77,8 @@ class StudentGradeTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.topCenter,
-      child: Text("Details ${this.studentNr}, ${this.studentName}",
-          style: TextStyle(
+      child: Text("Details $studentNr, $studentName",
+          style: const TextStyle(
               color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold)),
     );
   }
