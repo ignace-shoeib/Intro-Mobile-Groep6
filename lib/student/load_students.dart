@@ -5,6 +5,7 @@ import 'package:path_provider/path_provider.dart';
 import 'student.dart';
 
 class LoadStudents {
+  static String currentStudent = LoadStudents.students.first.toString();
   static List<Student> students = [];
   static Future<List<Student>> loadStudentsFirstTime() async {
     final file = await _localFile;
