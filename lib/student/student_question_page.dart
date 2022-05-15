@@ -117,7 +117,42 @@ class StudentQuestionsList extends StatefulWidget {
   State<StudentQuestionsList> createState() => StudentQuestionsListState();
 }
 
-class StudentQuestionsListState extends State<StudentQuestionsList> {
+class StudentQuestionsListState extends State<StudentQuestionsList>
+    with WidgetsBindingObserver {
+  AppLifecycleState? _notification;
+  static int ExamLeftCounter = 0;
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    switch (state) {
+      case AppLifecycleState.resumed:
+        print("resumed");
+        break;
+      case AppLifecycleState.inactive:
+        print("inactive");
+        ExamLeftCounter++;
+        print(">>> YOU LEFT THE EXAM : $ExamLeftCounter TIMES");
+        break;
+      case AppLifecycleState.paused:
+        break;
+      case AppLifecycleState.detached:
+        print("detached");
+        break;
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
