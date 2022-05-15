@@ -3,6 +3,7 @@ import 'package:exam_app/questions/current_question.dart';
 import 'package:exam_app/questions/load_questions.dart';
 import 'package:exam_app/questions/student_answer.dart';
 import 'package:flutter/material.dart';
+import 'package:stop_watch_timer/stop_watch_timer.dart';
 import '../questions/code_question_answer.dart';
 import '../questions/multiple_choice_answer.dart';
 import '../questions/open_question_answer.dart';
@@ -59,6 +60,11 @@ class StopExamButton extends StatefulWidget {
 }
 
 class StopExamButtonState extends State<StopExamButton> {
+  static final StopWatchTimer _stopWatchTimer = StopWatchTimer(
+    onChange: (value) {},
+    onChangeRawSecond: (value) => print('onChangeRawSecond: $value'),
+  );
+
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
@@ -87,6 +93,8 @@ class StopExamButtonState extends State<StopExamButton> {
                           backgroundColor:
                               MaterialStateProperty.all(Colors.red)),
                       onPressed: () {
+                        print("EXAM ENDED AT ${_stopWatchTimer.rawTime.value}");
+                        //_stopWatchTimer.onExecute.add(StopWatchExecute.stop);
                         Navigator.of(context)
                             .popUntil((route) => route.isFirst);
                       },
