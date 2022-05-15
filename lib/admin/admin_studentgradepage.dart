@@ -1,10 +1,16 @@
 import 'package:exam_app/detect_app_closed.dart';
+import 'package:exam_app/student/student.dart';
 import 'package:flutter/material.dart';
 import 'admin_student_answers.dart';
 import 'admin_student_location.dart';
 
 class AdminStudentGrade extends StatelessWidget {
-  const AdminStudentGrade({Key? key}) : super(key: key);
+  AdminStudentGrade({
+    Key? key,
+    required this.studentNr,
+  }) : super(key: key);
+
+  String studentNr;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +23,8 @@ class AdminStudentGrade extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const AddStudentGradeTitle(),
+            const SizedBox(height: 20),
+            StudentGradeTitle(studentNr: studentNr),
             const SizedBox(height: 200),
             const Text('Punten', style: TextStyle(color: Colors.white)),
             const SizedBox(height: 5),
@@ -27,12 +34,25 @@ class AdminStudentGrade extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
-                children: const [
-                  LocationButton(),
-                  SizedBox(width: 10),
-                  EditButton(),
-                  SizedBox(width: 10),
-                  AnswersButton()
+                children: [
+                  SizedBox(
+                      width: 400,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => StudentLocationPage()));
+                        },
+                        style: ButtonStyle(
+                            foregroundColor:
+                                MaterialStateProperty.all(Colors.white),
+                            backgroundColor:
+                                MaterialStateProperty.all(Colors.red)),
+                        child: const Text("Location"),
+                      )),
+                  const SizedBox(width: 10),
+                  const EditButton(),
+                  const SizedBox(width: 10),
+                  const AnswersButton()
                 ],
               ),
             )
@@ -41,14 +61,19 @@ class AdminStudentGrade extends StatelessWidget {
   }
 }
 
-class AddStudentGradeTitle extends StatelessWidget {
-  const AddStudentGradeTitle({Key? key}) : super(key: key);
+class StudentGradeTitle extends StatelessWidget {
+  const StudentGradeTitle({
+    Key? key,
+    required this.studentNr,
+  }) : super(key: key);
+
+  final String studentNr;
 
   @override
   Widget build(BuildContext context) {
-    return const Align(
+    return Align(
       alignment: Alignment.topCenter,
-      child: Text("Details [Place-holder]",
+      child: Text("Details ${this.studentNr}",
           style: TextStyle(
               color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold)),
     );
@@ -68,13 +93,14 @@ class StudentGradeScoreText extends StatelessWidget {
     );
   }
 }
-
+/*
 class LocationButton extends StatefulWidget {
   const LocationButton({Key? key}) : super(key: key);
 
   @override
   State<LocationButton> createState() => LocationButtonState();
 }
+
 
 class LocationButtonState extends State<LocationButton> {
   @override
@@ -83,8 +109,8 @@ class LocationButtonState extends State<LocationButton> {
         width: 400,
         child: ElevatedButton(
           onPressed: () {
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => const StudentLocationPage()));
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => StudentLocationPage()));
           },
           style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all(Colors.white),
@@ -93,6 +119,7 @@ class LocationButtonState extends State<LocationButton> {
         ));
   }
 }
+*/
 
 class EditButton extends StatefulWidget {
   const EditButton({Key? key}) : super(key: key);

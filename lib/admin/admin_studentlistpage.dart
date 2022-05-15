@@ -1,5 +1,6 @@
 import 'package:exam_app/admin/admin_studentadd.dart';
 import 'package:exam_app/admin/admin_studentgradepage.dart';
+import 'package:exam_app/student/student.dart';
 import 'package:flutter/material.dart';
 import '../student/load_students.dart';
 
@@ -46,8 +47,10 @@ class TempStudentGradeState extends State<TempStudentGradeButton> {
         width: 400,
         child: TextButton(
             onPressed: () {
+              /*
               Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const AdminStudentGrade()));
+                  builder: (context) => AdminStudentGrade()));
+                  */
             },
             style: ButtonStyle(
               foregroundColor: MaterialStateProperty.all(Colors.grey),
@@ -82,7 +85,18 @@ class AdminListviewStudents extends StatelessWidget {
         itemBuilder: (context, index) {
           return Card(
               child: ListTile(
-            onTap: () {},
+            onTap: () {
+              print(
+                  "${LoadStudents.students[index].studentNr!}, ${LoadStudents.students[index].studentName!}");
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => AdminStudentGrade(
+                          studentNr:
+                              LoadStudents.students[index].studentNr.toString(),
+                        )),
+              );
+            },
             tileColor: Colors.black54,
             title: Text(
                 "${LoadStudents.students[index].studentNr!}, ${LoadStudents.students[index].studentName!}"),
