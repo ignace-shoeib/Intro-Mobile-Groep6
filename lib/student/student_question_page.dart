@@ -2,6 +2,8 @@ import 'package:exam_app/exam_timer.dart';
 import 'package:exam_app/questions/current_question.dart';
 import 'package:exam_app/questions/load_questions.dart';
 import 'package:exam_app/questions/student_answer.dart';
+import 'package:exam_app/student/load_students.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
 import '../questions/code_question_answer.dart';
@@ -60,11 +62,6 @@ class StopExamButton extends StatefulWidget {
 }
 
 class StopExamButtonState extends State<StopExamButton> {
-  static final StopWatchTimer _stopWatchTimer = StopWatchTimer(
-    onChange: (value) {},
-    onChangeRawSecond: (value) => print('onChangeRawSecond: $value'),
-  );
-
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
@@ -92,9 +89,14 @@ class StopExamButtonState extends State<StopExamButton> {
                       style: ButtonStyle(
                           backgroundColor:
                               MaterialStateProperty.all(Colors.red)),
-                      onPressed: () {
-                        print("EXAM ENDED AT ${_stopWatchTimer.rawTime.value}");
-                        //_stopWatchTimer.onExecute.add(StopWatchExecute.stop);
+                      onPressed: () async {
+                        final String student =
+                            LoadStudents.currentStudent.trim();
+                        DatabaseReference ref = FirebaseDatabase.instance
+                            .ref("answers/$student/metadata");
+                        await ref.set({
+                          "seconds": Time.time,
+                        });
                         Navigator.of(context)
                             .popUntil((route) => route.isFirst);
                       },

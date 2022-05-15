@@ -8,23 +8,20 @@ class ExamTimer extends StatefulWidget {
   State<ExamTimer> createState() => _ExamTimerState();
 }
 
+class Time {
+  static int time = 0;
+}
+
 class _ExamTimerState extends State<ExamTimer> {
   static final StopWatchTimer _stopWatchTimer = StopWatchTimer(
     onChange: (value) {},
-    onChangeRawSecond: (value) => print('onChangeRawSecond: $value'),
+    onChangeRawSecond: (value) => Time.time = value,
   );
   @override
   void initState() {
     super.initState();
     _stopWatchTimer.onExecute.add(StopWatchExecute.reset);
     _stopWatchTimer.onExecute.add(StopWatchExecute.start);
-  }
-
-  // error: cant be called after dispose
-  @override
-  void dispose() async {
-    super.dispose();
-    await _stopWatchTimer.dispose();
   }
 
   @override
