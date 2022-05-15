@@ -24,7 +24,9 @@ class AdminStudentGrade extends StatelessWidget {
           children: [
             const SizedBox(height: 20),
             const StudentGradeTitle(),
-            const SizedBox(height: 200),
+            const SizedBox(height: 10),
+            const StudentExamInfo(),
+            const SizedBox(height: 150),
             const Text('Punten', style: TextStyle(color: Colors.white)),
             const SizedBox(height: 5),
             const StudentGradeScoreText(),
@@ -74,16 +76,17 @@ class StudentGradeTitle extends StatelessWidget {
   }
 }
 
-class StudentTimesLeft extends StatelessWidget {
-  const StudentTimesLeft({Key? key}) : super(key: key);
+class StudentExamInfo extends StatelessWidget {
+  const StudentExamInfo({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Align(
+    return const Align(
       alignment: Alignment.topCenter,
-      child: Text("Details ${LoadStudents.currentStudent}",
-          style: const TextStyle(
-              color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold)),
+      child: Text(
+          "De student heeft het examen x keer verlaten,\n dit examen heeft de student afgelegd in x.",
+          style: TextStyle(
+              color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold)),
     );
   }
 }
