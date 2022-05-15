@@ -1,6 +1,8 @@
+import 'package:exam_app/exam_timer.dart';
 import 'package:exam_app/questions/current_question.dart';
 import 'package:exam_app/questions/load_questions.dart';
 import 'package:flutter/material.dart';
+import 'package:stop_watch_timer/stop_watch_timer.dart';
 import '../questions/code_question_answer.dart';
 import '../questions/multiple_choice_answer.dart';
 import '../questions/open_question_answer.dart';
@@ -20,6 +22,7 @@ class StudentQuestionPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: const [
               Title(),
+              ExamTimer(),
               SizedBox(height: 20),
               Expanded(child: StudentQuestionsList()),
               SizedBox(height: 10),
