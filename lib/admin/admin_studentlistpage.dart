@@ -26,36 +26,8 @@ class StudentListPage extends StatelessWidget {
                   // Add student button
                   child: Align(
                       alignment: FractionalOffset.bottomCenter,
-                      child: AddStudentButton())),
-              TempStudentGradeButton()
+                      child: AddStudentButton()))
             ]));
-  }
-}
-
-// Temp for testing
-class TempStudentGradeButton extends StatefulWidget {
-  const TempStudentGradeButton({Key? key}) : super(key: key);
-
-  @override
-  State<TempStudentGradeButton> createState() => TempStudentGradeState();
-}
-
-class TempStudentGradeState extends State<TempStudentGradeButton> {
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-        width: 400,
-        child: TextButton(
-            onPressed: () {
-              /*
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => AdminStudentGrade()));
-                  */
-            },
-            style: ButtonStyle(
-              foregroundColor: MaterialStateProperty.all(Colors.grey),
-            ),
-            child: const Text("Temp button naar student grade")));
   }
 }
 
