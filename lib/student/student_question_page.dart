@@ -117,8 +117,8 @@ class StopExamButtonState extends State<StopExamButton> {
                         await ref.set({
                           "seconds": Time.time,
                           "location": {
-                            "lat": location.latitude,
-                            "lng": location.longitude
+                            "latitude": location.latitude,
+                            "longitude": location.longitude
                           },
                           "address": jsonAddress['display_name'],
                           "timesLeft": StudentQuestionsListState.examLeftCounter

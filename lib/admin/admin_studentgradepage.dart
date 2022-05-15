@@ -21,7 +21,7 @@ class AdminStudentGrade extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const SizedBox(height: 20),
-            StudentGradeTitle(),
+            const StudentGradeTitle(),
             const SizedBox(height: 200),
             const Text('Punten', style: TextStyle(color: Colors.white)),
             const SizedBox(height: 5),
