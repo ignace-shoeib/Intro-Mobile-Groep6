@@ -156,7 +156,6 @@ class StudentQuestionsListState extends State<StudentQuestionsList>
         break;
       case AppLifecycleState.inactive:
         examLeftCounter++;
-        print(">>> YOU LEFT THE EXAM : $examLeftCounter TIMES");
         break;
       case AppLifecycleState.paused:
         break;

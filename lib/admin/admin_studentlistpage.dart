@@ -59,12 +59,10 @@ class AdminListviewStudents extends StatelessWidget {
             onTap: () {
               LoadStudents.currentStudent =
                   LoadStudents.students[index].toString();
-
-              print(
-                  "${LoadStudents.students[index].studentNr!}, ${LoadStudents.students[index].studentName!}");
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => AdminStudentGrade()),
+                MaterialPageRoute(
+                    builder: (context) => const AdminStudentGrade()),
               );
             },
             tileColor: Colors.black54,
