@@ -15,7 +15,7 @@ class _ExamTimerState extends State<ExamTimer> {
     onChange: (value) {
       final displayTime = StopWatchTimer.getDisplayTime(value);
     },
-    onChangeRawSecond: (value) => print('onChangeRawSecond: $value'),
+    onChangeRawSecond: (value) => print('TIME ELAPSED : $value'),
   );
   @override
   void initState() {
