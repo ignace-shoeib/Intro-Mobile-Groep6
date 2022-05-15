@@ -16,9 +16,9 @@ class StudentLocationPage extends StatelessWidget {
           title: const Text("Gradeaid"),
         ),
         body: Column(children: [
-          PageTitle(),
-          SizedBox(height: 10),
-          LocationText(),
+          const PageTitle(),
+          const SizedBox(height: 10),
+          const LocationText(),
           Flexible(
               child: OSMFlutter(
             controller: controller,
@@ -79,7 +79,7 @@ class LocationText extends StatelessWidget {
             "${jsonData["location"].toString().replaceAll('{', '').replaceAll('}', '')}\n${jsonData["address"]}";
         return Align(
           alignment: Alignment.bottomCenter,
-          child: Text("$location",
+          child: Text(location,
               style: const TextStyle(
                   color: Colors.white,
                   fontSize: 20,

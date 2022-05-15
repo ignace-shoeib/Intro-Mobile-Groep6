@@ -1,4 +1,3 @@
-import 'package:exam_app/debug_button.dart';
 import 'package:flutter/material.dart';
 import 'my_home_page.dart';
 import 'login_text.dart';
@@ -24,7 +23,6 @@ class MyHomePageState extends State<MyHomePage> {
             SizedBox(height: 20),
             LoginButton(),
             LoginAsAdminButton(),
-            DebugButton(),
           ],
         ));
   }
