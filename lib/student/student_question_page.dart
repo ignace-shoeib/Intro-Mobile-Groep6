@@ -13,7 +13,7 @@ import '../questions/multiple_choice_answer.dart';
 import '../questions/open_question_answer.dart';
 
 class StudentQuestionPage extends StatelessWidget {
-  StudentQuestionPage({Key? key}) : super(key: key);
+  const StudentQuestionPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
