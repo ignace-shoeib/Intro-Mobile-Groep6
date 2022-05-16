@@ -40,7 +40,7 @@ class EditStudentScoreTitle extends StatelessWidget {
     return Align(
       alignment: Alignment.bottomCenter,
       child: Text("Bewerk de score van ${LoadStudents.currentStudent}",
-          style: TextStyle(
+          style: const TextStyle(
               color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold)),
     );
   }
@@ -51,14 +51,14 @@ class EditStudentScoreInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
         child: SizedBox(
             width: 200,
             child: TextField(
               // Als je onchanged erbij doet gaat problemen weg
               //onChanged: (value) => StudentAnswer.answer = value,
-              style: const TextStyle(color: Colors.white),
-              decoration: const InputDecoration(
+              style: TextStyle(color: Colors.white),
+              decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 hintText: "Nieuwe score",
                 floatingLabelBehavior: FloatingLabelBehavior.always,

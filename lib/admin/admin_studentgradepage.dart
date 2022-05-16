@@ -1,4 +1,3 @@
-import 'package:exam_app/detect_app_closed.dart';
 import 'package:exam_app/student/load_students.dart';
 import 'package:flutter/material.dart';
 import '../student/load_students.dart';
