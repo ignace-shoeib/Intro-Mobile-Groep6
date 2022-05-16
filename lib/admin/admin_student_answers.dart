@@ -3,6 +3,8 @@ import 'package:exam_app/student/load_students.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
+import 'admin_student_answers_info.dart';
+
 class StudentAnswersPage extends StatelessWidget {
   const StudentAnswersPage({Key? key}) : super(key: key);
 
@@ -16,7 +18,9 @@ class StudentAnswersPage extends StatelessWidget {
         body: Column(children: const [
           StudentAnswersTitle(),
           SizedBox(height: 20),
-          Expanded(child: AdminListviewStudentsAnswers())
+          Expanded(child: AdminListviewStudentsAnswers()),
+          // Temp button
+          Expanded(child: TempStudentanswersinfoButton())
         ]));
   }
 }
@@ -80,5 +84,35 @@ class AdminListviewStudentsAnswers extends StatelessWidget {
           } catch (e) {}
           return scaffold;
         });
+  }
+}
+
+// Temp button
+class TempStudentanswersinfoButton extends StatefulWidget {
+  const TempStudentanswersinfoButton({Key? key}) : super(key: key);
+
+  @override
+  State<TempStudentanswersinfoButton> createState() =>
+      TempStudentanswersinfoButtonState();
+}
+
+class TempStudentanswersinfoButtonState
+    extends State<TempStudentanswersinfoButton> {
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+        width: 200,
+        child: ElevatedButton(
+          // Momenteel herleid deze button u naar een extra page dat niet echt nodig is of wel kies maar voor detect app closed hehe
+          onPressed: () {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const StudentAnswersInfoPage()));
+          },
+          style: ElevatedButton.styleFrom(
+              primary: Colors.grey,
+              onPrimary: Colors.white,
+              minimumSize: const Size(400, 35)),
+          child: const Text("Bewerken"),
+        ));
   }
 }

@@ -108,7 +108,7 @@ class StudentExamInfo extends StatelessWidget {
             align = Align(
               alignment: Alignment.topCenter,
               child: Text(
-                  "De student heeft het examen $left keer verlaten,\n dit examen heeft de student afgelegd in $time uren.",
+                  "De student heeft het examen $left keer verlaten,\ndit examen heeft de student afgelegd in $time uren.",
                   style: const TextStyle(
                       color: Colors.white,
                       fontSize: 20,

@@ -42,8 +42,8 @@ class StudentAnswersInfoText extends StatelessWidget {
     return const Align(
       alignment: Alignment.center,
       child: Text(
-          "Op de (type vraag) vraag x, \n Heeft de student het volgende geantwoord: x. \n Het correcte antwoord is: x. \n Dit is dus (juist/fout).",
-          style: TextStyle(color: Colors.white, fontSize: 20)),
+          "Op de (type vraag) vraag x, \nheeft de student het volgende geantwoord: x. \n\nHet correcte antwoord is: x. \nDit is dus (juist/fout).",
+          style: TextStyle(color: Colors.white, fontSize: 20, height: 1.5)),
     );
   }
 }
