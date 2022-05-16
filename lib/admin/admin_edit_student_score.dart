@@ -17,10 +17,9 @@ class AdminEditStudentScore extends StatelessWidget {
             //crossAxisAlignment: CrossAxisAlignment.center,
             children: const [
               EditStudentScoreTitle(),
-              SizedBox(height: 200),
               Expanded(child: StudentGradeScoreText()),
-              Expanded(child: EditStudentScoreInput()),
-              //SizedBox(height: 10),
+              Expanded(flex: 0, child: EditStudentScoreInput()),
+              SizedBox(height: 10),
               Expanded(
                   flex: 0,
                   child: Align(

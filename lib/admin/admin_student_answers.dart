@@ -55,26 +55,30 @@ class AdminListviewStudentsAnswers extends StatelessWidget {
     return FutureBuilder<String>(
         future: GetData.getData(),
         builder: (context, AsyncSnapshot<String> snapshot) {
-          entries = [];
-          String data = snapshot.data!;
-          var jsonData = jsonDecode(data);
-          for (var key in jsonData.keys) {
-            if (key != "metadata") {
-              entries.add(jsonData[key]["question"]);
+          Scaffold scaffold = const Scaffold();
+          try {
+            entries = [];
+            String data = snapshot.data!;
+            var jsonData = jsonDecode(data);
+            for (var key in jsonData.keys) {
+              if (key != "metadata") {
+                entries.add(jsonData[key]["question"]);
+              }
             }
-          }
-          return Scaffold(
-            body: ListView.builder(
-              itemCount: entries.length,
-              itemBuilder: (context, index) {
-                return Card(
-                    child: ListTile(
-                        onTap: () {},
-                        tileColor: Colors.black54,
-                        title: Text(entries[index])));
-              },
-            ),
-          );
+            scaffold = Scaffold(
+              body: ListView.builder(
+                itemCount: entries.length,
+                itemBuilder: (context, index) {
+                  return Card(
+                      child: ListTile(
+                          onTap: () {},
+                          tileColor: Colors.black54,
+                          title: Text(entries[index])));
+                },
+              ),
+            );
+          } catch (e) {}
+          return scaffold;
         });
   }
 }

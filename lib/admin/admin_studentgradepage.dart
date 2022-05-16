@@ -27,12 +27,10 @@ class AdminStudentGrade extends StatelessWidget {
             const StudentGradeTitle(),
             const SizedBox(height: 10),
             const StudentExamInfo(),
-            const SizedBox(height: 150),
-            const Text('Punten', style: TextStyle(color: Colors.white)),
-            const SizedBox(height: 5),
+            const SizedBox(height: 10),
             const StudentGradeScoreText(),
-            const SizedBox(height: 20),
             Expanded(
+              flex: 0,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -57,7 +55,8 @@ class AdminStudentGrade extends StatelessWidget {
                   const AnswersButton()
                 ],
               ),
-            )
+            ),
+            const SizedBox(height: 10),
           ],
         ));
   }
@@ -100,19 +99,23 @@ class StudentExamInfo extends StatelessWidget {
     return FutureBuilder<String>(
         future: GetData.getData(),
         builder: (context, AsyncSnapshot<String> snapshot) {
-          String data = snapshot.data!;
-          var jsonData = jsonDecode(data);
-          String left = jsonData["timesLeft"].toString();
-          String time = formatTime(jsonData["seconds"]);
-          return Align(
-            alignment: Alignment.topCenter,
-            child: Text(
-                "De student heeft het examen $left keer verlaten,\n dit examen heeft de student afgelegd in $time uren.",
-                style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold)),
-          );
+          Align align = const Align();
+          try {
+            String data = snapshot.data!;
+            var jsonData = jsonDecode(data);
+            String left = jsonData["timesLeft"].toString();
+            String time = formatTime(jsonData["seconds"]);
+            align = Align(
+              alignment: Alignment.topCenter,
+              child: Text(
+                  "De student heeft het examen $left keer verlaten,\n dit examen heeft de student afgelegd in $time uren.",
+                  style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold)),
+            );
+          } catch (e) {}
+          return align;
         });
   }
 }
@@ -122,12 +125,34 @@ class StudentGradeScoreText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Align(
-      alignment: Alignment.center,
-      child: Text('[2]',
-          style: TextStyle(
-              color: Colors.red, fontSize: 150, fontWeight: FontWeight.bold)),
-    );
+    return FutureBuilder<String>(
+        future: GetData.getData(),
+        builder: (context, AsyncSnapshot<String> snapshot) {
+          Expanded expanded = const Expanded(
+            child: Text(""),
+          );
+          try {
+            String data = snapshot.data!;
+            var jsonData = jsonDecode(data);
+            String? score = jsonData["score"].toString();
+            String scoreToDisplay = "0";
+            if (score != "null") {
+              scoreToDisplay = score;
+            }
+            expanded = Expanded(
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                  const Text('Punten', style: TextStyle(color: Colors.white)),
+                  (Text(scoreToDisplay,
+                      style: const TextStyle(
+                          color: Colors.red,
+                          fontSize: 150,
+                          fontWeight: FontWeight.bold))),
+                ]));
+          } catch (e) {}
+          return expanded;
+        });
   }
 }
 /*
