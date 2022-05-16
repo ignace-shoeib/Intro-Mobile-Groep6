@@ -1,4 +1,6 @@
+import 'dart:convert';
 import 'package:exam_app/student/load_students.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import '../student/load_students.dart';
 import 'admin_edit_student_score.dart';
@@ -75,18 +77,43 @@ class StudentGradeTitle extends StatelessWidget {
   }
 }
 
+class GetData {
+  static Future<String> getData() async {
+    final ref = FirebaseDatabase.instance.ref();
+    final snapshot = await ref
+        .child("answers/${LoadStudents.currentStudent.trim()}/metadata")
+        .get();
+    var encoded = json.encode(snapshot.value);
+    return encoded;
+  }
+}
+
+String formatTime(int seconds) {
+  return '${(Duration(seconds: seconds))}'.split('.')[0].padLeft(8, '0');
+}
+
 class StudentExamInfo extends StatelessWidget {
   const StudentExamInfo({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const Align(
-      alignment: Alignment.topCenter,
-      child: Text(
-          "De student heeft het examen x keer verlaten,\n dit examen heeft de student afgelegd in x.",
-          style: TextStyle(
-              color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold)),
-    );
+    return FutureBuilder<String>(
+        future: GetData.getData(),
+        builder: (context, AsyncSnapshot<String> snapshot) {
+          String data = snapshot.data!;
+          var jsonData = jsonDecode(data);
+          String left = "${jsonData["timesLeft"].toString()}";
+          String time = "${formatTime(jsonData["seconds"])}";
+          return Align(
+            alignment: Alignment.topCenter,
+            child: Text(
+                "De student heeft het examen ${left} keer verlaten,\n dit examen heeft de student afgelegd in ${time} uren.",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold)),
+          );
+        });
   }
 }
 
