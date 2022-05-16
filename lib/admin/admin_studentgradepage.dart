@@ -128,7 +128,7 @@ class StudentGradeScoreText extends StatelessWidget {
     return FutureBuilder<String>(
         future: GetData.getData(),
         builder: (context, AsyncSnapshot<String> snapshot) {
-          Expanded expanded = Expanded(
+          Expanded expanded = const Expanded(
             child: Text(""),
           );
           try {
@@ -143,9 +143,9 @@ class StudentGradeScoreText extends StatelessWidget {
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                  Text('Punten', style: TextStyle(color: Colors.white)),
-                  (Text('${scoreToDisplay}',
-                      style: TextStyle(
+                  const Text('Punten', style: TextStyle(color: Colors.white)),
+                  (Text(scoreToDisplay,
+                      style: const TextStyle(
                           color: Colors.red,
                           fontSize: 150,
                           fontWeight: FontWeight.bold))),
