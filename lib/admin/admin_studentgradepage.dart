@@ -102,13 +102,13 @@ class StudentExamInfo extends StatelessWidget {
         builder: (context, AsyncSnapshot<String> snapshot) {
           String data = snapshot.data!;
           var jsonData = jsonDecode(data);
-          String left = "${jsonData["timesLeft"].toString()}";
-          String time = "${formatTime(jsonData["seconds"])}";
+          String left = jsonData["timesLeft"].toString();
+          String time = formatTime(jsonData["seconds"]);
           return Align(
             alignment: Alignment.topCenter,
             child: Text(
-                "De student heeft het examen ${left} keer verlaten,\n dit examen heeft de student afgelegd in ${time} uren.",
-                style: TextStyle(
+                "De student heeft het examen $left keer verlaten,\n dit examen heeft de student afgelegd in $time uren.",
+                style: const TextStyle(
                     color: Colors.white,
                     fontSize: 20,
                     fontWeight: FontWeight.bold)),
