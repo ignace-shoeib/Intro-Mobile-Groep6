@@ -73,7 +73,7 @@ class LocationText extends StatelessWidget {
     return FutureBuilder<String>(
       future: GetData.getData(),
       builder: (context, AsyncSnapshot<String> snapshot) {
-        Align align = Align();
+        Align align = const Align();
         try {
           String data = snapshot.data!;
           var jsonData = jsonDecode(data);

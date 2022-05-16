@@ -55,7 +55,7 @@ class AdminListviewStudentsAnswers extends StatelessWidget {
     return FutureBuilder<String>(
         future: GetData.getData(),
         builder: (context, AsyncSnapshot<String> snapshot) {
-          Scaffold scaffold = Scaffold();
+          Scaffold scaffold = const Scaffold();
           try {
             entries = [];
             String data = snapshot.data!;
