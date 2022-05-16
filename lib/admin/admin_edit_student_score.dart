@@ -1,5 +1,4 @@
 import 'package:exam_app/admin/admin_studentgradepage.dart';
-import 'package:exam_app/message_box.dart';
 import 'package:exam_app/student/load_students.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +16,7 @@ class AdminEditStudentScore extends StatelessWidget {
         body: Column(
             //mainAxisAlignment: MainAxisAlignment.center,
             //crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
+            children: const [
               EditStudentScoreTitle(),
               Expanded(child: StudentGradeScoreText()),
               Expanded(flex: 0, child: EditStudentScoreInput()),
@@ -58,8 +57,8 @@ class EditStudentScoreInput extends StatelessWidget {
             child: TextField(
               // Als je onchanged erbij doet gaat problemen weg
               onChanged: (value) => score = value,
-              style: TextStyle(color: Colors.white),
-              decoration: InputDecoration(
+              style: const TextStyle(color: Colors.white),
+              decoration: const InputDecoration(
                 border: OutlineInputBorder(),
                 hintText: "Nieuwe score",
                 floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -99,8 +98,8 @@ class SaveChangedScoreButtonState extends State<SaveChangedScoreButton> {
                 context: context,
                 builder: (BuildContext context) => AlertDialog(
                       backgroundColor: const Color.fromARGB(255, 22, 22, 22),
-                      title: Text("succes",
-                          style: const TextStyle(
+                      title: const Text("succes",
+                          style: TextStyle(
                               color: Color.fromARGB(255, 255, 255, 255))),
                       content: Text(
                           "U heeft de score van ${LoadStudents.currentStudent} veranderd naar ${EditStudentScoreInput.score}",
