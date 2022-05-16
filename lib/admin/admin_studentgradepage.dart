@@ -27,12 +27,10 @@ class AdminStudentGrade extends StatelessWidget {
             const StudentGradeTitle(),
             const SizedBox(height: 10),
             const StudentExamInfo(),
-            const SizedBox(height: 150),
-            const Text('Punten', style: TextStyle(color: Colors.white)),
-            const SizedBox(height: 5),
+            const SizedBox(height: 10),
             const StudentGradeScoreText(),
-            const SizedBox(height: 20),
             Expanded(
+              flex: 0,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -57,7 +55,8 @@ class AdminStudentGrade extends StatelessWidget {
                   const AnswersButton()
                 ],
               ),
-            )
+            ),
+            const SizedBox(height: 10),
           ],
         ));
   }
@@ -122,12 +121,17 @@ class StudentGradeScoreText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Align(
-      alignment: Alignment.center,
-      child: Text('[2]',
-          style: TextStyle(
-              color: Colors.red, fontSize: 150, fontWeight: FontWeight.bold)),
-    );
+    return Expanded(
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+          Text('Punten', style: TextStyle(color: Colors.white)),
+          (Text('[2]',
+              style: TextStyle(
+                  color: Colors.red,
+                  fontSize: 150,
+                  fontWeight: FontWeight.bold))),
+        ]));
   }
 }
 /*
