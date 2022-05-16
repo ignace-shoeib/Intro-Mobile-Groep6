@@ -28,12 +28,14 @@ class StudentLocationPage extends StatelessWidget {
             maxZoomLevel: 19,
             stepZoom: 1.0,
             onMapIsReady: (ready) async {
-              String data = await GetData.getData();
-              var jsonData = jsonDecode(data);
-              double lat = jsonData["location"]["latitude"];
-              double lon = jsonData["location"]["longitude"];
-              GeoPoint geopoint = GeoPoint(latitude: lat, longitude: lon);
-              await controller.changeLocation(geopoint);
+              try {
+                String data = await GetData.getData();
+                var jsonData = jsonDecode(data);
+                double lat = jsonData["location"]["latitude"];
+                double lon = jsonData["location"]["longitude"];
+                GeoPoint geopoint = GeoPoint(latitude: lat, longitude: lon);
+                await controller.changeLocation(geopoint);
+              } catch (e) {}
             },
           ))
         ]));

@@ -89,8 +89,8 @@ class SaveChangedScoreButtonState extends State<SaveChangedScoreButton> {
               backgroundColor: MaterialStateProperty.all(Colors.red)),
           child: const Text('Bewerking opslaan'),
           onPressed: () async {
-            DatabaseReference ref = FirebaseDatabase.instance
-                .ref("answers/${LoadStudents.currentStudent.trim()}/metadata");
+            DatabaseReference ref = FirebaseDatabase.instance.ref(
+                "answers/${LoadStudents.currentStudent.trim()}/metadata/score");
             await ref.set({
               "score": EditStudentScoreInput.score,
             });

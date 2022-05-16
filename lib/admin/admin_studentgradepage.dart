@@ -134,7 +134,7 @@ class StudentGradeScoreText extends StatelessWidget {
           try {
             String data = snapshot.data!;
             var jsonData = jsonDecode(data);
-            String? score = jsonData["score"].toString();
+            String? score = jsonData["score"]["score"].toString();
             String scoreToDisplay = "0";
             if (score != "null") {
               scoreToDisplay = score;
@@ -150,7 +150,19 @@ class StudentGradeScoreText extends StatelessWidget {
                           fontSize: 150,
                           fontWeight: FontWeight.bold))),
                 ]));
-          } catch (e) {}
+          } catch (e) {
+            expanded = Expanded(
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                  Text('Punten', style: TextStyle(color: Colors.white)),
+                  (Text("0",
+                      style: TextStyle(
+                          color: Colors.red,
+                          fontSize: 150,
+                          fontWeight: FontWeight.bold))),
+                ]));
+          }
           return expanded;
         });
   }
