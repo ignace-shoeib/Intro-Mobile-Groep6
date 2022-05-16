@@ -125,17 +125,34 @@ class StudentGradeScoreText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-          Text('Punten', style: TextStyle(color: Colors.white)),
-          (Text('[2]',
-              style: TextStyle(
-                  color: Colors.red,
-                  fontSize: 150,
-                  fontWeight: FontWeight.bold))),
-        ]));
+    return FutureBuilder<String>(
+        future: GetData.getData(),
+        builder: (context, AsyncSnapshot<String> snapshot) {
+          Expanded expanded = Expanded(
+            child: Text(""),
+          );
+          try {
+            String data = snapshot.data!;
+            var jsonData = jsonDecode(data);
+            String? score = jsonData["score"].toString();
+            String scoreToDisplay = "0";
+            if (score != "null") {
+              scoreToDisplay = score;
+            }
+            expanded = Expanded(
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                  Text('Punten', style: TextStyle(color: Colors.white)),
+                  (Text('${scoreToDisplay}',
+                      style: TextStyle(
+                          color: Colors.red,
+                          fontSize: 150,
+                          fontWeight: FontWeight.bold))),
+                ]));
+          } catch (e) {}
+          return expanded;
+        });
   }
 }
 /*
