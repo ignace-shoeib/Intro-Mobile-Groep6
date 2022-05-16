@@ -99,19 +99,23 @@ class StudentExamInfo extends StatelessWidget {
     return FutureBuilder<String>(
         future: GetData.getData(),
         builder: (context, AsyncSnapshot<String> snapshot) {
-          String data = snapshot.data!;
-          var jsonData = jsonDecode(data);
-          String left = jsonData["timesLeft"].toString();
-          String time = formatTime(jsonData["seconds"]);
-          return Align(
-            alignment: Alignment.topCenter,
-            child: Text(
-                "De student heeft het examen $left keer verlaten,\n dit examen heeft de student afgelegd in $time uren.",
-                style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold)),
-          );
+          Align align = Align();
+          try {
+            String data = snapshot.data!;
+            var jsonData = jsonDecode(data!);
+            String left = jsonData["timesLeft"].toString();
+            String time = formatTime(jsonData["seconds"]);
+            align = Align(
+              alignment: Alignment.topCenter,
+              child: Text(
+                  "De student heeft het examen $left keer verlaten,\n dit examen heeft de student afgelegd in $time uren.",
+                  style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold)),
+            );
+          } catch (e) {}
+          return align;
         });
   }
 }

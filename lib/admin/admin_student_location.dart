@@ -73,18 +73,22 @@ class LocationText extends StatelessWidget {
     return FutureBuilder<String>(
       future: GetData.getData(),
       builder: (context, AsyncSnapshot<String> snapshot) {
-        String data = snapshot.data!;
-        var jsonData = jsonDecode(data);
-        String location =
-            "${jsonData["location"].toString().replaceAll('{', '').replaceAll('}', '')}\n${jsonData["address"]}";
-        return Align(
-          alignment: Alignment.bottomCenter,
-          child: Text(location,
-              style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold)),
-        );
+        Align align = Align();
+        try {
+          String data = snapshot.data!;
+          var jsonData = jsonDecode(data);
+          String location =
+              "${jsonData["location"].toString().replaceAll('{', '').replaceAll('}', '')}\n${jsonData["address"]}";
+          align = Align(
+            alignment: Alignment.bottomCenter,
+            child: Text(location,
+                style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold)),
+          );
+        } catch (e) {}
+        return align;
       },
     );
   }
