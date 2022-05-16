@@ -55,14 +55,14 @@ class StudentAnswersInfoText extends StatelessWidget {
         correctWrong = "fout";
       }
       answer =
-          "\n\nHet correcte antwoord is: \"${AdminListviewStudentsAnswers.correctAnswers[AdminListviewStudentsAnswers.currentIndex]}\" \nDit is dus ${correctWrong}.";
+          "\n\nHet correcte antwoord is: \"${AdminListviewStudentsAnswers.correctAnswers[AdminListviewStudentsAnswers.currentIndex]}\" \nDit is dus $correctWrong.";
     }
     return Align(
       alignment: Alignment.center,
       child: Text(
-          "Op de ${AdminListviewStudentsAnswers.types[AdminListviewStudentsAnswers.currentIndex]} vraag \"${AdminListviewStudentsAnswers.entries[AdminListviewStudentsAnswers.currentIndex]}\" \nheeft de student het volgende geantwoord: ${AdminListviewStudentsAnswers.studentAnswers[AdminListviewStudentsAnswers.currentIndex]}" +
-              answer,
-          style: TextStyle(color: Colors.white, fontSize: 20, height: 1.5)),
+          "Op de ${AdminListviewStudentsAnswers.types[AdminListviewStudentsAnswers.currentIndex]} vraag \"${AdminListviewStudentsAnswers.entries[AdminListviewStudentsAnswers.currentIndex]}\" \nheeft de student het volgende geantwoord: ${AdminListviewStudentsAnswers.studentAnswers[AdminListviewStudentsAnswers.currentIndex]}$answer",
+          style:
+              const TextStyle(color: Colors.white, fontSize: 20, height: 1.5)),
     );
   }
 }
