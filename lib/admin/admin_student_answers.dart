@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'package:exam_app/student/load_students.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'admin_student_answers_info.dart';
+import 'admin_studentgradepage.dart';
 
 class StudentAnswersPage extends StatelessWidget {
   const StudentAnswersPage({Key? key}) : super(key: key);
@@ -13,7 +15,7 @@ class StudentAnswersPage extends StatelessWidget {
           backgroundColor: const Color.fromARGB(0, 0, 0, 0),
           title: const Text("Gradeaid"),
         ),
-        body: Column(children: const [
+        body: Column(children: [
           StudentAnswersTitle(),
           SizedBox(height: 20),
           Expanded(child: AdminListviewStudentsAnswers())
@@ -22,7 +24,7 @@ class StudentAnswersPage extends StatelessWidget {
 }
 
 class StudentAnswersTitle extends StatelessWidget {
-  const StudentAnswersTitle({Key? key}) : super(key: key);
+  StudentAnswersTitle({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -45,10 +47,13 @@ class GetData {
   }
 }
 
-late List<String> entries;
-
 class AdminListviewStudentsAnswers extends StatelessWidget {
   const AdminListviewStudentsAnswers({Key? key}) : super(key: key);
+  static late List<String> entries;
+  static late List<String> types;
+  static late List<String> studentAnswers;
+  static late List<String> correctAnswers;
+  static late int currentIndex;
 
   @override
   Widget build(BuildContext context) {
@@ -58,11 +63,17 @@ class AdminListviewStudentsAnswers extends StatelessWidget {
           Scaffold scaffold = const Scaffold();
           try {
             entries = [];
+            types = [];
+            studentAnswers = [];
+            correctAnswers = [];
             String data = snapshot.data!;
             var jsonData = jsonDecode(data);
             for (var key in jsonData.keys) {
               if (key != "metadata") {
                 entries.add(jsonData[key]["question"]);
+                types.add(jsonData[key]["type"]);
+                studentAnswers.add(jsonData[key]["studentAnswer"]);
+                correctAnswers.add(jsonData[key]["correctAnswer"]);
               }
             }
             scaffold = Scaffold(
@@ -71,7 +82,15 @@ class AdminListviewStudentsAnswers extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return Card(
                       child: ListTile(
-                          onTap: () {},
+                          onTap: () {
+                            currentIndex = index;
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const StudentAnswersInfoPage()),
+                            );
+                          },
                           tileColor: Colors.black54,
                           title: Text(entries[index])));
                 },

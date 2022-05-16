@@ -1,5 +1,5 @@
+import 'package:exam_app/admin/admin_student_answers.dart';
 import 'package:flutter/material.dart';
-
 import '../student/load_students.dart';
 
 class StudentAnswersInfoPage extends StatelessWidget {
@@ -39,10 +39,29 @@ class StudentAnswersInfoText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Align(
+    String answer = "";
+    if (AdminListviewStudentsAnswers
+            .types[AdminListviewStudentsAnswers.currentIndex] ==
+        "open") {
+      answer = "";
+    } else {
+      String correctWrong = "";
+      if (AdminListviewStudentsAnswers
+              .studentAnswers[AdminListviewStudentsAnswers.currentIndex] ==
+          AdminListviewStudentsAnswers
+              .correctAnswers[AdminListviewStudentsAnswers.currentIndex]) {
+        correctWrong = "juist";
+      } else {
+        correctWrong = "fout";
+      }
+      answer =
+          "\n\nHet correcte antwoord is: \"${AdminListviewStudentsAnswers.correctAnswers[AdminListviewStudentsAnswers.currentIndex]}\" \nDit is dus ${correctWrong}.";
+    }
+    return Align(
       alignment: Alignment.center,
       child: Text(
-          "Op de (type vraag) vraag x, \nheeft de student het volgende geantwoord: x. \n\nHet correcte antwoord is: x. \nDit is dus (juist/fout).",
+          "Op de ${AdminListviewStudentsAnswers.types[AdminListviewStudentsAnswers.currentIndex]} vraag \"${AdminListviewStudentsAnswers.entries[AdminListviewStudentsAnswers.currentIndex]}\" \nheeft de student het volgende geantwoord: ${AdminListviewStudentsAnswers.studentAnswers[AdminListviewStudentsAnswers.currentIndex]}" +
+              answer,
           style: TextStyle(color: Colors.white, fontSize: 20, height: 1.5)),
     );
   }
